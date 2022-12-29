@@ -20,10 +20,10 @@ class Cell extends StatelessWidget {
             child: child,
           ),
         ),
-        IgnorePointer(
-          child: Visibility(
-            visible: isHighlighted,
-            child: Positioned(
+        Positioned(
+          child: IgnorePointer(
+            child: Visibility(
+              visible: isHighlighted,
               child: Container(
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(4),

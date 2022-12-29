@@ -30,9 +30,11 @@ class PlayerThreatCell extends HookConsumerWidget {
         text: text,
         onTapIncrease: () {
           ref.read(provider.notifier).increase();
+          ref.read(selectedCellProvider.notifier).set(cellSelection);
         },
         onTapDecrease: () {
           ref.read(provider.notifier).decrease();
+          ref.read(selectedCellProvider.notifier).set(cellSelection);
         },
         color: ColorName.threatBackground,
         image: Assets.images.threaticon.image(

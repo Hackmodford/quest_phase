@@ -24,9 +24,11 @@ class RoundCell extends HookConsumerWidget {
         text: text,
         onTapDecrease: () {
           ref.read(roundProvider.notifier).decrease();
+          ref.read(selectedCellProvider.notifier).set(CellSelection.round);
         },
         onTapIncrease: () {
           ref.read(roundProvider.notifier).increase();
+          ref.read(selectedCellProvider.notifier).set(CellSelection.round);
         },
         color: ColorName.roundBackground,
         image: Assets.images.clock.image(

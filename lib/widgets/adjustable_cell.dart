@@ -49,13 +49,11 @@ class AdjustableCell extends StatelessWidget {
               child: Row(
                 children: [
                   GestureDetector(
-                    behavior: HitTestBehavior.translucent,
                     onTap: onTapDecrease,
                     child: const Icon(Icons.remove),
                   ),
                   Expanded(child: image),
                   GestureDetector(
-                    behavior: HitTestBehavior.translucent,
                     onTap: onTapIncrease,
                     child: const Icon(Icons.add),
                   ),
