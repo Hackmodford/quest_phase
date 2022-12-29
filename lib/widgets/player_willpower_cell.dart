@@ -1,0 +1,66 @@
+import 'package:flutter/material.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:quest_phase/gen/assets.gen.dart';
+import 'package:quest_phase/gen/colors.gen.dart';
+import 'package:quest_phase/providers/selected_cell_Provider.dart';
+import 'package:quest_phase/providers/willpower_player_providers.dart';
+import 'package:quest_phase/widgets/cell.dart';
+
+class PlayerWillpowerCell extends HookConsumerWidget {
+  final StateNotifierProvider<PlayerWillpowerNotifier, int> provider;
+  final CellSelection cellSelection;
+  const PlayerWillpowerCell({Key? key, required this.provider, required this.cellSelection}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+
+    final String text = ref.watch(provider).toString();
+    final bool isHighlighted =
+        ref.watch(selectedCellProvider) == cellSelection;
+
+    return GestureDetector(
+      onTap: () {
+        ref.read(selectedCellProvider.notifier).set(cellSelection);
+      },
+      child: Cell(
+        isHighlighted: isHighlighted,
+        color: ColorName.willpowerBackground,
+        child: Padding(
+          padding: const EdgeInsets.all(2.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              Padding(
+                padding: const EdgeInsets.only(left: 2.0, right: 2.0, top: 2.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Assets.images.willpower.image(
+                      width: 24,
+                      height: 24,
+                      fit: BoxFit.scaleDown,
+                    ),
+                    const SizedBox(width: 4.0,),
+                    const Text('P1'),
+                  ],
+                ),
+              ),
+              const SizedBox(
+                height: 4,
+              ),
+              Container(
+                decoration: BoxDecoration(color: Colors.black54, borderRadius: BorderRadius.circular(4)),
+                child: Center(
+                  child: Text(
+                    text,
+                    style: const TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}

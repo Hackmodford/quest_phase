@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="willpower_background">#36366C</color>
+    <color name="threat_background">#9D59B1</color>
+    <color name="progress_background">#294D35</color>
+    <color name="round_background">#A57033</color>
+</resources>
