@@ -168,12 +168,12 @@ class MyHomePage extends HookConsumerWidget {
                   padding: EdgeInsets.all(8.0),
                   child: Text('-1'),
                 ),
-              ).withGridPlacement(
-                columnStart: 1,
-                columnSpan: 1,
-                rowStart: LayoutRow.adjustment.index,
-                rowSpan: 1,
               ),
+            ).withGridPlacement(
+              columnStart: 1,
+              columnSpan: 1,
+              rowStart: LayoutRow.adjustment.index,
+              rowSpan: 1,
             ),
             GestureDetector(
               onTap: () {
@@ -204,12 +204,12 @@ class MyHomePage extends HookConsumerWidget {
                   padding: EdgeInsets.all(8.0),
                   child: Text('+1'),
                 ),
-              ).withGridPlacement(
-                columnStart: 2,
-                columnSpan: 1,
-                rowStart: LayoutRow.adjustment.index,
-                rowSpan: 1,
               ),
+            ).withGridPlacement(
+              columnStart: 2,
+              columnSpan: 1,
+              rowStart: LayoutRow.adjustment.index,
+              rowSpan: 1,
             ),
             GestureDetector(
               onTap: () {
@@ -240,12 +240,12 @@ class MyHomePage extends HookConsumerWidget {
                   padding: EdgeInsets.all(8.0),
                   child: Text('+2'),
                 ),
-              ).withGridPlacement(
-                columnStart: 3,
-                columnSpan: 1,
-                rowStart: LayoutRow.adjustment.index,
-                rowSpan: 1,
               ),
+            ).withGridPlacement(
+              columnStart: 3,
+              columnSpan: 1,
+              rowStart: LayoutRow.adjustment.index,
+              rowSpan: 1,
             ),
             GestureDetector(
               onTap: () {
@@ -276,12 +276,12 @@ class MyHomePage extends HookConsumerWidget {
                   padding: EdgeInsets.all(8.0),
                   child: Text('+5'),
                 ),
-              ).withGridPlacement(
-                columnStart: 4,
-                columnSpan: 1,
-                rowStart: LayoutRow.adjustment.index,
-                rowSpan: 1,
               ),
+            ).withGridPlacement(
+              columnStart: 4,
+              columnSpan: 1,
+              rowStart: LayoutRow.adjustment.index,
+              rowSpan: 1,
             ),
             const RoundCell().withGridPlacement(
               columnStart: 0,
@@ -347,12 +347,12 @@ class MyHomePage extends HookConsumerWidget {
                     textAlign: TextAlign.center,
                   ),
                 ),
-              ).withGridPlacement(
-                columnStart: 0,
-                columnSpan: 1,
-                rowStart: LayoutRow.threatAdjustment.index,
-                rowSpan: 1,
               ),
+            ).withGridPlacement(
+              columnStart: 0,
+              columnSpan: 1,
+              rowStart: LayoutRow.threatAdjustment.index,
+              rowSpan: 1,
             ),
             GestureDetector(
               onTap: () {
@@ -367,12 +367,12 @@ class MyHomePage extends HookConsumerWidget {
                   padding: EdgeInsets.all(8.0),
                   child: Text('-1 All Players'),
                 ),
-              ).withGridPlacement(
-                columnStart: 1,
-                columnSpan: 2,
-                rowStart: LayoutRow.threatAdjustment.index,
-                rowSpan: 1,
               ),
+            ).withGridPlacement(
+              columnStart: 1,
+              columnSpan: 2,
+              rowStart: LayoutRow.threatAdjustment.index,
+              rowSpan: 1,
             ),
             GestureDetector(
               onTap: () {
@@ -387,12 +387,12 @@ class MyHomePage extends HookConsumerWidget {
                   padding: EdgeInsets.all(8.0),
                   child: Text('+1 All Players'),
                 ),
-              ).withGridPlacement(
-                columnStart: 3,
-                columnSpan: 2,
-                rowStart: LayoutRow.threatAdjustment.index,
-                rowSpan: 1,
               ),
+            ).withGridPlacement(
+              columnStart: 3,
+              columnSpan: 2,
+              rowStart: LayoutRow.threatAdjustment.index,
+              rowSpan: 1,
             ),
             const Cell(
               color: Colors.black54,
