@@ -4,18 +4,14 @@ import 'package:quest_phase/providers/selected_cell_Provider.dart';
 enum ToolbarMode { none, playerThreat, willAndThreat, round }
 
 final toolbarModeProvider =
-    StateNotifierProvider<ToolbarModeNotifier, ToolbarMode>(
-        (ref) => ToolbarModeNotifier(ref));
+    StateNotifierProvider<ToolbarModeNotifier, ToolbarMode>((ref) {
+  final cellSelection = ref.watch(selectedCellProvider);
+  return ToolbarModeNotifier(cellSelection);
+});
 
 class ToolbarModeNotifier extends StateNotifier<ToolbarMode> {
-  Ref ref;
-
-  ToolbarModeNotifier(this.ref) : super(ToolbarMode.none) {
-    final cellSelection = ref.read(selectedCellProvider);
+  ToolbarModeNotifier(CellSelection cellSelection) : super(ToolbarMode.none) {
     _setWithCellSelection(cellSelection);
-    ref.listen(selectedCellProvider, (previous, next) {
-      _setWithCellSelection(next);
-    });
   }
 
   void _setWithCellSelection(CellSelection cellSelection) {

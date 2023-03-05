@@ -254,6 +254,10 @@ class Toolbar extends ConsumerWidget {
                 ref.read(p4WillpowerProvider.notifier).reset();
                 ref.read(roundProvider.notifier).increase();
                 ref.read(threatTotalProvider.notifier).reset();
+                ref.read(p1ThreatProvider.notifier).increase();
+                ref.read(p2ThreatProvider.notifier).increase();
+                ref.read(p3ThreatProvider.notifier).increase();
+                ref.read(p4ThreatProvider.notifier).increase();
               },
               child: const Cell(
                 color: Colors.black54,
