@@ -9,33 +9,36 @@ class Cell extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Stack(
-      children: [
-        Container(
-          decoration: BoxDecoration(
-            color: color,
-            borderRadius: BorderRadius.circular(4),
+    return ConstrainedBox(
+      constraints: const BoxConstraints(minHeight: 48),
+      child: Stack(
+        children: [
+          Container(
+            decoration: BoxDecoration(
+              color: color,
+              borderRadius: BorderRadius.circular(4),
+            ),
+            child: Center(
+              child: child,
+            ),
           ),
-          child: Center(
-            child: child,
-          ),
-        ),
-        Positioned(
-          child: IgnorePointer(
-            child: Visibility(
-              visible: isHighlighted,
-              child: Container(
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(4),
-                  border: Border.all(
-                    width: 2,
-                      color: Colors.yellow, strokeAlign: StrokeAlign.inside),
+          Positioned(
+            child: IgnorePointer(
+              child: Visibility(
+                visible: isHighlighted,
+                child: Container(
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(4),
+                    border: Border.all(
+                      width: 2,
+                        color: Colors.yellow, strokeAlign: StrokeAlign.inside),
+                  ),
                 ),
               ),
             ),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 }
