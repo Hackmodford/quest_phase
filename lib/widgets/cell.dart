@@ -31,7 +31,7 @@ class Cell extends StatelessWidget {
                     borderRadius: BorderRadius.circular(4),
                     border: Border.all(
                       width: 2,
-                        color: Colors.yellow, strokeAlign: StrokeAlign.inside),
+                        color: Colors.yellow, strokeAlign: BorderSide.strokeAlignInside),
                   ),
                 ),
               ),

@@ -4,7 +4,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:quest_phase/widgets/cell.dart';
 
 class NumberPad extends HookConsumerWidget {
-  NumberPad({Key? key}) : super(key: key);
+  const NumberPad({Key? key}) : super(key: key);
 
   final int size = 48;
   final double fontSize = 20.0;
