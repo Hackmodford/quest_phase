@@ -2,12 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:quest_phase/gen/assets.gen.dart';
 import 'package:quest_phase/gen/colors.gen.dart';
+import 'package:quest_phase/gen/fonts.gen.dart';
 import 'package:quest_phase/providers/selected_cell_Provider.dart';
 import 'package:quest_phase/providers/threat_total_provider.dart';
 import 'package:quest_phase/widgets/cell.dart';
 
-class TotalThreatCell extends HookConsumerWidget {
-  const TotalThreatCell({Key? key}) : super(key: key);
+class StagingThreatCell extends HookConsumerWidget {
+  const StagingThreatCell({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -42,10 +43,17 @@ class TotalThreatCell extends HookConsumerWidget {
                     color: Colors.black54,
                     borderRadius: BorderRadius.circular(4)),
                 child: Center(
-                  child: Text(
-                    text,
-                    style: const TextStyle(
-                        fontSize: 25, fontWeight: FontWeight.bold),
+                  child: Padding(
+                    padding: const EdgeInsets.only(top: 12.0),
+                    child: Text(
+                      text,
+                      style: const TextStyle(
+                        height: 0.75,
+                        fontFamily: FontFamily.vafthrudnir,
+                        fontSize: 25,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
                   ),
                 ),
               ),

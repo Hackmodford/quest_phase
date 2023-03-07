@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:quest_phase/gen/fonts.gen.dart';
 import 'package:quest_phase/widgets/cell.dart';
 
 class AdjustableCell extends StatelessWidget {
@@ -34,10 +35,17 @@ class AdjustableCell extends StatelessWidget {
                   color: Colors.black54,
                   borderRadius: BorderRadius.circular(4)),
               child: Center(
-                child: Text(
-                  text,
-                  style: const TextStyle(
-                      fontSize: 25, fontWeight: FontWeight.bold),
+                child: Padding(
+                  padding: const EdgeInsets.only(top: 12.0),
+                  child: Text(
+                    text,
+                    style: const TextStyle(
+                      height: 0.75,
+                      fontFamily: FontFamily.vafthrudnir,
+                      fontSize: 25,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
                 ),
               ),
             ),

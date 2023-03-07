@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_layout_grid/flutter_layout_grid.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:quest_phase/gen/fonts.gen.dart';
 import 'package:quest_phase/widgets/cell.dart';
 
 class NumberPad extends HookConsumerWidget {
@@ -32,10 +33,19 @@ class NumberPad extends HookConsumerWidget {
         Cell(
           color: Colors.black54,
           child: Padding(
-            padding: const EdgeInsets.all(8.0),
+            padding: const EdgeInsets.only(
+              top: 19.0,
+              left: 8.0,
+              right: 8.0,
+              bottom: 8.0,
+            ),
             child: Text(
               '1',
-              style: TextStyle(fontSize: fontSize),
+              style: TextStyle(
+                fontSize: fontSize,
+                fontFamily: FontFamily.vafthrudnir,
+                height: 0.75,
+              ),
             ),
           ),
         ).withGridPlacement(
@@ -47,10 +57,19 @@ class NumberPad extends HookConsumerWidget {
         Cell(
           color: Colors.black54,
           child: Padding(
-            padding: const EdgeInsets.all(8.0),
+            padding: const EdgeInsets.only(
+              top: 19.0,
+              left: 8.0,
+              right: 8.0,
+              bottom: 8.0,
+            ),
             child: Text(
               '2',
-              style: TextStyle(fontSize: fontSize),
+              style: TextStyle(
+                fontSize: fontSize,
+                fontFamily: FontFamily.vafthrudnir,
+                height: 0.75,
+              ),
             ),
           ),
         ).withGridPlacement(
@@ -62,10 +81,19 @@ class NumberPad extends HookConsumerWidget {
         Cell(
           color: Colors.black54,
           child: Padding(
-            padding: const EdgeInsets.all(8.0),
+            padding: const EdgeInsets.only(
+              top: 19.0,
+              left: 8.0,
+              right: 8.0,
+              bottom: 8.0,
+            ),
             child: Text(
               '3',
-              style: TextStyle(fontSize: fontSize),
+              style: TextStyle(
+                fontSize: fontSize,
+                fontFamily: FontFamily.vafthrudnir,
+                height: 0.75,
+              ),
             ),
           ),
         ).withGridPlacement(
@@ -77,10 +105,19 @@ class NumberPad extends HookConsumerWidget {
         Cell(
           color: Colors.black54,
           child: Padding(
-            padding: const EdgeInsets.all(8.0),
+            padding: const EdgeInsets.only(
+              top: 19.0,
+              left: 8.0,
+              right: 8.0,
+              bottom: 8.0,
+            ),
             child: Text(
               '4',
-              style: TextStyle(fontSize: fontSize),
+              style: TextStyle(
+                fontSize: fontSize,
+                fontFamily: FontFamily.vafthrudnir,
+                height: 0.75,
+              ),
             ),
           ),
         ).withGridPlacement(
@@ -92,10 +129,19 @@ class NumberPad extends HookConsumerWidget {
         Cell(
           color: Colors.black54,
           child: Padding(
-            padding: const EdgeInsets.all(8.0),
+            padding: const EdgeInsets.only(
+              top: 19.0,
+              left: 8.0,
+              right: 8.0,
+              bottom: 8.0,
+            ),
             child: Text(
               '5',
-              style: TextStyle(fontSize: fontSize),
+              style: TextStyle(
+                fontSize: fontSize,
+                fontFamily: FontFamily.vafthrudnir,
+                height: 0.75,
+              ),
             ),
           ),
         ).withGridPlacement(
@@ -107,10 +153,19 @@ class NumberPad extends HookConsumerWidget {
         Cell(
           color: Colors.black54,
           child: Padding(
-            padding: const EdgeInsets.all(8.0),
+            padding: const EdgeInsets.only(
+              top: 19.0,
+              left: 8.0,
+              right: 8.0,
+              bottom: 8.0,
+            ),
             child: Text(
               '6',
-              style: TextStyle(fontSize: fontSize),
+              style: TextStyle(
+                fontSize: fontSize,
+                fontFamily: FontFamily.vafthrudnir,
+                height: 0.75,
+              ),
             ),
           ),
         ).withGridPlacement(
@@ -122,10 +177,19 @@ class NumberPad extends HookConsumerWidget {
         Cell(
           color: Colors.black54,
           child: Padding(
-            padding: const EdgeInsets.all(8.0),
+            padding: const EdgeInsets.only(
+              top: 19.0,
+              left: 8.0,
+              right: 8.0,
+              bottom: 8.0,
+            ),
             child: Text(
               '7',
-              style: TextStyle(fontSize: fontSize),
+              style: TextStyle(
+                fontSize: fontSize,
+                fontFamily: FontFamily.vafthrudnir,
+                height: 0.75,
+              ),
             ),
           ),
         ).withGridPlacement(
@@ -137,10 +201,19 @@ class NumberPad extends HookConsumerWidget {
         Cell(
           color: Colors.black54,
           child: Padding(
-            padding: const EdgeInsets.all(8.0),
+            padding: const EdgeInsets.only(
+              top: 19.0,
+              left: 8.0,
+              right: 8.0,
+              bottom: 8.0,
+            ),
             child: Text(
               '8',
-              style: TextStyle(fontSize: fontSize),
+              style: TextStyle(
+                fontSize: fontSize,
+                fontFamily: FontFamily.vafthrudnir,
+                height: 0.75,
+              ),
             ),
           ),
         ).withGridPlacement(
@@ -152,10 +225,19 @@ class NumberPad extends HookConsumerWidget {
         Cell(
           color: Colors.black54,
           child: Padding(
-            padding: const EdgeInsets.all(8.0),
+            padding: const EdgeInsets.only(
+              top: 19.0,
+              left: 8.0,
+              right: 8.0,
+              bottom: 8.0,
+            ),
             child: Text(
               '9',
-              style: TextStyle(fontSize: fontSize),
+              style: TextStyle(
+                fontSize: fontSize,
+                fontFamily: FontFamily.vafthrudnir,
+                height: 0.75,
+              ),
             ),
           ),
         ).withGridPlacement(
@@ -167,10 +249,19 @@ class NumberPad extends HookConsumerWidget {
         Cell(
           color: Colors.black54,
           child: Padding(
-            padding: const EdgeInsets.all(8.0),
+            padding: const EdgeInsets.only(
+              top: 19.0,
+              left: 8.0,
+              right: 8.0,
+              bottom: 8.0,
+            ),
             child: Text(
-              'Clear',
-              style: TextStyle(fontSize: fontSize),
+              'C',
+              style: TextStyle(
+                fontSize: fontSize,
+                fontFamily: FontFamily.vafthrudnir,
+                height: 0.75,
+              ),
             ),
           ),
         ).withGridPlacement(
@@ -179,18 +270,27 @@ class NumberPad extends HookConsumerWidget {
           rowStart: 3,
           rowSpan: 1,
         ),
-        const Cell(
+        Cell(
           color: Colors.black54,
           child: Padding(
-            padding: EdgeInsets.all(8.0),
+            padding: const EdgeInsets.only(
+              top: 19.0,
+              left: 8.0,
+              right: 8.0,
+              bottom: 8.0,
+            ),
             child: Text(
               '0',
-              style: TextStyle(fontSize: 20),
+              style: TextStyle(
+                fontSize: fontSize,
+                fontFamily: FontFamily.vafthrudnir,
+                height: 0.75,
+              ),
             ),
           ),
         ).withGridPlacement(
           columnStart: 2,
-          columnSpan: 1,
+          columnSpan: 2,
           rowStart: 3,
           rowSpan: 1,
         ),

@@ -7,9 +7,9 @@ import 'package:quest_phase/widgets/number_pad.dart';
 import 'package:quest_phase/widgets/player_threat_cell.dart';
 import 'package:quest_phase/widgets/player_willpower_cell.dart';
 import 'package:quest_phase/widgets/round_cell.dart';
+import 'package:quest_phase/widgets/staging_threat_cell.dart';
 import 'package:quest_phase/widgets/toolbar.dart';
 import 'package:quest_phase/widgets/total_progress_cell.dart';
-import 'package:quest_phase/widgets/total_threat_cell.dart';
 import 'package:quest_phase/widgets/total_willpower_cell.dart';
 
 enum LayoutRow {
@@ -54,7 +54,7 @@ class GameGrid extends StatelessWidget {
           rowStart: LayoutRow.info.index,
           rowSpan: 1,
         ),
-        const TotalThreatCell().withGridPlacement(
+        const StagingThreatCell().withGridPlacement(
           columnStart: 1,
           columnSpan: 3,
           rowStart: LayoutRow.info.index,
@@ -73,6 +73,7 @@ class GameGrid extends StatelessWidget {
           rowSpan: 1,
         ),
         PlayerWillpowerCell(
+          name: 'P1',
           provider: p1WillpowerProvider,
           cellSelection: CellSelection.p1will,
         ).withGridPlacement(
@@ -82,6 +83,7 @@ class GameGrid extends StatelessWidget {
           rowSpan: 1,
         ),
         PlayerWillpowerCell(
+          name: 'P2',
           provider: p2WillpowerProvider,
           cellSelection: CellSelection.p2will,
         ).withGridPlacement(
@@ -91,6 +93,7 @@ class GameGrid extends StatelessWidget {
           rowSpan: 1,
         ),
         PlayerWillpowerCell(
+          name: 'P3',
           provider: p3WillpowerProvider,
           cellSelection: CellSelection.p3will,
         ).withGridPlacement(
@@ -100,6 +103,7 @@ class GameGrid extends StatelessWidget {
           rowSpan: 1,
         ),
         PlayerWillpowerCell(
+          name: 'P4',
           provider: p4WillpowerProvider,
           cellSelection: CellSelection.p4will,
         ).withGridPlacement(

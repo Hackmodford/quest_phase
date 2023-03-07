@@ -45,7 +45,7 @@ class Toolbar extends ConsumerWidget {
                 color: Colors.black54,
                 child: Padding(
                   padding: EdgeInsets.all(8.0),
-                  child: Text('-1 All PLayers'),
+                  child: Text('-1 All Players'),
                 ),
               ),
             ),
@@ -63,7 +63,7 @@ class Toolbar extends ConsumerWidget {
                 color: Colors.black54,
                 child: Padding(
                   padding: EdgeInsets.all(8.0),
-                  child: Text('+1 All PLayers'),
+                  child: Text('+1 All Players'),
                 ),
               ),
             ),

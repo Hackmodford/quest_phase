@@ -2,18 +2,22 @@ import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:quest_phase/gen/assets.gen.dart';
 import 'package:quest_phase/gen/colors.gen.dart';
+import 'package:quest_phase/gen/fonts.gen.dart';
 import 'package:quest_phase/providers/selected_cell_Provider.dart';
 import 'package:quest_phase/providers/willpower_player_providers.dart';
 import 'package:quest_phase/widgets/cell.dart';
 
 class PlayerWillpowerCell extends HookConsumerWidget {
+  final String name;
   final StateNotifierProvider<PlayerWillpowerNotifier, int> provider;
   final CellSelection cellSelection;
-  const PlayerWillpowerCell({Key? key, required this.provider, required this.cellSelection}) : super(key: key);
+
+  const PlayerWillpowerCell(
+      {Key? key, required this.provider, required this.cellSelection, required this.name,})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-
     final String text = ref.watch(provider).toString();
     final bool isHighlighted =
         ref.watch(selectedCellProvider) == cellSelection;
@@ -41,7 +45,7 @@ class PlayerWillpowerCell extends HookConsumerWidget {
                       fit: BoxFit.scaleDown,
                     ),
                     const SizedBox(width: 4.0,),
-                    const Text('P1'),
+                    Text(name),
                   ],
                 ),
               ),
@@ -49,11 +53,20 @@ class PlayerWillpowerCell extends HookConsumerWidget {
                 height: 4,
               ),
               Container(
-                decoration: BoxDecoration(color: Colors.black54, borderRadius: BorderRadius.circular(4)),
+                decoration: BoxDecoration(color: Colors.black54,
+                    borderRadius: BorderRadius.circular(4)),
                 child: Center(
-                  child: Text(
-                    text,
-                    style: const TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
+                  child: Padding(
+                    padding: const EdgeInsets.only(top: 12.0),
+                    child: Text(
+                      text,
+                      style: const TextStyle(
+                        height: 0.75,
+                        fontFamily: FontFamily.vafthrudnir,
+                        fontSize: 25,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
                   ),
                 ),
               ),

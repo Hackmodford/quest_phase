@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:quest_phase/gen/fonts.gen.dart';
 import 'package:quest_phase/providers/router_provider.dart';
 import 'package:quest_phase/providers/settings_providers.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -28,7 +29,7 @@ class MyApp extends ConsumerWidget {
     return MaterialApp.router(
       title: 'Quest Phase',
       debugShowCheckedModeBanner: false,
-      theme: ThemeData.dark(),
+      theme: ThemeData(fontFamily: FontFamily.timesNewRoman, brightness: Brightness.dark),
       routerConfig: router,
     );
   }

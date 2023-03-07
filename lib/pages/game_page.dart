@@ -28,9 +28,9 @@ class GamePage extends ConsumerWidget {
             icon: const Icon(Icons.settings),
           ),
           actions: [
-            TextButton(
+            IconButton(
               onPressed: () => _showNewGameDialog(context, ref),
-              child: const Text("New Game"),
+              icon: const Icon(Icons.replay),
             ),
           ],
         ),

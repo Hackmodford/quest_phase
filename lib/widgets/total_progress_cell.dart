@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:quest_phase/gen/colors.gen.dart';
+import 'package:quest_phase/gen/fonts.gen.dart';
 import 'package:quest_phase/providers/progress_total_provider.dart';
 import 'package:quest_phase/widgets/cell.dart';
 import 'package:quest_phase/gen/assets.gen.dart';
@@ -37,9 +38,17 @@ class TotalProgressCell extends HookConsumerWidget {
             const SizedBox(
               height: 4,
             ),
-            Text(
-              text,
-              style: const TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
+            Padding(
+              padding: const EdgeInsets.only(top: 12.0),
+              child: Text(
+                text,
+                style: const TextStyle(
+                  height: 0.75,
+                  fontFamily: FontFamily.vafthrudnir,
+                  fontSize: 25,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
             ),
           ],
         ),
