@@ -1,11 +1,11 @@
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'dart:math';
 
-final threatTotalProvider = StateNotifierProvider<ThreatTotalNotifier, int>(
-    (ref) => ThreatTotalNotifier());
+final stagingThreatProvider = StateNotifierProvider<StagingThreatNotifier, int>(
+    (ref) => StagingThreatNotifier());
 
-class ThreatTotalNotifier extends StateNotifier<int> {
-  ThreatTotalNotifier() : super(0);
+class StagingThreatNotifier extends StateNotifier<int> {
+  StagingThreatNotifier() : super(0);
 
   void add(int value) {
     state = state + value;

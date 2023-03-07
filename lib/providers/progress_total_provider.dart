@@ -4,7 +4,7 @@ import 'package:quest_phase/providers/willpower_total_provider.dart';
 
 final progressTotalProvider = Provider<int>((ref) {
   final totalWillpower = ref.watch(willpowerTotalProvider);
-  final totalThreat = ref.watch(threatTotalProvider);
+  final totalThreat = ref.watch(stagingThreatProvider);
 
   return totalWillpower - totalThreat;
 });

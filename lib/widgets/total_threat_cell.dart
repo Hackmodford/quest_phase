@@ -11,7 +11,7 @@ class TotalThreatCell extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final String text = ref.watch(threatTotalProvider).toString();
+    final String text = ref.watch(stagingThreatProvider).toString();
     final bool isHighlighted =
         ref.watch(selectedCellProvider) == CellSelection.threat;
     return GestureDetector(

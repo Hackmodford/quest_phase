@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:quest_phase/providers/round_provider.dart';
 import 'package:quest_phase/providers/selected_cell_Provider.dart';
+import 'package:quest_phase/providers/settings_providers.dart';
 import 'package:quest_phase/providers/threat_player_providers.dart';
 import 'package:quest_phase/providers/threat_total_provider.dart';
 import 'package:quest_phase/providers/toolbar_state_provider.dart';
@@ -80,7 +81,7 @@ class Toolbar extends ConsumerWidget {
           Expanded(
             child: GestureDetector(
               onTap: () {
-                ref.read(threatTotalProvider.notifier).reset();
+                ref.read(stagingThreatProvider.notifier).reset();
                 ref.read(p1WillpowerProvider.notifier).reset();
                 ref.read(p2WillpowerProvider.notifier).reset();
                 ref.read(p3WillpowerProvider.notifier).reset();
@@ -105,7 +106,7 @@ class Toolbar extends ConsumerWidget {
                 final selection = ref.read(selectedCellProvider);
                 switch (selection) {
                   case CellSelection.threat:
-                    ref.read(threatTotalProvider.notifier).remove(1);
+                    ref.read(stagingThreatProvider.notifier).remove(1);
                     break;
                   case CellSelection.p1will:
                     ref.read(p1WillpowerProvider.notifier).remove(1);
@@ -139,7 +140,7 @@ class Toolbar extends ConsumerWidget {
                 final selection = ref.read(selectedCellProvider);
                 switch (selection) {
                   case CellSelection.threat:
-                    ref.read(threatTotalProvider.notifier).add(1);
+                    ref.read(stagingThreatProvider.notifier).add(1);
                     break;
                   case CellSelection.p1will:
                     ref.read(p1WillpowerProvider.notifier).add(1);
@@ -173,7 +174,7 @@ class Toolbar extends ConsumerWidget {
                 final selection = ref.read(selectedCellProvider);
                 switch (selection) {
                   case CellSelection.threat:
-                    ref.read(threatTotalProvider.notifier).add(2);
+                    ref.read(stagingThreatProvider.notifier).add(2);
                     break;
                   case CellSelection.p1will:
                     ref.read(p1WillpowerProvider.notifier).add(2);
@@ -207,7 +208,7 @@ class Toolbar extends ConsumerWidget {
                 final selection = ref.read(selectedCellProvider);
                 switch (selection) {
                   case CellSelection.threat:
-                    ref.read(threatTotalProvider.notifier).add(5);
+                    ref.read(stagingThreatProvider.notifier).add(5);
                     break;
                   case CellSelection.p1will:
                     ref.read(p1WillpowerProvider.notifier).add(5);
@@ -247,17 +248,18 @@ class Toolbar extends ConsumerWidget {
           Expanded(
             child: GestureDetector(
               onTap: () {
-                ref.read(threatTotalProvider.notifier).reset();
+                ref.read(roundProvider.notifier).increase();
                 ref.read(p1WillpowerProvider.notifier).reset();
                 ref.read(p2WillpowerProvider.notifier).reset();
                 ref.read(p3WillpowerProvider.notifier).reset();
                 ref.read(p4WillpowerProvider.notifier).reset();
-                ref.read(roundProvider.notifier).increase();
-                ref.read(threatTotalProvider.notifier).reset();
                 ref.read(p1ThreatProvider.notifier).increase();
                 ref.read(p2ThreatProvider.notifier).increase();
                 ref.read(p3ThreatProvider.notifier).increase();
                 ref.read(p4ThreatProvider.notifier).increase();
+                if (ref.read(settingShouldResetStagingThreatProvider)) {
+                  ref.read(stagingThreatProvider.notifier).reset();
+                }
               },
               child: const Cell(
                 color: Colors.black54,
