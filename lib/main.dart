@@ -30,7 +30,7 @@ class MyApp extends ConsumerWidget {
       title: 'Quest Phase',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-          fontFamily: FontFamily.timesNewRoman, brightness: Brightness.dark),
+          fontFamily: FontFamily.vafthrudnir, brightness: Brightness.dark),
       routerConfig: router,
     );
   }

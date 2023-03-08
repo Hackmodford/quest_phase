@@ -4,6 +4,7 @@ import 'package:quest_phase/gen/assets.gen.dart';
 import 'package:quest_phase/gen/colors.gen.dart';
 import 'package:quest_phase/gen/fonts.gen.dart';
 import 'package:quest_phase/providers/willpower_total_provider.dart';
+import 'package:quest_phase/utils/font_utils.dart';
 import 'package:quest_phase/widgets/cell.dart';
 
 class TotalWillpowerCell extends HookConsumerWidget {
@@ -29,10 +30,7 @@ class TotalWillpowerCell extends HookConsumerWidget {
                 const SizedBox(
                   width: 4,
                 ),
-                const Text(
-                  'Total',
-                  style: TextStyle(fontSize: 20),
-                ),
+                buildRichText("Total", 20),
               ],
             ),
             const SizedBox(

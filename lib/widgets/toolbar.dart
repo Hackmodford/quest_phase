@@ -7,6 +7,7 @@ import 'package:quest_phase/providers/threat_player_providers.dart';
 import 'package:quest_phase/providers/threat_total_provider.dart';
 import 'package:quest_phase/providers/toolbar_state_provider.dart';
 import 'package:quest_phase/providers/willpower_player_providers.dart';
+import 'package:quest_phase/utils/font_utils.dart';
 import 'package:quest_phase/widgets/cell.dart';
 
 class Toolbar extends ConsumerWidget {
@@ -41,11 +42,11 @@ class Toolbar extends ConsumerWidget {
                 ref.read(p3ThreatProvider.notifier).decrease();
                 ref.read(p4ThreatProvider.notifier).decrease();
               },
-              child: const Cell(
+              child: Cell(
                 color: Colors.black54,
                 child: Padding(
-                  padding: EdgeInsets.all(8.0),
-                  child: Text('-1 All Players'),
+                  padding: const EdgeInsets.all(8.0),
+                  child: buildRichText('-1 All Players', 16),
                 ),
               ),
             ),
@@ -59,11 +60,11 @@ class Toolbar extends ConsumerWidget {
                 ref.read(p3ThreatProvider.notifier).increase();
                 ref.read(p4ThreatProvider.notifier).increase();
               },
-              child: const Cell(
+              child: Cell(
                 color: Colors.black54,
                 child: Padding(
-                  padding: EdgeInsets.all(8.0),
-                  child: Text('+1 All Players'),
+                  padding: const EdgeInsets.all(8.0),
+                  child: buildRichText('+1 All Players', 16),
                 ),
               ),
             ),
@@ -87,14 +88,11 @@ class Toolbar extends ConsumerWidget {
                 ref.read(p3WillpowerProvider.notifier).reset();
                 ref.read(p4WillpowerProvider.notifier).reset();
               },
-              child: const Cell(
+              child: Cell(
                 color: Colors.black54,
                 child: Padding(
-                  padding: EdgeInsets.all(8.0),
-                  child: Text(
-                    'Clear\nAll',
-                    textAlign: TextAlign.center,
-                  ),
+                  padding: const EdgeInsets.all(8.0),
+                  child: buildRichText('Clear\n All', 16),
                 ),
               ),
             ),
@@ -261,14 +259,11 @@ class Toolbar extends ConsumerWidget {
                   ref.read(stagingThreatProvider.notifier).reset();
                 }
               },
-              child: const Cell(
+              child: Cell(
                 color: Colors.black54,
                 child: Padding(
-                  padding: EdgeInsets.all(8.0),
-                  child: Text(
-                    'Refresh + New Round',
-                    textAlign: TextAlign.center,
-                  ),
+                  padding: const EdgeInsets.all(8.0),
+                  child: buildRichText('Refresh + New Round', 16),
                 ),
               ),
             ),

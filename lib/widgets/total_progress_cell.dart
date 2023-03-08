@@ -3,6 +3,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:quest_phase/gen/colors.gen.dart';
 import 'package:quest_phase/gen/fonts.gen.dart';
 import 'package:quest_phase/providers/progress_total_provider.dart';
+import 'package:quest_phase/utils/font_utils.dart';
 import 'package:quest_phase/widgets/cell.dart';
 import 'package:quest_phase/gen/assets.gen.dart';
 
@@ -29,10 +30,7 @@ class TotalProgressCell extends HookConsumerWidget {
                 const SizedBox(
                   width: 4,
                 ),
-                const Text(
-                  'Total',
-                  style: TextStyle(fontSize: 20),
-                ),
+                buildRichText("Total", 20),
               ],
             ),
             const SizedBox(

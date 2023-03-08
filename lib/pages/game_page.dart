@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:quest_phase/gen/fonts.gen.dart';
 import 'package:quest_phase/providers/router_provider.dart';
 import 'package:quest_phase/providers/settings_providers.dart';
 import 'package:quest_phase/providers/wakelock_provider.dart';
+import 'package:quest_phase/utils/font_utils.dart';
 import 'package:quest_phase/widgets/game_grid.dart';
 import 'package:visibility_detector/visibility_detector.dart';
 
@@ -22,7 +24,7 @@ class GamePage extends ConsumerWidget {
       },
       child: Scaffold(
         appBar: AppBar(
-          title: const Text('Quest Phase'),
+          title: buildRichText("Quest Phase", 24),
           leading: IconButton(
             onPressed: () => ref.read(routerProvider).go('/game/settings'),
             icon: const Icon(Icons.settings),
@@ -50,22 +52,22 @@ class GamePage extends ConsumerWidget {
       barrierDismissible: false, // user must tap button!
       builder: (BuildContext context) {
         return AlertDialog(
-          title: const Text('Are you sure?'),
+          title: buildRichText("Are you sure", 24),
           content: SingleChildScrollView(
             child: ListBody(
               children: const <Widget>[
-                Text('Clear the board state and start over.'),
+                Text('Clear the board state and start over.', style: TextStyle(fontFamily: FontFamily.timesNewRoman),),
               ],
             ),
           ),
           actions: <Widget>[
             TextButton(
               onPressed: () => Navigator.pop(context, 'Cancel'),
-              child: const Text('Cancel'),
+              child: buildRichText("Cancel", 20),
             ),
             TextButton(
               onPressed: () => ref.read(routerProvider).go('/'),
-              child: const Text('Yes'),
+              child: buildRichText("Yes", 20),
             ),
           ],
         );
