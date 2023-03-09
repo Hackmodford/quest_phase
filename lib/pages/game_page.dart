@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:quest_phase/gen/fonts.gen.dart';
 import 'package:quest_phase/providers/router_provider.dart';
 import 'package:quest_phase/providers/settings_providers.dart';
 import 'package:quest_phase/providers/wakelock_provider.dart';
+import 'package:quest_phase/routes/go_router_extensions.dart';
 import 'package:quest_phase/utils/font_utils.dart';
 import 'package:quest_phase/widgets/game_grid.dart';
 import 'package:visibility_detector/visibility_detector.dart';
@@ -26,7 +26,7 @@ class GamePage extends ConsumerWidget {
         appBar: AppBar(
           title: buildRichText("Quest Phase", 24),
           leading: IconButton(
-            onPressed: () => ref.read(routerProvider).go('/game/settings'),
+            onPressed: () => ref.read(routerProvider).goToSettings(),
             icon: const Icon(Icons.settings),
           ),
           actions: [
@@ -66,7 +66,7 @@ class GamePage extends ConsumerWidget {
               child: buildRichText("Cancel", 20),
             ),
             TextButton(
-              onPressed: () => ref.read(routerProvider).go('/'),
+              onPressed: () => ref.read(routerProvider).goToNewGame(),
               child: buildRichText("Yes", 20),
             ),
           ],
