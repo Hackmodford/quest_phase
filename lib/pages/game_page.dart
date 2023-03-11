@@ -36,9 +36,9 @@ class GamePage extends ConsumerWidget {
             ),
           ],
         ),
-        body: const Padding(
-          padding: EdgeInsets.all(4.0),
-          child: SafeArea(
+        body: const SafeArea(
+          child: Padding(
+            padding: EdgeInsets.all(8.0),
             child: GameGrid(),
           ),
         ), // This trailing comma makes auto-formatting nicer for build methods.
@@ -49,7 +49,6 @@ class GamePage extends ConsumerWidget {
   Future<void> _showNewGameDialog(BuildContext context, WidgetRef ref) async {
     return showDialog<void>(
       context: context,
-      barrierDismissible: false, // user must tap button!
       builder: (BuildContext context) {
         return AlertDialog(
           title: buildRichText("Are you sure", 24),
@@ -62,10 +61,12 @@ class GamePage extends ConsumerWidget {
           ),
           actions: <Widget>[
             TextButton(
+              style: TextButton.styleFrom(foregroundColor: Colors.orangeAccent),
               onPressed: () => Navigator.pop(context, 'Cancel'),
               child: buildRichText("Cancel", 20),
             ),
             TextButton(
+              style: TextButton.styleFrom(foregroundColor: Colors.orangeAccent),
               onPressed: () => ref.read(routerProvider).goToNewGame(),
               child: buildRichText("Yes", 20),
             ),

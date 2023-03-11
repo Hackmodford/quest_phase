@@ -13,6 +13,8 @@ import 'package:quest_phase/widgets/cell.dart';
 class Toolbar extends ConsumerWidget {
   const Toolbar({super.key});
 
+  final color = Colors.white10;
+
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final mode = ref.watch(toolbarModeProvider);
@@ -47,10 +49,10 @@ class Toolbar extends ConsumerWidget {
                   ref.read(p4ThreatProvider.notifier).decrease();
                 },
                 child: Cell(
-                  color: Colors.black54,
+                  color: color,
                   child: Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: buildRichText('-1 All Players', 16),
+                    padding: const EdgeInsets.only(left:8.0, top:4.0, right:8.0, bottom:8.0),
+                    child: buildRichText('-1 All Players', 20),
                   ),
                 ),
               ),
@@ -70,10 +72,10 @@ class Toolbar extends ConsumerWidget {
                   ref.read(p4ThreatProvider.notifier).increase();
                 },
                 child: Cell(
-                  color: Colors.black54,
+                  color: color,
                   child: Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: buildRichText('+1 All Players', 16),
+                    padding: const EdgeInsets.only(left:8.0, top:4.0, right:8.0, bottom:8.0),
+                    child: buildRichText('+1 All Players', 20),
                   ),
                 ),
               ),
@@ -103,10 +105,10 @@ class Toolbar extends ConsumerWidget {
                   ref.read(p4WillpowerProvider.notifier).reset();
                 },
                 child: Cell(
-                  color: Colors.black54,
+                  color: color,
                   child: Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: buildRichText('Clear\n All', 16),
+                    padding: const EdgeInsets.only(left:8.0, right:8.0, bottom:8.0, top:4.0),
+                    child: buildRichText('Clear\n All', 20),
                   ),
                 ),
               ),
@@ -141,11 +143,11 @@ class Toolbar extends ConsumerWidget {
                       break;
                   }
                 },
-                child: const Cell(
-                  color: Colors.black54,
-                  child: Padding(
+                child: Cell(
+                  color: color,
+                  child: const Padding(
                     padding: EdgeInsets.all(8.0),
-                    child: Text('-1'),
+                    child: Text('-1', style: TextStyle(fontSize: 24),),
                   ),
                 ),
               ),
@@ -180,11 +182,11 @@ class Toolbar extends ConsumerWidget {
                       break;
                   }
                 },
-                child: const Cell(
-                  color: Colors.black54,
-                  child: Padding(
+                child: Cell(
+                  color: color,
+                  child: const Padding(
                     padding: EdgeInsets.all(8.0),
-                    child: Text('+1'),
+                    child: Text('+1', style: TextStyle(fontSize: 24),),
                   ),
                 ),
               ),
@@ -219,11 +221,11 @@ class Toolbar extends ConsumerWidget {
                       break;
                   }
                 },
-                child: const Cell(
-                  color: Colors.black54,
-                  child: Padding(
+                child: Cell(
+                  color: color,
+                  child: const Padding(
                     padding: EdgeInsets.all(8.0),
-                    child: Text('+2'),
+                    child: Text('+2', style: TextStyle(fontSize: 24),),
                   ),
                 ),
               ),
@@ -258,11 +260,11 @@ class Toolbar extends ConsumerWidget {
                       break;
                   }
                 },
-                child: const Cell(
-                  color: Colors.black54,
-                  child: Padding(
+                child: Cell(
+                  color: color,
+                  child: const Padding(
                     padding: EdgeInsets.all(8.0),
-                    child: Text('+5'),
+                    child: Text('+5', style: TextStyle(fontSize: 24),),
                   ),
                 ),
               ),
@@ -299,10 +301,10 @@ class Toolbar extends ConsumerWidget {
                   }
                 },
                 child: Cell(
-                  color: Colors.black54,
+                  color: color,
                   child: Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: buildRichText('Refresh + New Round', 16),
+                    padding: const EdgeInsets.only(left:8.0, top:4.0, right:8.0, bottom:8.0),
+                    child: buildRichText('Refresh + New Round', 20),
                   ),
                 ),
               ),

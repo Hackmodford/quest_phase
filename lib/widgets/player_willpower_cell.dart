@@ -50,7 +50,10 @@ class PlayerWillpowerCell extends HookConsumerWidget {
                         fit: BoxFit.scaleDown,
                       ),
                       const SizedBox(width: 4.0,),
-                      buildRichText(name, 15),
+                      Padding(
+                        padding: const EdgeInsets.only(top: 4.0),
+                        child: Text(name,),
+                      ),
                     ],
                   ),
                 ),

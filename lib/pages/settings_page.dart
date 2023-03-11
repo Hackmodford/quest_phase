@@ -17,6 +17,7 @@ class SettingsPage extends StatelessWidget {
             Consumer(
               builder: (context, ref, child) {
                 return SwitchListTile(
+                  activeColor: Colors.orangeAccent,
                   title: buildRichText("Keep On Screen", 20),
                   value: ref.watch(settingShouldKeepScreenOnProvider),
                   onChanged: (bool value) => ref
@@ -28,6 +29,7 @@ class SettingsPage extends StatelessWidget {
             Consumer(
               builder: (context, ref, child) {
                 return SwitchListTile(
+                  activeColor: Colors.orangeAccent,
                   title: buildRichText("Reset Staging Threat", 20),
                   subtitle: const Text(
                     'Forced: During the refresh phase, set staging threat to 0',
