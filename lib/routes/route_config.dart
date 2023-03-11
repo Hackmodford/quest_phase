@@ -6,7 +6,7 @@ import 'package:quest_phase/pages/settings_page.dart';
 import 'package:quest_phase/routes/route_constants.dart';
 
 class AppRouter {
-  static GoRouter create() {
+  static GoRouter build() {
     return GoRouter(
       routes: [
         GoRoute(
