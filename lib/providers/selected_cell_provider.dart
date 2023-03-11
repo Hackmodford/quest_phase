@@ -1,4 +1,6 @@
-import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:riverpod_annotation/riverpod_annotation.dart';
+
+part 'selected_cell_provider.g.dart';
 
 enum CellSelection {
   threat,
@@ -13,11 +15,12 @@ enum CellSelection {
   p4threat,
 }
 
-final selectedCellProvider = StateNotifierProvider<SelectedCellNotifier, CellSelection>(
-        (ref) => SelectedCellNotifier());
-
-class SelectedCellNotifier extends StateNotifier<CellSelection> {
-  SelectedCellNotifier() : super(CellSelection.threat);
+@riverpod
+class SelectedCell extends _$SelectedCell {
+  @override
+  CellSelection build() {
+    return CellSelection.threat;
+  }
 
   void set(CellSelection value) {
     state = value;

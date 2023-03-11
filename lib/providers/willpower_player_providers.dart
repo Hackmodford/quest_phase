@@ -1,23 +1,22 @@
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'dart:math';
 
-final p1WillpowerProvider = StateNotifierProvider<PlayerWillpowerNotifier, int>(
-    (ref) => PlayerWillpowerNotifier());
+final p1WillpowerProvider = NotifierProvider<PlayerWillpower, int>(PlayerWillpower.new);
 
-final p2WillpowerProvider = StateNotifierProvider<PlayerWillpowerNotifier, int>(
-        (ref) => PlayerWillpowerNotifier());
+final p2WillpowerProvider = NotifierProvider<PlayerWillpower, int>(PlayerWillpower.new);
 
-final p3WillpowerProvider = StateNotifierProvider<PlayerWillpowerNotifier, int>(
-        (ref) => PlayerWillpowerNotifier());
+final p3WillpowerProvider = NotifierProvider<PlayerWillpower, int>(PlayerWillpower.new);
 
-final p4WillpowerProvider = StateNotifierProvider<PlayerWillpowerNotifier, int>(
-        (ref) => PlayerWillpowerNotifier());
+final p4WillpowerProvider = NotifierProvider<PlayerWillpower, int>(PlayerWillpower.new);
 
-class PlayerWillpowerNotifier extends StateNotifier<int> {
-  PlayerWillpowerNotifier() : super(0);
+class PlayerWillpower extends Notifier<int> {
+  @override
+  int build() {
+    return 0;
+  }
 
   void add(int value) {
-    state = state + value;
+    state += value;
   }
 
   void remove(int value) {

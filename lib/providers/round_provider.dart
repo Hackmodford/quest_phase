@@ -1,11 +1,14 @@
-import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'dart:math';
+import 'package:riverpod_annotation/riverpod_annotation.dart';
 
-final roundProvider =
-    StateNotifierProvider<RoundNotifier, int>((ref) => RoundNotifier());
+part 'round_provider.g.dart';
 
-class RoundNotifier extends StateNotifier<int> {
-  RoundNotifier() : super(0);
+@riverpod
+class Round extends _$Round {
+  @override
+  int build() {
+    return 0;
+  }
 
   void increase() {
     state = state + 1;

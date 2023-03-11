@@ -1,6 +1,7 @@
-import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:quest_phase/services/wakelock_service.dart';
+import 'package:riverpod_annotation/riverpod_annotation.dart';
 
-final wakelockProvider = Provider<WakelockService>((ref) {
-  return WakelockService();
-});
+part 'wakelock_provider.g.dart';
+
+@riverpod
+WakelockService wakelockService(WakelockServiceRef ref) => WakelockService();

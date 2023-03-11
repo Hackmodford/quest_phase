@@ -3,7 +3,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:quest_phase/gen/assets.gen.dart';
 import 'package:quest_phase/gen/colors.gen.dart';
 import 'package:quest_phase/gen/fonts.gen.dart';
-import 'package:quest_phase/providers/selected_cell_Provider.dart';
+import 'package:quest_phase/providers/selected_cell_provider.dart';
 import 'package:quest_phase/providers/threat_total_provider.dart';
 import 'package:quest_phase/widgets/cell.dart';
 

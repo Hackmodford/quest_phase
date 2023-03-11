@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_layout_grid/flutter_layout_grid.dart';
-import 'package:quest_phase/providers/selected_cell_Provider.dart';
+import 'package:quest_phase/providers/selected_cell_provider.dart';
 import 'package:quest_phase/providers/threat_player_providers.dart';
 import 'package:quest_phase/providers/willpower_player_providers.dart';
 import 'package:quest_phase/widgets/number_pad.dart';
@@ -253,7 +253,7 @@ class GameGrid extends StatelessWidget {
         //   rowStart: LayoutRow.description2.index,
         //   rowSpan: 1,
         // ),
-        NumberPad().withGridPlacement(
+        const NumberPad().withGridPlacement(
           columnStart: 0,
           columnSpan: 4,
           rowStart: LayoutRow.keypad.index,

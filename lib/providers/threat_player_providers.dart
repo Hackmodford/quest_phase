@@ -1,20 +1,16 @@
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'dart:math';
 
-final p1ThreatProvider = StateNotifierProvider<PlayerThreatNotifier, int>(
-    (ref) => PlayerThreatNotifier());
+final p1ThreatProvider = NotifierProvider<PlayerThreat, int>(PlayerThreat.new);
+final p2ThreatProvider = NotifierProvider<PlayerThreat, int>(PlayerThreat.new);
+final p3ThreatProvider = NotifierProvider<PlayerThreat, int>(PlayerThreat.new);
+final p4ThreatProvider = NotifierProvider<PlayerThreat, int>(PlayerThreat.new);
 
-final p2ThreatProvider = StateNotifierProvider<PlayerThreatNotifier, int>(
-        (ref) => PlayerThreatNotifier());
-
-final p3ThreatProvider = StateNotifierProvider<PlayerThreatNotifier, int>(
-        (ref) => PlayerThreatNotifier());
-
-final p4ThreatProvider = StateNotifierProvider<PlayerThreatNotifier, int>(
-        (ref) => PlayerThreatNotifier());
-
-class PlayerThreatNotifier extends StateNotifier<int> {
-  PlayerThreatNotifier() : super(0);
+class PlayerThreat extends Notifier<int> {
+  @override
+  int build() {
+    return 0;
+  }
 
   void increase() {
     state = state + 1;

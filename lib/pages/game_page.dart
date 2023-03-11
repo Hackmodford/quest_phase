@@ -14,7 +14,7 @@ class GamePage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final wakelock = ref.watch(wakelockProvider);
+    final wakelock = ref.watch(wakelockServiceProvider);
     final shouldKeepScreenOn = ref.watch(settingShouldKeepScreenOnProvider);
     return VisibilityDetector(
       key: const Key('homepage-visibility-key'),

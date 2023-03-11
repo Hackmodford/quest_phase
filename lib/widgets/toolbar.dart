@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:quest_phase/providers/round_provider.dart';
-import 'package:quest_phase/providers/selected_cell_Provider.dart';
+import 'package:quest_phase/providers/selected_cell_provider.dart';
 import 'package:quest_phase/providers/settings_providers.dart';
 import 'package:quest_phase/providers/threat_player_providers.dart';
 import 'package:quest_phase/providers/threat_total_provider.dart';
@@ -18,13 +18,13 @@ class Toolbar extends ConsumerWidget {
     final mode = ref.watch(toolbarModeProvider);
     const padding = EdgeInsets.only(top: 8);
     switch (mode) {
-      case ToolbarMode.none:
+      case ToolbarModes.none:
         return Container();
-      case ToolbarMode.playerThreat:
+      case ToolbarModes.playerThreat:
         return _buildThreatToolbar(context, ref, padding);
-      case ToolbarMode.willAndThreat:
+      case ToolbarModes.willAndThreat:
         return _buildWillToolbar(context, ref, padding);
-      case ToolbarMode.round:
+      case ToolbarModes.round:
         return _buildRoundToolbar(context, ref, padding);
     }
   }

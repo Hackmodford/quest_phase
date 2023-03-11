@@ -1,11 +1,14 @@
-import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'dart:math';
+import 'package:riverpod_annotation/riverpod_annotation.dart';
 
-final stagingThreatProvider = StateNotifierProvider<StagingThreatNotifier, int>(
-    (ref) => StagingThreatNotifier());
+part 'threat_total_provider.g.dart';
 
-class StagingThreatNotifier extends StateNotifier<int> {
-  StagingThreatNotifier() : super(0);
+@riverpod
+class StagingThreat extends _$StagingThreat {
+  @override
+  int build() {
+    return 0;
+  }
 
   void add(int value) {
     state = state + value;

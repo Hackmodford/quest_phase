@@ -1,41 +1,38 @@
-import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:quest_phase/providers/selected_cell_Provider.dart';
+import 'package:quest_phase/providers/selected_cell_provider.dart';
+import 'package:riverpod_annotation/riverpod_annotation.dart';
 
-enum ToolbarMode { none, playerThreat, willAndThreat, round }
+part 'toolbar_state_provider.g.dart';
 
-final toolbarModeProvider =
-    StateNotifierProvider<ToolbarModeNotifier, ToolbarMode>((ref) {
-  final cellSelection = ref.watch(selectedCellProvider);
-  return ToolbarModeNotifier(cellSelection);
-});
+enum ToolbarModes { none, playerThreat, willAndThreat, round }
 
-class ToolbarModeNotifier extends StateNotifier<ToolbarMode> {
-  ToolbarModeNotifier(CellSelection cellSelection) : super(ToolbarMode.none) {
-    _setWithCellSelection(cellSelection);
+@riverpod
+class ToolbarMode extends _$ToolbarMode {
+  @override
+  ToolbarModes build() {
+    final initialValue = ref.watch(selectedCellProvider);
+    final mode = _getModeForSelection(initialValue);
+    return mode;
   }
 
-  void _setWithCellSelection(CellSelection cellSelection) {
+  ToolbarModes _getModeForSelection(CellSelection cellSelection) {
     switch (cellSelection) {
       case CellSelection.p1will:
       case CellSelection.p2will:
       case CellSelection.p3will:
       case CellSelection.p4will:
       case CellSelection.threat:
-        set(ToolbarMode.willAndThreat);
-        break;
+        return ToolbarModes.willAndThreat;
       case CellSelection.round:
-        set(ToolbarMode.round);
-        break;
+        return ToolbarModes.round;
       case CellSelection.p1threat:
       case CellSelection.p2threat:
       case CellSelection.p3threat:
       case CellSelection.p4threat:
-        set(ToolbarMode.playerThreat);
-        break;
+        return ToolbarModes.playerThreat;
     }
   }
 
-  void set(ToolbarMode mode) {
+  void set(ToolbarModes mode) {
     state = mode;
   }
 }

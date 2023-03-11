@@ -3,14 +3,14 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:quest_phase/gen/assets.gen.dart';
 import 'package:quest_phase/gen/colors.gen.dart';
 import 'package:quest_phase/gen/fonts.gen.dart';
-import 'package:quest_phase/providers/selected_cell_Provider.dart';
+import 'package:quest_phase/providers/selected_cell_provider.dart';
 import 'package:quest_phase/providers/willpower_player_providers.dart';
 import 'package:quest_phase/utils/font_utils.dart';
 import 'package:quest_phase/widgets/cell.dart';
 
 class PlayerWillpowerCell extends HookConsumerWidget {
   final String name;
-  final StateNotifierProvider<PlayerWillpowerNotifier, int> provider;
+  final NotifierProvider<PlayerWillpower, int> provider;
   final CellSelection cellSelection;
 
   const PlayerWillpowerCell(

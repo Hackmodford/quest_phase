@@ -1,5 +1,9 @@
 import 'package:go_router/go_router.dart';
-import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:quest_phase/routes/route_config.dart';
+import 'package:riverpod_annotation/riverpod_annotation.dart';
 
-final routerProvider = Provider<GoRouter>((ref) => AppRouter.build());
+part 'router_provider.g.dart';
+
+@riverpod
+GoRouter router(RouterRef ref) => AppRouter.build();
+
