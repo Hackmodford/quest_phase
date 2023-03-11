@@ -23,55 +23,60 @@ class PlayerWillpowerCell extends HookConsumerWidget {
     final bool isHighlighted =
         ref.watch(selectedCellProvider) == cellSelection;
 
-    return InkWell(
-      onTap: () {
-        ref.read(selectedCellProvider.notifier).set(cellSelection);
-      },
-      child: Cell(
-        isHighlighted: isHighlighted,
-        color: ColorName.willpowerBackground,
-        child: Padding(
-          padding: const EdgeInsets.all(2.0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: [
-              Padding(
-                padding: const EdgeInsets.only(left: 2.0, right: 2.0, top: 2.0),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Assets.images.willpower.image(
-                      width: 24,
-                      height: 24,
-                      fit: BoxFit.scaleDown,
-                    ),
-                    const SizedBox(width: 4.0,),
-                    buildRichText(name, 15),
-                  ],
+    return Material(
+      elevation: 4,
+      borderRadius: BorderRadius.circular(4),
+      child: InkWell(
+        borderRadius: BorderRadius.circular(4),
+        onTap: () {
+          ref.read(selectedCellProvider.notifier).set(cellSelection);
+        },
+        child: Cell(
+          isHighlighted: isHighlighted,
+          color: ColorName.willpowerBackground,
+          child: Padding(
+            padding: const EdgeInsets.all(2.0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.only(left: 2.0, right: 2.0, top: 2.0),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Assets.images.willpower.image(
+                        width: 24,
+                        height: 24,
+                        fit: BoxFit.scaleDown,
+                      ),
+                      const SizedBox(width: 4.0,),
+                      buildRichText(name, 15),
+                    ],
+                  ),
                 ),
-              ),
-              const SizedBox(
-                height: 4,
-              ),
-              Container(
-                decoration: BoxDecoration(color: Colors.black54,
-                    borderRadius: BorderRadius.circular(4)),
-                child: Center(
-                  child: Padding(
-                    padding: const EdgeInsets.only(top: 12.0),
-                    child: Text(
-                      text,
-                      style: const TextStyle(
-                        height: 0.75,
-                        fontFamily: FontFamily.vafthrudnir,
-                        fontSize: 25,
-                        fontWeight: FontWeight.bold,
+                const SizedBox(
+                  height: 4,
+                ),
+                Container(
+                  decoration: BoxDecoration(color: Colors.black54,
+                      borderRadius: BorderRadius.circular(4)),
+                  child: Center(
+                    child: Padding(
+                      padding: const EdgeInsets.only(top: 12.0),
+                      child: Text(
+                        text,
+                        style: const TextStyle(
+                          height: 0.75,
+                          fontFamily: FontFamily.vafthrudnir,
+                          fontSize: 25,
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
                     ),
                   ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
       ),

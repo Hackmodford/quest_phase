@@ -15,26 +15,31 @@ class RoundCell extends HookConsumerWidget {
     final bool isHighlighted =
         ref.watch(selectedCellProvider) == CellSelection.round;
 
-    return InkWell(
-      onTap: () {
-        ref.read(selectedCellProvider.notifier).set(CellSelection.round);
-      },
-      child: AdjustableCell(
-        isHighlighted: isHighlighted,
-        text: text,
-        onTapDecrease: () {
-          ref.read(roundProvider.notifier).decrease();
+    return Material(
+      elevation: 4,
+      borderRadius: BorderRadius.circular(4),
+      child: InkWell(
+        borderRadius: BorderRadius.circular(4),
+        onTap: () {
           ref.read(selectedCellProvider.notifier).set(CellSelection.round);
         },
-        onTapIncrease: () {
-          ref.read(roundProvider.notifier).increase();
-          ref.read(selectedCellProvider.notifier).set(CellSelection.round);
-        },
-        color: ColorName.roundBackground,
-        image: Assets.images.clock.image(
-          width: 24,
-          height: 24,
-          fit: BoxFit.scaleDown,
+        child: AdjustableCell(
+          isHighlighted: isHighlighted,
+          text: text,
+          onTapDecrease: () {
+            ref.read(roundProvider.notifier).decrease();
+            ref.read(selectedCellProvider.notifier).set(CellSelection.round);
+          },
+          onTapIncrease: () {
+            ref.read(roundProvider.notifier).increase();
+            ref.read(selectedCellProvider.notifier).set(CellSelection.round);
+          },
+          color: ColorName.roundBackground,
+          image: Assets.images.clock.image(
+            width: 24,
+            height: 24,
+            fit: BoxFit.scaleDown,
+          ),
         ),
       ),
     );

@@ -15,11 +15,12 @@ import 'package:quest_phase/widgets/total_progress_cell.dart';
 import 'package:quest_phase/widgets/total_willpower_cell.dart';
 
 enum LayoutRow {
+  total,
+  gap2,
   threat,
   will,
   info,
-  total,
-  threatAdjustment,
+  toolbar,
   gap,
   keypad
 }
@@ -34,17 +35,17 @@ class GameGrid extends ConsumerWidget {
       rowGap: 4,
       columnGap: 4,
       columnSizes: const [auto, auto, auto, auto],
-      rowSizes: [auto, auto, auto, auto, auto, 1.fr, auto],
+      rowSizes: [auto, 4.px, auto, auto, auto, 48.px, 1.fr, auto],
       children: [
         const RoundCell().withGridPlacement(
           columnStart: 0,
-          columnSpan: 1,
+          columnSpan: 2,
           rowStart: LayoutRow.info.index,
           rowSpan: 1,
         ),
         const StagingThreatCell().withGridPlacement(
-          columnStart: 1,
-          columnSpan: 3,
+          columnStart: 2,
+          columnSpan: 2,
           rowStart: LayoutRow.info.index,
           rowSpan: 1,
         ),
@@ -113,7 +114,7 @@ class GameGrid extends ConsumerWidget {
         const Toolbar().withGridPlacement(
           columnStart: 0,
           columnSpan: 4,
-          rowStart: LayoutRow.threatAdjustment.index,
+          rowStart: LayoutRow.toolbar.index,
           rowSpan: 1,
         ),
         PlayerThreatCell(

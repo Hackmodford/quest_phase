@@ -21,26 +21,31 @@ class PlayerThreatCell extends HookConsumerWidget {
     final bool isHighlighted =
         ref.watch(selectedCellProvider) == cellSelection;
 
-    return InkWell(
-      onTap: () {
-        ref.read(selectedCellProvider.notifier).set(cellSelection);
-      },
-      child: AdjustableCell(
-        isHighlighted: isHighlighted,
-        text: text,
-        onTapIncrease: () {
-          ref.read(provider.notifier).increase();
+    return Material(
+      elevation: 4,
+      borderRadius: BorderRadius.circular(4),
+      child: InkWell(
+        borderRadius: BorderRadius.circular(4),
+        onTap: () {
           ref.read(selectedCellProvider.notifier).set(cellSelection);
         },
-        onTapDecrease: () {
-          ref.read(provider.notifier).decrease();
-          ref.read(selectedCellProvider.notifier).set(cellSelection);
-        },
-        color: ColorName.threatBackground,
-        image: Assets.images.threaticon.image(
-          width: 24,
-          height: 24,
-          fit: BoxFit.scaleDown,
+        child: AdjustableCell(
+          isHighlighted: isHighlighted,
+          text: text,
+          onTapIncrease: () {
+            ref.read(provider.notifier).increase();
+            ref.read(selectedCellProvider.notifier).set(cellSelection);
+          },
+          onTapDecrease: () {
+            ref.read(provider.notifier).decrease();
+            ref.read(selectedCellProvider.notifier).set(cellSelection);
+          },
+          color: ColorName.threatBackground,
+          image: Assets.images.threaticon.image(
+            width: 24,
+            height: 24,
+            fit: BoxFit.scaleDown,
+          ),
         ),
       ),
     );

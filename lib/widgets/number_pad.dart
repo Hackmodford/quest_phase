@@ -124,33 +124,37 @@ class NumberPad extends ConsumerWidget {
     required int columnStart,
     required int rowStart,
   }) {
-    return InkWell(
-      customBorder: RoundedRectangleBorder(borderRadius: BorderRadius.circular(4),),
-      onTap: () => ref.read(numberPadControllerProvider).onNumber(value),
-      child: Cell(
-        color: Colors.black54,
-        child: Padding(
-          padding: const EdgeInsets.only(
-            top: 19.0,
-            left: 8.0,
-            right: 8.0,
-            bottom: 8.0,
-          ),
-          child: Text(
-            value.toString(),
-            style: TextStyle(
-              fontSize: fontSize,
-              fontFamily: FontFamily.vafthrudnir,
-              height: 0.75,
+    return Material(
+      elevation: 4,
+      borderRadius: BorderRadius.circular(4),
+      child: InkWell(
+        borderRadius: BorderRadius.circular(4),
+        onTap: () => ref.read(numberPadControllerProvider).onNumber(value),
+        child: Cell(
+          color: Colors.black54,
+          child: Padding(
+            padding: const EdgeInsets.only(
+              top: 19.0,
+              left: 8.0,
+              right: 8.0,
+              bottom: 8.0,
+            ),
+            child: Text(
+              value.toString(),
+              style: TextStyle(
+                fontSize: fontSize,
+                fontFamily: FontFamily.vafthrudnir,
+                height: 0.75,
+              ),
             ),
           ),
         ),
+      ).withGridPlacement(
+        columnStart: columnStart,
+        columnSpan: 1,
+        rowStart: rowStart,
+        rowSpan: 1,
       ),
-    ).withGridPlacement(
-      columnStart: columnStart,
-      columnSpan: 1,
-      rowStart: rowStart,
-      rowSpan: 1,
     );
   }
 
@@ -160,26 +164,30 @@ class NumberPad extends ConsumerWidget {
     required int columnStart,
     required int rowStart,
   }) {
-    return InkWell(
+    return Material(
+      elevation: 4,
       borderRadius: BorderRadius.circular(4),
-      onTap: () => ref.read(numberPadControllerProvider).onBackspace(),
-      child: const Cell(
-        color: Colors.black54,
-        child: Padding(
-          padding: EdgeInsets.only(
-            top: 8.0,
-            left: 8.0,
-            right: 8.0,
-            bottom: 8.0,
+      child: InkWell(
+        borderRadius: BorderRadius.circular(4),
+        onTap: () => ref.read(numberPadControllerProvider).onBackspace(),
+        child: const Cell(
+          color: Colors.black54,
+          child: Padding(
+            padding: EdgeInsets.only(
+              top: 8.0,
+              left: 8.0,
+              right: 8.0,
+              bottom: 8.0,
+            ),
+            child: Icon(Icons.backspace)
           ),
-          child: Icon(Icons.backspace)
         ),
+      ).withGridPlacement(
+        columnStart: columnStart,
+        columnSpan: 1,
+        rowStart: rowStart,
+        rowSpan: 1,
       ),
-    ).withGridPlacement(
-      columnStart: columnStart,
-      columnSpan: 1,
-      rowStart: rowStart,
-      rowSpan: 1,
     );
   }
 
@@ -189,33 +197,37 @@ class NumberPad extends ConsumerWidget {
     required int columnStart,
     required int rowStart,
   }) {
-    return InkWell(
+    return Material(
+      elevation: 4,
       borderRadius: BorderRadius.circular(4),
-      onTap: () => ref.read(numberPadControllerProvider).onClear(),
-      child: Cell(
-        color: Colors.black54,
-        child: Padding(
-          padding: const EdgeInsets.only(
-            top: 19.0,
-            left: 8.0,
-            right: 8.0,
-            bottom: 8.0,
-          ),
-          child: Text(
-            'C',
-            style: TextStyle(
-              fontSize: fontSize,
-              fontFamily: FontFamily.vafthrudnir,
-              height: 0.75,
+      child: InkWell(
+        borderRadius: BorderRadius.circular(4),
+        onTap: () => ref.read(numberPadControllerProvider).onClear(),
+        child: Cell(
+          color: Colors.black54,
+          child: Padding(
+            padding: const EdgeInsets.only(
+              top: 19.0,
+              left: 8.0,
+              right: 8.0,
+              bottom: 8.0,
+            ),
+            child: Text(
+              'C',
+              style: TextStyle(
+                fontSize: fontSize,
+                fontFamily: FontFamily.vafthrudnir,
+                height: 0.75,
+              ),
             ),
           ),
         ),
+      ).withGridPlacement(
+        columnStart: columnStart,
+        columnSpan: 1,
+        rowStart: rowStart,
+        rowSpan: 1,
       ),
-    ).withGridPlacement(
-      columnStart: columnStart,
-      columnSpan: 1,
-      rowStart: rowStart,
-      rowSpan: 1,
     );
   }
 }
