@@ -5,6 +5,8 @@ part 'threat_total_provider.g.dart';
 
 @riverpod
 class StagingThreat extends _$StagingThreat {
+  final int minValue = 0;
+
   @override
   int build() {
     return 0;
@@ -15,7 +17,7 @@ class StagingThreat extends _$StagingThreat {
   }
 
   void remove(int value) {
-    state = max(state - value, 0);
+    state = max(state - value, minValue);
   }
 
   void reset() {
@@ -23,6 +25,6 @@ class StagingThreat extends _$StagingThreat {
   }
 
   void setValue(int value) {
-    state = max(0, value);
+    state = max(minValue, value);
   }
 }

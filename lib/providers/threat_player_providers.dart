@@ -7,6 +7,8 @@ final p3ThreatProvider = NotifierProvider<PlayerThreat, int>(PlayerThreat.new);
 final p4ThreatProvider = NotifierProvider<PlayerThreat, int>(PlayerThreat.new);
 
 class PlayerThreat extends Notifier<int> {
+  final int minValue = 0;
+
   @override
   int build() {
     return 0;
@@ -17,7 +19,7 @@ class PlayerThreat extends Notifier<int> {
   }
 
   void decrease() {
-    state = max(state - 1, 0);
+    state = max(state - 1, minValue);
   }
 
   void reset() {
@@ -25,6 +27,6 @@ class PlayerThreat extends Notifier<int> {
   }
 
   void setValue(int value) {
-    state = max(0, value);
+    state = max(minValue, value);
   }
 }

@@ -5,9 +5,10 @@ part 'round_provider.g.dart';
 
 @riverpod
 class Round extends _$Round {
+  final int minValue = 0;
   @override
   int build() {
-    return 0;
+    return 1;
   }
 
   void increase() {
@@ -15,14 +16,14 @@ class Round extends _$Round {
   }
 
   void decrease() {
-    state = max(state - 1, 0);
+    state = max(state - 1, minValue);
   }
 
   void reset() {
-    state = 0;
+    state = 1;
   }
 
   void setValue(int value) {
-    state = max(0, value);
+    state = max(minValue, value);
   }
 }
