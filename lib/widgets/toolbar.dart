@@ -35,7 +35,8 @@ class Toolbar extends ConsumerWidget {
       child: Row(
         children: [
           Expanded(
-            child: GestureDetector(
+            child: InkWell(
+              borderRadius: BorderRadius.circular(4),
               onTap: () {
                 ref.read(p1ThreatProvider.notifier).decrease();
                 ref.read(p2ThreatProvider.notifier).decrease();
@@ -53,7 +54,8 @@ class Toolbar extends ConsumerWidget {
           ),
           const SizedBox(width: 4),
           Expanded(
-            child: GestureDetector(
+            child: InkWell(
+              borderRadius: BorderRadius.circular(4),
               onTap: () {
                 ref.read(p1ThreatProvider.notifier).increase();
                 ref.read(p2ThreatProvider.notifier).increase();
@@ -80,7 +82,8 @@ class Toolbar extends ConsumerWidget {
       child: Row(
         children: [
           Expanded(
-            child: GestureDetector(
+            child: InkWell(
+              borderRadius: BorderRadius.circular(4),
               onTap: () {
                 ref.read(stagingThreatProvider.notifier).reset();
                 ref.read(p1WillpowerProvider.notifier).reset();
@@ -99,11 +102,12 @@ class Toolbar extends ConsumerWidget {
           ),
           const SizedBox(width: 4),
           Expanded(
-            child: GestureDetector(
+            child: InkWell(
+              borderRadius: BorderRadius.circular(4),
               onTap: () {
                 final selection = ref.read(selectedCellProvider);
                 switch (selection) {
-                  case CellSelection.threat:
+                  case CellSelection.stagingThreat:
                     ref.read(stagingThreatProvider.notifier).remove(1);
                     break;
                   case CellSelection.p1will:
@@ -133,11 +137,12 @@ class Toolbar extends ConsumerWidget {
           ),
           const SizedBox(width: 4),
           Expanded(
-            child: GestureDetector(
+            child: InkWell(
+              borderRadius: BorderRadius.circular(4),
               onTap: () {
                 final selection = ref.read(selectedCellProvider);
                 switch (selection) {
-                  case CellSelection.threat:
+                  case CellSelection.stagingThreat:
                     ref.read(stagingThreatProvider.notifier).add(1);
                     break;
                   case CellSelection.p1will:
@@ -167,11 +172,12 @@ class Toolbar extends ConsumerWidget {
           ),
           const SizedBox(width: 4),
           Expanded(
-            child: GestureDetector(
+            child: InkWell(
+              borderRadius: BorderRadius.circular(4),
               onTap: () {
                 final selection = ref.read(selectedCellProvider);
                 switch (selection) {
-                  case CellSelection.threat:
+                  case CellSelection.stagingThreat:
                     ref.read(stagingThreatProvider.notifier).add(2);
                     break;
                   case CellSelection.p1will:
@@ -201,11 +207,12 @@ class Toolbar extends ConsumerWidget {
           ),
           const SizedBox(width: 4),
           Expanded(
-            child: GestureDetector(
+            child: InkWell(
+              borderRadius: BorderRadius.circular(4),
               onTap: () {
                 final selection = ref.read(selectedCellProvider);
                 switch (selection) {
-                  case CellSelection.threat:
+                  case CellSelection.stagingThreat:
                     ref.read(stagingThreatProvider.notifier).add(5);
                     break;
                   case CellSelection.p1will:
@@ -244,7 +251,8 @@ class Toolbar extends ConsumerWidget {
       child: Row(
         children: [
           Expanded(
-            child: GestureDetector(
+            child: InkWell(
+              borderRadius: BorderRadius.circular(4),
               onTap: () {
                 ref.read(roundProvider.notifier).increase();
                 ref.read(p1WillpowerProvider.notifier).reset();

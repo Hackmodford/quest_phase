@@ -3,7 +3,7 @@ import 'package:riverpod_annotation/riverpod_annotation.dart';
 part 'selected_cell_provider.g.dart';
 
 enum CellSelection {
-  threat,
+  stagingThreat,
   p1will,
   p2will,
   p3will,
@@ -19,7 +19,7 @@ enum CellSelection {
 class SelectedCell extends _$SelectedCell {
   @override
   CellSelection build() {
-    return CellSelection.threat;
+    return CellSelection.stagingThreat;
   }
 
   void set(CellSelection value) {

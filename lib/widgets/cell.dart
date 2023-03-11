@@ -13,7 +13,7 @@ class Cell extends StatelessWidget {
       constraints: const BoxConstraints(minHeight: 48),
       child: Stack(
         children: [
-          Container(
+          Ink(
             decoration: BoxDecoration(
               color: color,
               borderRadius: BorderRadius.circular(4),

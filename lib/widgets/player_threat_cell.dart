@@ -21,7 +21,7 @@ class PlayerThreatCell extends HookConsumerWidget {
     final bool isHighlighted =
         ref.watch(selectedCellProvider) == cellSelection;
 
-    return GestureDetector(
+    return InkWell(
       onTap: () {
         ref.read(selectedCellProvider.notifier).set(cellSelection);
       },

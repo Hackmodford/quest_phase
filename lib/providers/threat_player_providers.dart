@@ -23,4 +23,8 @@ class PlayerThreat extends Notifier<int> {
   void reset() {
     state = 0;
   }
+
+  void setValue(int value) {
+    state = max(0, value);
+  }
 }

@@ -15,7 +15,7 @@ class RoundCell extends HookConsumerWidget {
     final bool isHighlighted =
         ref.watch(selectedCellProvider) == CellSelection.round;
 
-    return GestureDetector(
+    return InkWell(
       onTap: () {
         ref.read(selectedCellProvider.notifier).set(CellSelection.round);
       },

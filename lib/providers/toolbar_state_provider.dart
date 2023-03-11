@@ -20,7 +20,7 @@ class ToolbarMode extends _$ToolbarMode {
       case CellSelection.p2will:
       case CellSelection.p3will:
       case CellSelection.p4will:
-      case CellSelection.threat:
+      case CellSelection.stagingThreat:
         return ToolbarModes.willAndThreat;
       case CellSelection.round:
         return ToolbarModes.round;

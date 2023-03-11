@@ -6,7 +6,7 @@ part of 'toolbar_state_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$toolbarModeHash() => r'c078f4fa6e85abfd7066008d17a4e99c6d9348d4';
+String _$toolbarModeHash() => r'68c45a6378f2636537b7a16dbf680dcaebc90df0';
 
 /// See also [ToolbarMode].
 @ProviderFor(ToolbarMode)

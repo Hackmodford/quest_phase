@@ -14,10 +14,10 @@ class StagingThreatCell extends HookConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final String text = ref.watch(stagingThreatProvider).toString();
     final bool isHighlighted =
-        ref.watch(selectedCellProvider) == CellSelection.threat;
-    return GestureDetector(
+        ref.watch(selectedCellProvider) == CellSelection.stagingThreat;
+    return InkWell(
       onTap: () {
-        ref.read(selectedCellProvider.notifier).set(CellSelection.threat);
+        ref.read(selectedCellProvider.notifier).set(CellSelection.stagingThreat);
       },
       child: Cell(
         isHighlighted: isHighlighted,
