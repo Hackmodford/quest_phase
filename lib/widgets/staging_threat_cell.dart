@@ -4,7 +4,7 @@ import 'package:quest_phase/gen/assets.gen.dart';
 import 'package:quest_phase/gen/colors.gen.dart';
 import 'package:quest_phase/gen/fonts.gen.dart';
 import 'package:quest_phase/providers/selected_cell_provider.dart';
-import 'package:quest_phase/providers/threat_total_provider.dart';
+import 'package:quest_phase/providers/staging_threat_provider.dart';
 import 'package:quest_phase/widgets/cell.dart';
 
 class StagingThreatCell extends HookConsumerWidget {

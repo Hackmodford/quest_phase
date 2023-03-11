@@ -1,8 +1,8 @@
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:quest_phase/providers/round_provider.dart';
 import 'package:quest_phase/providers/selected_cell_provider.dart';
+import 'package:quest_phase/providers/staging_threat_provider.dart';
 import 'package:quest_phase/providers/threat_player_providers.dart';
-import 'package:quest_phase/providers/threat_total_provider.dart';
 import 'package:quest_phase/providers/willpower_player_providers.dart';
 
 class NumberPadController {

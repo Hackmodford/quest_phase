@@ -14,7 +14,7 @@ class QuoteBlock extends StatelessWidget {
           style: TextStyle(
             fontFamily: FontFamily.timesNewRoman,
             fontStyle: FontStyle.italic,
-            fontSize: 20,
+            fontSize: 16,
           ),
         ),
         SizedBox(height: 8,),
@@ -24,7 +24,7 @@ class QuoteBlock extends StatelessWidget {
           style: TextStyle(
             fontFamily: FontFamily.timesNewRoman,
             fontStyle: FontStyle.italic,
-            fontSize: 20,
+            fontSize: 16,
           ),
         ),
       ],

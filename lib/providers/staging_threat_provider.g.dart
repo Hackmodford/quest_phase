@@ -1,12 +1,12 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'threat_total_provider.dart';
+part of 'staging_threat_provider.dart';
 
 // **************************************************************************
 // RiverpodGenerator
 // **************************************************************************
 
-String _$stagingThreatHash() => r'ac96ea1d86b4bcb98bbf4606d597e0dcdc3f07bc';
+String _$stagingThreatHash() => r'fd1fd306ffeb3914e78595aa17d944e65ecdf203';
 
 /// See also [StagingThreat].
 @ProviderFor(StagingThreat)

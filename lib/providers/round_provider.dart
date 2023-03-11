@@ -1,4 +1,3 @@
-import 'dart:math';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'round_provider.g.dart';
@@ -6,17 +5,18 @@ part 'round_provider.g.dart';
 @riverpod
 class Round extends _$Round {
   final int minValue = 0;
+  final int maxValue = 9999;
   @override
   int build() {
     return 1;
   }
 
   void increase() {
-    state = state + 1;
+    state = (state + 1).clamp(minValue, maxValue);
   }
 
   void decrease() {
-    state = max(state - 1, minValue);
+    state = (state - 1).clamp(minValue, maxValue);
   }
 
   void reset() {
@@ -24,6 +24,6 @@ class Round extends _$Round {
   }
 
   void setValue(int value) {
-    state = max(minValue, value);
+    state = value.clamp(minValue, maxValue);
   }
 }

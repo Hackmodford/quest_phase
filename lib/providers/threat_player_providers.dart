@@ -1,5 +1,4 @@
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'dart:math';
 
 final p1ThreatProvider = NotifierProvider<PlayerThreat, int>(PlayerThreat.new);
 final p2ThreatProvider = NotifierProvider<PlayerThreat, int>(PlayerThreat.new);
@@ -8,6 +7,7 @@ final p4ThreatProvider = NotifierProvider<PlayerThreat, int>(PlayerThreat.new);
 
 class PlayerThreat extends Notifier<int> {
   final int minValue = 0;
+  final int maxValue = 9999;
 
   @override
   int build() {
@@ -15,11 +15,11 @@ class PlayerThreat extends Notifier<int> {
   }
 
   void increase() {
-    state = state + 1;
+    state = (state + 1).clamp(minValue, maxValue);
   }
 
   void decrease() {
-    state = max(state - 1, minValue);
+    state = (state - 1).clamp(minValue, maxValue);
   }
 
   void reset() {
@@ -27,6 +27,6 @@ class PlayerThreat extends Notifier<int> {
   }
 
   void setValue(int value) {
-    state = max(minValue, value);
+    state = value.clamp(minValue, maxValue);
   }
 }

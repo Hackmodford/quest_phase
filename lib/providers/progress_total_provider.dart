@@ -1,4 +1,4 @@
-import 'package:quest_phase/providers/threat_total_provider.dart';
+import 'package:quest_phase/providers/staging_threat_provider.dart';
 import 'package:quest_phase/providers/willpower_total_provider.dart';
 
 import 'package:riverpod_annotation/riverpod_annotation.dart';

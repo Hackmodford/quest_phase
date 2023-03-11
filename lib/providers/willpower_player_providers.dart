@@ -1,5 +1,4 @@
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'dart:math';
 
 final p1WillpowerProvider =
     NotifierProvider<PlayerWillpower, int>(PlayerWillpower.new);
@@ -15,6 +14,7 @@ final p4WillpowerProvider =
 
 class PlayerWillpower extends Notifier<int> {
   final int minValue = 0;
+  final int maxValue = 9999;
 
   @override
   int build() {
@@ -22,11 +22,11 @@ class PlayerWillpower extends Notifier<int> {
   }
 
   void add(int value) {
-    state += value;
+    state = (state + value).clamp(minValue, maxValue);
   }
 
   void remove(int value) {
-    state = max(state - value, minValue);
+    state = (state - value).clamp(minValue, maxValue);
   }
 
   void reset() {
@@ -34,6 +34,6 @@ class PlayerWillpower extends Notifier<int> {
   }
 
   void setValue(int value) {
-    state = max(minValue, value);
+    state = value.clamp(minValue, maxValue);
   }
 }
