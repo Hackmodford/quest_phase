@@ -144,12 +144,12 @@ class NumberPad extends ConsumerWidget {
             ),
           ),
         ),
-      ).withGridPlacement(
-        columnStart: columnStart,
-        columnSpan: 1,
-        rowStart: rowStart,
-        rowSpan: 1,
       ),
+    ).withGridPlacement(
+      columnStart: columnStart,
+      columnSpan: 1,
+      rowStart: rowStart,
+      rowSpan: 1,
     );
   }
 
@@ -177,12 +177,12 @@ class NumberPad extends ConsumerWidget {
             child: Icon(Icons.backspace)
           ),
         ),
-      ).withGridPlacement(
-        columnStart: columnStart,
-        columnSpan: 1,
-        rowStart: rowStart,
-        rowSpan: 1,
       ),
+    ).withGridPlacement(
+      columnStart: columnStart,
+      columnSpan: 1,
+      rowStart: rowStart,
+      rowSpan: 1,
     );
   }
 
@@ -217,12 +217,12 @@ class NumberPad extends ConsumerWidget {
             ),
           ),
         ),
-      ).withGridPlacement(
-        columnStart: columnStart,
-        columnSpan: 1,
-        rowStart: rowStart,
-        rowSpan: 1,
       ),
+    ).withGridPlacement(
+      columnStart: columnStart,
+      columnSpan: 1,
+      rowStart: rowStart,
+      rowSpan: 1,
     );
   }
 }
