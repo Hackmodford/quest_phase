@@ -163,23 +163,16 @@ class NumberPad extends ConsumerWidget {
     return InkWell(
       borderRadius: BorderRadius.circular(4),
       onTap: () => ref.read(numberPadControllerProvider).onBackspace(),
-      child: Cell(
+      child: const Cell(
         color: Colors.black54,
         child: Padding(
-          padding: const EdgeInsets.only(
-            top: 19.0,
+          padding: EdgeInsets.only(
+            top: 8.0,
             left: 8.0,
             right: 8.0,
             bottom: 8.0,
           ),
-          child: Text(
-            '<-',
-            style: TextStyle(
-              fontSize: fontSize,
-              fontFamily: FontFamily.vafthrudnir,
-              height: 0.75,
-            ),
-          ),
+          child: Icon(Icons.backspace)
         ),
       ),
     ).withGridPlacement(

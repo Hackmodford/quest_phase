@@ -7,7 +7,7 @@ part of 'number_pad_controller_provider.dart';
 // **************************************************************************
 
 String _$numberPadControllerHash() =>
-    r'a639f6f94c4706a17cf2de2d9500eacfc79e4264';
+    r'53f538bdd0d0cca677e6fa6ce299d8e240d080a6';
 
 /// See also [numberPadController].
 @ProviderFor(numberPadController)

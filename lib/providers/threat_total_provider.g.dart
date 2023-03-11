@@ -6,7 +6,7 @@ part of 'threat_total_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$stagingThreatHash() => r'624219c0faf62195540d08fff178e9570047891f';
+String _$stagingThreatHash() => r'ac96ea1d86b4bcb98bbf4606d597e0dcdc3f07bc';
 
 /// See also [StagingThreat].
 @ProviderFor(StagingThreat)

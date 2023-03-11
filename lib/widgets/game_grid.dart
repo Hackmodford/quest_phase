@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_layout_grid/flutter_layout_grid.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:quest_phase/providers/player_count_provider.dart';
 import 'package:quest_phase/providers/selected_cell_provider.dart';
 import 'package:quest_phase/providers/threat_player_providers.dart';
 import 'package:quest_phase/providers/willpower_player_providers.dart';
@@ -17,37 +19,23 @@ enum LayoutRow {
   will,
   info,
   total,
-  // adjustment,
-  // description1,
   threatAdjustment,
-  // description2,
   gap,
   keypad
 }
 
-class GameGrid extends StatelessWidget {
+class GameGrid extends ConsumerWidget {
   const GameGrid({Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final playerCount = ref.watch(playerCountProvider);
     return LayoutGrid(
       rowGap: 4,
       columnGap: 4,
       columnSizes: const [auto, auto, auto, auto],
       rowSizes: [auto, auto, auto, auto, auto, 1.fr, auto],
       children: [
-        // Row(
-        //   children: const [
-        //     Expanded(child: TotalWillpowerCell()),
-        //     SizedBox(width: 4),
-        //     Expanded(child: TotalProgressCell()),
-        //   ],
-        // ).withGridPlacement(
-        //   columnStart: 0,
-        //   columnSpan: 5,
-        //   rowStart: LayoutRow.total.index,
-        //   rowSpan: 1,
-        // ),
         const RoundCell().withGridPlacement(
           columnStart: 0,
           columnSpan: 1,
@@ -82,35 +70,45 @@ class GameGrid extends StatelessWidget {
           rowStart: LayoutRow.will.index,
           rowSpan: 1,
         ),
-        PlayerWillpowerCell(
-          name: 'P2',
-          provider: p2WillpowerProvider,
-          cellSelection: CellSelection.p2will,
-        ).withGridPlacement(
-          columnStart: 1,
-          columnSpan: 1,
-          rowStart: LayoutRow.will.index,
-          rowSpan: 1,
+        Visibility(
+          visible: playerCount > 1,
+          child: PlayerWillpowerCell(
+            name: 'P2',
+            provider: p2WillpowerProvider,
+            cellSelection: CellSelection.p2will,
+          ).withGridPlacement(
+            columnStart: 1,
+            columnSpan: 1,
+            rowStart: LayoutRow.will.index,
+            rowSpan: 1,
+          ),
         ),
-        PlayerWillpowerCell(
-          name: 'P3',
-          provider: p3WillpowerProvider,
-          cellSelection: CellSelection.p3will,
-        ).withGridPlacement(
-          columnStart: 2,
-          columnSpan: 1,
-          rowStart: LayoutRow.will.index,
-          rowSpan: 1,
+
+        Visibility(
+          visible: playerCount > 2,
+          child: PlayerWillpowerCell(
+            name: 'P3',
+            provider: p3WillpowerProvider,
+            cellSelection: CellSelection.p3will,
+          ).withGridPlacement(
+            columnStart: 2,
+            columnSpan: 1,
+            rowStart: LayoutRow.will.index,
+            rowSpan: 1,
+          ),
         ),
-        PlayerWillpowerCell(
-          name: 'P4',
-          provider: p4WillpowerProvider,
-          cellSelection: CellSelection.p4will,
-        ).withGridPlacement(
-          columnStart: 3,
-          columnSpan: 1,
-          rowStart: LayoutRow.will.index,
-          rowSpan: 1,
+        Visibility(
+          visible: playerCount > 3,
+          child: PlayerWillpowerCell(
+            name: 'P4',
+            provider: p4WillpowerProvider,
+            cellSelection: CellSelection.p4will,
+          ).withGridPlacement(
+            columnStart: 3,
+            columnSpan: 1,
+            rowStart: LayoutRow.will.index,
+            rowSpan: 1,
+          ),
         ),
         const Toolbar().withGridPlacement(
           columnStart: 0,
@@ -127,132 +125,42 @@ class GameGrid extends StatelessWidget {
           rowStart: LayoutRow.threat.index,
           rowSpan: 1,
         ),
-        PlayerThreatCell(
-          provider: p2ThreatProvider,
-          cellSelection: CellSelection.p2threat,
-        ).withGridPlacement(
-          columnStart: 1,
-          columnSpan: 1,
-          rowStart: LayoutRow.threat.index,
-          rowSpan: 1,
+        Visibility(
+          visible: playerCount > 1,
+          child: PlayerThreatCell(
+            provider: p2ThreatProvider,
+            cellSelection: CellSelection.p2threat,
+          ).withGridPlacement(
+            columnStart: 1,
+            columnSpan: 1,
+            rowStart: LayoutRow.threat.index,
+            rowSpan: 1,
+          ),
         ),
-        PlayerThreatCell(
-          provider: p3ThreatProvider,
-          cellSelection: CellSelection.p3threat,
-        ).withGridPlacement(
-          columnStart: 2,
-          columnSpan: 1,
-          rowStart: LayoutRow.threat.index,
-          rowSpan: 1,
+        Visibility(
+          visible: playerCount > 2,
+          child: PlayerThreatCell(
+            provider: p3ThreatProvider,
+            cellSelection: CellSelection.p3threat,
+          ).withGridPlacement(
+            columnStart: 2,
+            columnSpan: 1,
+            rowStart: LayoutRow.threat.index,
+            rowSpan: 1,
+          ),
         ),
-        PlayerThreatCell(
-          provider: p4ThreatProvider,
-          cellSelection: CellSelection.p4threat,
-        ).withGridPlacement(
-          columnStart: 3,
-          columnSpan: 1,
-          rowStart: LayoutRow.threat.index,
-          rowSpan: 1,
+        Visibility(
+          visible: playerCount > 3,
+          child: PlayerThreatCell(
+            provider: p4ThreatProvider,
+            cellSelection: CellSelection.p4threat,
+          ).withGridPlacement(
+            columnStart: 3,
+            columnSpan: 1,
+            rowStart: LayoutRow.threat.index,
+            rowSpan: 1,
+          ),
         ),
-        // GestureDetector(
-        //   onTap: () {
-        //     ref.read(roundProvider.notifier).increase();
-        //     ref.read(p1ThreatProvider.notifier).increase();
-        //     ref.read(p2ThreatProvider.notifier).increase();
-        //     ref.read(p3ThreatProvider.notifier).increase();
-        //     ref.read(p4ThreatProvider.notifier).increase();
-        //     ref.read(threatTotalProvider.notifier).reset();
-        //     ref.read(p1WillpowerProvider.notifier).reset();
-        //     ref.read(p2WillpowerProvider.notifier).reset();
-        //     ref.read(p3WillpowerProvider.notifier).reset();
-        //     ref.read(p4WillpowerProvider.notifier).reset();
-        //   },
-        //   child: const Cell(
-        //     color: Colors.black54,
-        //     child: Padding(
-        //       padding: EdgeInsets.all(8.0),
-        //       child: Text(
-        //         'New\nRound',
-        //         textAlign: TextAlign.center,
-        //       ),
-        //     ),
-        //   ),
-        // ).withGridPlacement(
-        //   columnStart: 0,
-        //   columnSpan: 1,
-        //   rowStart: LayoutRow.threatAdjustment.index,
-        //   rowSpan: 1,
-        // ),
-        // GestureDetector(
-        //   onTap: () {
-        //     ref.read(p1ThreatProvider.notifier).decrease();
-        //     ref.read(p2ThreatProvider.notifier).decrease();
-        //     ref.read(p3ThreatProvider.notifier).decrease();
-        //     ref.read(p4ThreatProvider.notifier).decrease();
-        //   },
-        //   child: const Cell(
-        //     color: Colors.black54,
-        //     child: Padding(
-        //       padding: EdgeInsets.all(8.0),
-        //       child: Text('-1 All Players'),
-        //     ),
-        //   ),
-        // ).withGridPlacement(
-        //   columnStart: 1,
-        //   columnSpan: 2,
-        //   rowStart: LayoutRow.threatAdjustment.index,
-        //   rowSpan: 1,
-        // ),
-        // GestureDetector(
-        //   onTap: () {
-        //     ref.read(p1ThreatProvider.notifier).increase();
-        //     ref.read(p2ThreatProvider.notifier).increase();
-        //     ref.read(p3ThreatProvider.notifier).increase();
-        //     ref.read(p4ThreatProvider.notifier).increase();
-        //   },
-        //   child: const Cell(
-        //     color: Colors.black54,
-        //     child: Padding(
-        //       padding: EdgeInsets.all(8.0),
-        //       child: Text('+1 All Players'),
-        //     ),
-        //   ),
-        // ).withGridPlacement(
-        //   columnStart: 3,
-        //   columnSpan: 2,
-        //   rowStart: LayoutRow.threatAdjustment.index,
-        //   rowSpan: 1,
-        // ),
-        // const Cell(
-        //   color: Colors.black54,
-        //   child: Padding(
-        //     padding: EdgeInsets.all(8.0),
-        //     child: Text(
-        //       'Tap a value above to select it. Then use the buttons above to adjust the value or use the numpad below to set it manually. Tap the "P1" label to input different initials.',
-        //       style: TextStyle(fontSize: 10),
-        //     ),
-        //   ),
-        // ).withGridPlacement(
-        //   columnStart: 0,
-        //   columnSpan: 5,
-        //   rowStart: LayoutRow.description1.index,
-        //   rowSpan: 1,
-        // ),
-        // const Cell(
-        //   color: Colors.black54,
-        //   child: Padding(
-        //     padding: EdgeInsets.all(8.0),
-        //     child: Text(
-        //       'Use the -/+ buttons to adjust the values above, or tap on a value to select it and use the numpad below to enter it manually.',
-        //       style: TextStyle(fontSize: 10),
-        //     ),
-        //   ),
-        // ).withGridPlacement(
-        //   columnStart: 0,
-        //   columnSpan: 5,
-        //   rowStart: LayoutRow.description2.index,
-        //   rowSpan: 1,
-        // ),
         const NumberPad().withGridPlacement(
           columnStart: 0,
           columnSpan: 4,
