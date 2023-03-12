@@ -9,7 +9,8 @@ import 'package:shared_preferences/shared_preferences.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.dark.copyWith(
-      statusBarColor: Colors.white, // Color for Android
+      statusBarColor: Colors.black38, // Color for Android
+      statusBarIconBrightness: Brightness.light,
       statusBarBrightness: Brightness.dark // Dark == white status bar -- for IOS.
   ));
   final sharedPreferences = await SharedPreferences.getInstance();
