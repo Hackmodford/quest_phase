@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_layout_grid/flutter_layout_grid.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:quest_phase/gen/fonts.gen.dart';
-import 'package:quest_phase/providers/number_pad_controller_provider.dart';
 import 'package:quest_phase/widgets/cell.dart';
+import 'package:quest_phase/widgets/number_pad/number_pad_controller.dart';
 
 enum LayoutColumn {
   one,

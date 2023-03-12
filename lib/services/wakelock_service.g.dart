@@ -1,25 +1,24 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'staging_threat_provider.dart';
+part of 'wakelock_service.dart';
 
 // **************************************************************************
 // RiverpodGenerator
 // **************************************************************************
 
-String _$stagingThreatHash() => r'fd1fd306ffeb3914e78595aa17d944e65ecdf203';
+String _$wakelockServiceHash() => r'55cc36f485521bfb8731f2099fd6dcee78dbfb11';
 
-/// See also [StagingThreat].
-@ProviderFor(StagingThreat)
-final stagingThreatProvider =
-    AutoDisposeNotifierProvider<StagingThreat, int>.internal(
-  StagingThreat.new,
-  name: r'stagingThreatProvider',
+/// See also [wakelockService].
+@ProviderFor(wakelockService)
+final wakelockServiceProvider = AutoDisposeProvider<WakelockService>.internal(
+  wakelockService,
+  name: r'wakelockServiceProvider',
   debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
       ? null
-      : _$stagingThreatHash,
+      : _$wakelockServiceHash,
   dependencies: null,
   allTransitiveDependencies: null,
 );
 
-typedef _$StagingThreat = AutoDisposeNotifier<int>;
+typedef WakelockServiceRef = AutoDisposeProviderRef<WakelockService>;
 // ignore_for_file: unnecessary_raw_strings, subtype_of_sealed_class, invalid_use_of_internal_member, do_not_use_environment, prefer_const_constructors, public_member_api_docs, avoid_private_typedef_functions

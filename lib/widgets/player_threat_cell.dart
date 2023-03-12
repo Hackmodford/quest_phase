@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:quest_phase/gen/assets.gen.dart';
 import 'package:quest_phase/gen/colors.gen.dart';
+import 'package:quest_phase/providers/utils/counter_notifier.dart';
 import 'package:quest_phase/providers/selected_cell_provider.dart';
-import 'package:quest_phase/providers/threat_player_providers.dart';
 import 'package:quest_phase/widgets/adjustable_cell.dart';
 
 class PlayerThreatCell extends HookConsumerWidget {
-  final NotifierProvider<PlayerThreat, int> provider;
+  final NotifierProvider<CounterNotifier, int> provider;
   final CellSelection cellSelection;
 
   const PlayerThreatCell(
@@ -33,11 +33,11 @@ class PlayerThreatCell extends HookConsumerWidget {
           isHighlighted: isHighlighted,
           text: text,
           onTapIncrease: () {
-            ref.read(provider.notifier).increase();
+            ref.read(provider.notifier).add(1);
             ref.read(selectedCellProvider.notifier).set(cellSelection);
           },
           onTapDecrease: () {
-            ref.read(provider.notifier).decrease();
+            ref.read(provider.notifier).remove(1);
             ref.read(selectedCellProvider.notifier).set(cellSelection);
           },
           color: ColorName.threatBackground,

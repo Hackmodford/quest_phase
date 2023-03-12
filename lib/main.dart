@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:quest_phase/gen/fonts.gen.dart';
-import 'package:quest_phase/providers/router_provider.dart';
 import 'package:quest_phase/providers/settings_providers.dart';
+import 'package:quest_phase/routes/app_router.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 void main() async {

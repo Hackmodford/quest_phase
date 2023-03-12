@@ -5,12 +5,12 @@ import 'package:quest_phase/providers/player_count_provider.dart';
 import 'package:quest_phase/providers/selected_cell_provider.dart';
 import 'package:quest_phase/providers/threat_player_providers.dart';
 import 'package:quest_phase/providers/willpower_player_providers.dart';
-import 'package:quest_phase/widgets/number_pad.dart';
+import 'package:quest_phase/widgets/number_pad/number_pad.dart';
 import 'package:quest_phase/widgets/player_threat_cell.dart';
 import 'package:quest_phase/widgets/player_willpower_cell.dart';
 import 'package:quest_phase/widgets/round_cell.dart';
 import 'package:quest_phase/widgets/staging_threat_cell.dart';
-import 'package:quest_phase/widgets/toolbar.dart';
+import 'package:quest_phase/widgets/toolbar/toolbar.dart';
 import 'package:quest_phase/widgets/total_progress_cell.dart';
 import 'package:quest_phase/widgets/total_willpower_cell.dart';
 

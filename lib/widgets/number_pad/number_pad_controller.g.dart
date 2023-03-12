@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'number_pad_controller_provider.dart';
+part of 'number_pad_controller.dart';
 
 // **************************************************************************
 // RiverpodGenerator

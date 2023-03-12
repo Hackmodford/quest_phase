@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:quest_phase/gen/fonts.gen.dart';
-import 'package:quest_phase/providers/router_provider.dart';
 import 'package:quest_phase/providers/settings_providers.dart';
-import 'package:quest_phase/providers/wakelock_provider.dart';
-import 'package:quest_phase/routes/go_router_extensions.dart';
+import 'package:quest_phase/routes/app_router.dart';
+import 'package:quest_phase/services/wakelock_service.dart';
 import 'package:quest_phase/utils/font_utils.dart';
 import 'package:quest_phase/widgets/game_grid.dart';
 import 'package:visibility_detector/visibility_detector.dart';
