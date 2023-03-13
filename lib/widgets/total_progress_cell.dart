@@ -1,3 +1,4 @@
+import 'package:awesome_extensions/awesome_extensions.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:quest_phase/gen/colors.gen.dart';
@@ -30,15 +31,11 @@ class TotalProgressCell extends HookConsumerWidget {
                     height: 24,
                     fit: BoxFit.scaleDown,
                   ),
-                  const SizedBox(
-                    width: 4,
-                  ),
+                  4.widthBox,
                   buildRichText("Total", 20),
                 ],
               ),
-              const SizedBox(
-                height: 4,
-              ),
+              4.heightBox,
               Padding(
                 padding: const EdgeInsets.only(top: 6.0, bottom: 4),
                 child: Text(

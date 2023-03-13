@@ -1,3 +1,4 @@
+import 'package:awesome_extensions/awesome_extensions.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:quest_phase/gen/fonts.gen.dart';
@@ -17,9 +18,7 @@ class NewGamePage extends ConsumerWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            const SizedBox(
-              height: 80,
-            ),
+            80.heightBox,
             Center(child: buildRichText('Welcome', 50)),
             const Spacer(),
             const Center(
@@ -30,7 +29,7 @@ class NewGamePage extends ConsumerWidget {
                 fontSize: 25,
               ),
             )),
-            const SizedBox(height: 32,),
+            32.heightBox,
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [

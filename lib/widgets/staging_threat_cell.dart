@@ -1,3 +1,4 @@
+import 'package:awesome_extensions/awesome_extensions.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:quest_phase/gen/assets.gen.dart';
@@ -39,9 +40,7 @@ class StagingThreatCell extends HookConsumerWidget {
                     fit: BoxFit.scaleDown,
                   ),
                 ),
-                const SizedBox(
-                  height: 4,
-                ),
+                4.heightBox,
                 Container(
                   decoration: BoxDecoration(
                       color: Colors.black54,

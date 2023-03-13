@@ -1,3 +1,4 @@
+import 'package:awesome_extensions/awesome_extensions.dart';
 import 'package:flutter/material.dart';
 import 'package:quest_phase/gen/fonts.gen.dart';
 import 'package:quest_phase/widgets/cell.dart';
@@ -49,9 +50,7 @@ class AdjustableCell extends StatelessWidget {
                 ),
               ),
             ),
-            const SizedBox(
-              height: 4,
-            ),
+            4.heightBox,
             Padding(
               padding: const EdgeInsets.only(left: 0.0, right: 0.0, top: 2.0),
               child: Row(

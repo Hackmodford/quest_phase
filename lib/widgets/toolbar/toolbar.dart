@@ -60,7 +60,7 @@ class Toolbar extends HookConsumerWidget {
               ),
             ),
           ),
-          const SizedBox(width: 4),
+          4.widthBox,
           Expanded(
             child: Material(
               elevation: 4,
@@ -103,7 +103,7 @@ class Toolbar extends HookConsumerWidget {
               ),
             ),
           ),
-          const SizedBox(width: 4),
+          4.widthBox,
           Expanded(
             child: Material(
               borderRadius: BorderRadius.circular(4),
@@ -121,7 +121,7 @@ class Toolbar extends HookConsumerWidget {
               ),
             ),
           ),
-          const SizedBox(width: 4),
+          4.widthBox,
           Expanded(
             child: Material(
               borderRadius: BorderRadius.circular(4),
@@ -139,7 +139,7 @@ class Toolbar extends HookConsumerWidget {
               ),
             ),
           ),
-          const SizedBox(width: 4),
+          4.widthBox,
           Expanded(
             child: Material(
               borderRadius: BorderRadius.circular(4),
@@ -157,7 +157,7 @@ class Toolbar extends HookConsumerWidget {
               ),
             ),
           ),
-          const SizedBox(width: 4),
+          4.widthBox,
           Expanded(
             child: Material(
               borderRadius: BorderRadius.circular(4),

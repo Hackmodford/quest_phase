@@ -1,3 +1,4 @@
+import 'package:awesome_extensions/awesome_extensions.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:quest_phase/gen/assets.gen.dart';
@@ -48,7 +49,7 @@ class PlayerWillpowerCell extends HookConsumerWidget {
                         height: 24,
                         fit: BoxFit.scaleDown,
                       ),
-                      const SizedBox(width: 4.0,),
+                      4.widthBox,
                       Padding(
                         padding: const EdgeInsets.only(top: 4.0),
                         child: Text(name,),
@@ -56,9 +57,7 @@ class PlayerWillpowerCell extends HookConsumerWidget {
                     ],
                   ),
                 ),
-                const SizedBox(
-                  height: 4,
-                ),
+                4.heightBox,
                 Container(
                   decoration: BoxDecoration(color: Colors.black54,
                       borderRadius: BorderRadius.circular(4)),
