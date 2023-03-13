@@ -54,7 +54,8 @@ class Toolbar extends HookConsumerWidget {
                     .onRemoveOneThreatFromAllPlayers(),
                 child: Cell(
                   color: color,
-                  child: buildRichText('-1 All Players', 20),
+                  child: buildRichText('-1 All Players', 20)
+                      .paddingOnly(bottom: 4),
                 ),
               ),
             ),
@@ -71,7 +72,8 @@ class Toolbar extends HookConsumerWidget {
                     .onAddOneThreatToAllPlayers(),
                 child: Cell(
                   color: color,
-                  child: buildRichText('+1 All Players', 20).paddingOnly(top: 3.0),
+                  child:
+                      buildRichText('+1 All Players', 20).paddingOnly(top: 3.0, bottom: 4),
                 ),
               ),
             ),
@@ -132,7 +134,7 @@ class Toolbar extends HookConsumerWidget {
                   child: const Text(
                     '+1',
                     style: TextStyle(fontSize: 24),
-                  ).paddingOnly(top:4.0),
+                  ).paddingOnly(top: 4.0),
                 ),
               ),
             ),
