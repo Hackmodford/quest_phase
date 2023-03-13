@@ -1,3 +1,4 @@
+import 'package:awesome_extensions/awesome_extensions.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
@@ -15,7 +16,6 @@ class Toolbar extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-
     final mode = useState(ref.read(selectedCellProvider).toMode());
 
     ref.listen(selectedCellProvider, (previous, next) {
@@ -37,7 +37,8 @@ class Toolbar extends HookConsumerWidget {
     }
   }
 
-  Widget _buildThreatToolbar(BuildContext context, WidgetRef ref, EdgeInsetsGeometry padding) {
+  Widget _buildThreatToolbar(
+      BuildContext context, WidgetRef ref, EdgeInsetsGeometry padding) {
     return Padding(
       padding: padding,
       child: Row(
@@ -48,13 +49,12 @@ class Toolbar extends HookConsumerWidget {
               borderRadius: BorderRadius.circular(4),
               child: InkWell(
                 borderRadius: BorderRadius.circular(4),
-                onTap: () => ref.read(toolbarControllerProvider).onRemoveOneThreatFromAllPlayers(),
+                onTap: () => ref
+                    .read(toolbarControllerProvider)
+                    .onRemoveOneThreatFromAllPlayers(),
                 child: Cell(
                   color: color,
-                  child: Padding(
-                    padding: const EdgeInsets.only(left:8.0, top:4.0, right:8.0, bottom:8.0),
-                    child: buildRichText('-1 All Players', 20),
-                  ),
+                  child: buildRichText('-1 All Players', 20),
                 ),
               ),
             ),
@@ -66,13 +66,12 @@ class Toolbar extends HookConsumerWidget {
               borderRadius: BorderRadius.circular(4),
               child: InkWell(
                 borderRadius: BorderRadius.circular(4),
-                onTap: () => ref.read(toolbarControllerProvider).onAddOneThreatToAllPlayers(),
+                onTap: () => ref
+                    .read(toolbarControllerProvider)
+                    .onAddOneThreatToAllPlayers(),
                 child: Cell(
                   color: color,
-                  child: Padding(
-                    padding: const EdgeInsets.only(left:8.0, top:4.0, right:8.0, bottom:8.0),
-                    child: buildRichText('+1 All Players', 20),
-                  ),
+                  child: buildRichText('+1 All Players', 20).paddingOnly(top: 3.0),
                 ),
               ),
             ),
@@ -82,7 +81,8 @@ class Toolbar extends HookConsumerWidget {
     );
   }
 
-  Widget _buildWillToolbar(BuildContext context, WidgetRef ref, EdgeInsetsGeometry padding) {
+  Widget _buildWillToolbar(
+      BuildContext context, WidgetRef ref, EdgeInsetsGeometry padding) {
     return Padding(
       padding: padding,
       child: Row(
@@ -96,10 +96,7 @@ class Toolbar extends HookConsumerWidget {
                 onTap: () => ref.read(toolbarControllerProvider).onClearAll(),
                 child: Cell(
                   color: color,
-                  child: Padding(
-                    padding: const EdgeInsets.only(left:8.0, right:8.0, bottom:8.0, top:4.0),
-                    child: buildRichText('Clear\n All', 20),
-                  ),
+                  child: buildRichText('Clear\n All', 14),
                 ),
               ),
             ),
@@ -114,9 +111,9 @@ class Toolbar extends HookConsumerWidget {
                 onTap: () => ref.read(toolbarControllerProvider).onRemoveOne(),
                 child: Cell(
                   color: color,
-                  child: const Padding(
-                    padding: EdgeInsets.all(8.0),
-                    child: Text('-1', style: TextStyle(fontSize: 24),),
+                  child: const Text(
+                    '-1',
+                    style: TextStyle(fontSize: 24),
                   ),
                 ),
               ),
@@ -132,10 +129,10 @@ class Toolbar extends HookConsumerWidget {
                 onTap: () => ref.read(toolbarControllerProvider).onAddOne(),
                 child: Cell(
                   color: color,
-                  child: const Padding(
-                    padding: EdgeInsets.all(8.0),
-                    child: Text('+1', style: TextStyle(fontSize: 24),),
-                  ),
+                  child: const Text(
+                    '+1',
+                    style: TextStyle(fontSize: 24),
+                  ).paddingOnly(top:4.0),
                 ),
               ),
             ),
@@ -150,10 +147,10 @@ class Toolbar extends HookConsumerWidget {
                 onTap: () => ref.read(toolbarControllerProvider).onAddTwo(),
                 child: Cell(
                   color: color,
-                  child: const Padding(
-                    padding: EdgeInsets.all(8.0),
-                    child: Text('+2', style: TextStyle(fontSize: 24),),
-                  ),
+                  child: const Text(
+                    '+2',
+                    style: TextStyle(fontSize: 24),
+                  ).paddingOnly(top: 4.0),
                 ),
               ),
             ),
@@ -168,10 +165,10 @@ class Toolbar extends HookConsumerWidget {
                 onTap: () => ref.read(toolbarControllerProvider).onAddFive(),
                 child: Cell(
                   color: color,
-                  child: const Padding(
-                    padding: EdgeInsets.all(8.0),
-                    child: Text('+5', style: TextStyle(fontSize: 24),),
-                  ),
+                  child: const Text(
+                    '+5',
+                    style: TextStyle(fontSize: 24),
+                  ).paddingOnly(top: 4.0),
                 ),
               ),
             ),
@@ -181,7 +178,8 @@ class Toolbar extends HookConsumerWidget {
     );
   }
 
-  Widget _buildRoundToolbar(BuildContext context, WidgetRef ref, EdgeInsetsGeometry padding) {
+  Widget _buildRoundToolbar(
+      BuildContext context, WidgetRef ref, EdgeInsetsGeometry padding) {
     return Padding(
       padding: padding,
       child: Row(
@@ -192,13 +190,11 @@ class Toolbar extends HookConsumerWidget {
               borderRadius: BorderRadius.circular(4),
               child: InkWell(
                 borderRadius: BorderRadius.circular(4),
-                onTap: () => ref.read(toolbarControllerProvider).onRefreshAndNewRound(),
+                onTap: () =>
+                    ref.read(toolbarControllerProvider).onRefreshAndNewRound(),
                 child: Cell(
                   color: color,
-                  child: Padding(
-                    padding: const EdgeInsets.only(left:8.0, top:4.0, right:8.0, bottom:8.0),
-                    child: buildRichText('Refresh + New Round', 20),
-                  ),
+                  child: buildRichText('Refresh + New Round', 20),
                 ),
               ),
             ),
@@ -210,8 +206,7 @@ class Toolbar extends HookConsumerWidget {
 }
 
 extension CellSelectionExtensions on CellSelection {
-  Mode toMode()
-  {
+  Mode toMode() {
     switch (this) {
       case CellSelection.p1will:
       case CellSelection.p2will:
