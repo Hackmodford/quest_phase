@@ -1,12 +1,20 @@
-import 'package:riverpod_annotation/riverpod_annotation.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
+
+typedef BuildCounterCallback = int Function(Ref);
 
 class CounterNotifier extends Notifier<int> {
+  CounterNotifier({this.onBuild});
+
+  final BuildCounterCallback? onBuild;
   final int minValue = 0;
   final int maxValue = 9999;
 
   @override
   int build() {
-    return 0;
+    if (onBuild == null) {
+      return 0;
+    }
+    return onBuild!(ref);
   }
 
   void add(int value) {

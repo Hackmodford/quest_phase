@@ -1,10 +1,10 @@
+// ignore_for_file: avoid_redundant_argument_values
+
 import 'package:flutter/material.dart';
 import 'package:flutter_layout_grid/flutter_layout_grid.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:quest_phase/providers/player_count_provider.dart';
+import 'package:quest_phase/providers/saved_state_provider.dart';
 import 'package:quest_phase/providers/selected_cell_provider.dart';
-import 'package:quest_phase/providers/threat_player_providers.dart';
-import 'package:quest_phase/providers/willpower_player_providers.dart';
 import 'package:quest_phase/widgets/number_pad/number_pad.dart';
 import 'package:quest_phase/widgets/player_threat_cell.dart';
 import 'package:quest_phase/widgets/player_willpower_cell.dart';
@@ -14,23 +14,16 @@ import 'package:quest_phase/widgets/toolbar/toolbar.dart';
 import 'package:quest_phase/widgets/total_progress_cell.dart';
 import 'package:quest_phase/widgets/total_willpower_cell.dart';
 
-enum LayoutRow {
-  total,
-  gap2,
-  threat,
-  will,
-  info,
-  toolbar,
-  gap,
-  keypad
-}
+enum LayoutRow { total, gap2, threat, will, info, toolbar, gap, keypad }
 
 class GameGrid extends ConsumerWidget {
-  const GameGrid({Key? key}) : super(key: key);
+  const GameGrid({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final playerCount = ref.watch(playerCountProvider);
+    final playerCount = ref.watch(
+      savedStateNotifierProvider.select((value) => value.numberOfPlayers),
+    );
     return LayoutGrid(
       rowGap: 4,
       columnGap: 4,
@@ -61,9 +54,9 @@ class GameGrid extends ConsumerWidget {
           rowStart: LayoutRow.total.index,
           rowSpan: 1,
         ),
-        PlayerWillpowerCell(
+        const PlayerWillpowerCell(
           name: 'P1',
-          provider: p1WillpowerProvider,
+          playerOption: PlayerOption.p1,
           cellSelection: CellSelection.p1will,
         ).withGridPlacement(
           columnStart: 0,
@@ -73,9 +66,9 @@ class GameGrid extends ConsumerWidget {
         ),
         Visibility(
           visible: playerCount > 1,
-          child: PlayerWillpowerCell(
+          child: const PlayerWillpowerCell(
             name: 'P2',
-            provider: p2WillpowerProvider,
+            playerOption: PlayerOption.p2,
             cellSelection: CellSelection.p2will,
           ).withGridPlacement(
             columnStart: 1,
@@ -84,12 +77,11 @@ class GameGrid extends ConsumerWidget {
             rowSpan: 1,
           ),
         ),
-
         Visibility(
           visible: playerCount > 2,
-          child: PlayerWillpowerCell(
+          child: const PlayerWillpowerCell(
             name: 'P3',
-            provider: p3WillpowerProvider,
+            playerOption: PlayerOption.p3,
             cellSelection: CellSelection.p3will,
           ).withGridPlacement(
             columnStart: 2,
@@ -100,9 +92,9 @@ class GameGrid extends ConsumerWidget {
         ),
         Visibility(
           visible: playerCount > 3,
-          child: PlayerWillpowerCell(
+          child: const PlayerWillpowerCell(
             name: 'P4',
-            provider: p4WillpowerProvider,
+            playerOption: PlayerOption.p4,
             cellSelection: CellSelection.p4will,
           ).withGridPlacement(
             columnStart: 3,
@@ -117,8 +109,8 @@ class GameGrid extends ConsumerWidget {
           rowStart: LayoutRow.toolbar.index,
           rowSpan: 1,
         ),
-        PlayerThreatCell(
-          provider: p1ThreatProvider,
+        const PlayerThreatCell(
+          playerOption: PlayerOption.p1,
           cellSelection: CellSelection.p1threat,
         ).withGridPlacement(
           columnStart: 0,
@@ -128,8 +120,8 @@ class GameGrid extends ConsumerWidget {
         ),
         Visibility(
           visible: playerCount > 1,
-          child: PlayerThreatCell(
-            provider: p2ThreatProvider,
+          child: const PlayerThreatCell(
+            playerOption: PlayerOption.p2,
             cellSelection: CellSelection.p2threat,
           ).withGridPlacement(
             columnStart: 1,
@@ -140,8 +132,8 @@ class GameGrid extends ConsumerWidget {
         ),
         Visibility(
           visible: playerCount > 2,
-          child: PlayerThreatCell(
-            provider: p3ThreatProvider,
+          child: const PlayerThreatCell(
+            playerOption: PlayerOption.p3,
             cellSelection: CellSelection.p3threat,
           ).withGridPlacement(
             columnStart: 2,
@@ -152,8 +144,8 @@ class GameGrid extends ConsumerWidget {
         ),
         Visibility(
           visible: playerCount > 3,
-          child: PlayerThreatCell(
-            provider: p4ThreatProvider,
+          child: const PlayerThreatCell(
+            playerOption: PlayerOption.p4,
             cellSelection: CellSelection.p4threat,
           ).withGridPlacement(
             columnStart: 3,

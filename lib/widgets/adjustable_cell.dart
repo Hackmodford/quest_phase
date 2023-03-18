@@ -4,6 +4,16 @@ import 'package:quest_phase/gen/fonts.gen.dart';
 import 'package:quest_phase/widgets/cell.dart';
 
 class AdjustableCell extends StatelessWidget {
+  const AdjustableCell({
+    required this.color,
+    required this.image,
+    required this.text,
+    this.onTapIncrease,
+    this.onTapDecrease,
+    this.isHighlighted = false,
+    super.key,
+  });
+
   final String text;
   final Color color;
   final Image image;
@@ -11,33 +21,24 @@ class AdjustableCell extends StatelessWidget {
   final GestureTapCallback? onTapDecrease;
   final bool isHighlighted;
 
-  const AdjustableCell(
-      {Key? key,
-      this.onTapIncrease,
-      this.onTapDecrease,
-      required this.color,
-      required this.image,
-      required this.text,
-      this.isHighlighted = false})
-      : super(key: key);
-
   @override
   Widget build(BuildContext context) {
     return Cell(
       isHighlighted: isHighlighted,
       color: color,
       child: Padding(
-        padding: const EdgeInsets.all(2.0),
+        padding: const EdgeInsets.all(2),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            Container(
+            DecoratedBox(
               decoration: BoxDecoration(
-                  color: Colors.black54,
-                  borderRadius: BorderRadius.circular(4)),
+                color: Colors.black54,
+                borderRadius: BorderRadius.circular(4),
+              ),
               child: Center(
                 child: Padding(
-                  padding: const EdgeInsets.only(top: 12.0),
+                  padding: const EdgeInsets.only(top: 12),
                   child: Text(
                     text,
                     style: const TextStyle(
@@ -52,7 +53,7 @@ class AdjustableCell extends StatelessWidget {
             ),
             4.heightBox,
             Padding(
-              padding: const EdgeInsets.only(left: 0.0, right: 0.0, top: 2.0),
+              padding: const EdgeInsets.only(top: 2),
               child: Row(
                 children: [
                   GestureDetector(

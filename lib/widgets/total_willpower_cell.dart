@@ -9,18 +9,18 @@ import 'package:quest_phase/utils/font_utils.dart';
 import 'package:quest_phase/widgets/cell.dart';
 
 class TotalWillpowerCell extends HookConsumerWidget {
-  const TotalWillpowerCell({Key? key}) : super(key: key);
+  const TotalWillpowerCell({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final String text = ref.watch(willpowerTotalProvider).toString();
+    final text = ref.watch(willpowerTotalProvider).toString();
     return Material(
       elevation: 4,
       borderRadius: BorderRadius.circular(4),
       child: Cell(
         color: ColorName.willpowerBackground,
         child: Padding(
-          padding: const EdgeInsets.all(4.0),
+          padding: const EdgeInsets.all(4),
           child: Column(
             children: [
               Row(
@@ -32,12 +32,12 @@ class TotalWillpowerCell extends HookConsumerWidget {
                     fit: BoxFit.scaleDown,
                   ),
                   4.widthBox,
-                  buildRichText("Total", 20),
+                  buildRichText('Total', 20),
                 ],
               ),
               4.widthBox,
               Padding(
-                padding: const EdgeInsets.only(top: 6.0, bottom: 4),
+                padding: const EdgeInsets.only(top: 6, bottom: 4),
                 child: Text(
                   text,
                   style: const TextStyle(

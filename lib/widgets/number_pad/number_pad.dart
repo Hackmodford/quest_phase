@@ -1,3 +1,5 @@
+// ignore_for_file: avoid_redundant_argument_values
+
 import 'package:flutter/material.dart';
 import 'package:flutter_layout_grid/flutter_layout_grid.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
@@ -12,11 +14,11 @@ enum LayoutColumn {
 }
 
 class NumberPad extends ConsumerWidget {
-  const NumberPad({Key? key}) : super(key: key);
+  const NumberPad({super.key});
 
-  final double fontSize = 20.0;
+  double get fontSize => 20;
 
-  final color = Colors.black54;
+  Color get color => Colors.black54;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -129,10 +131,10 @@ class NumberPad extends ConsumerWidget {
           color: color,
           child: Padding(
             padding: const EdgeInsets.only(
-              top: 19.0,
-              left: 8.0,
-              right: 8.0,
-              bottom: 8.0,
+              top: 19,
+              left: 8,
+              right: 8,
+              bottom: 8,
             ),
             child: Text(
               value.toString(),
@@ -169,12 +171,12 @@ class NumberPad extends ConsumerWidget {
           color: color,
           child: const Padding(
             padding: EdgeInsets.only(
-              top: 8.0,
-              left: 8.0,
-              right: 8.0,
-              bottom: 8.0,
+              top: 8,
+              left: 8,
+              right: 8,
+              bottom: 8,
             ),
-            child: Icon(Icons.backspace)
+            child: Icon(Icons.backspace),
           ),
         ),
       ),
@@ -202,10 +204,10 @@ class NumberPad extends ConsumerWidget {
           color: color,
           child: Padding(
             padding: const EdgeInsets.only(
-              top: 19.0,
-              left: 8.0,
-              right: 8.0,
-              bottom: 8.0,
+              top: 19,
+              left: 8,
+              right: 8,
+              bottom: 8,
             ),
             child: Text(
               'C',

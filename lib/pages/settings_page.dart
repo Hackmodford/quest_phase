@@ -5,12 +5,12 @@ import 'package:quest_phase/providers/settings_providers.dart';
 import 'package:quest_phase/utils/font_utils.dart';
 
 class SettingsPage extends StatelessWidget {
-  const SettingsPage({Key? key}) : super(key: key);
+  const SettingsPage({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: buildRichText("Settings", 24),),
+      appBar: AppBar(title: buildRichText('Settings', 24),),
       body: SingleChildScrollView(
         child: Column(
           children: [
@@ -18,7 +18,7 @@ class SettingsPage extends StatelessWidget {
               builder: (context, ref, child) {
                 return SwitchListTile(
                   activeColor: Colors.orangeAccent,
-                  title: buildRichText("Keep On Screen", 20),
+                  title: buildRichText('Keep On Screen', 20),
                   value: ref.watch(settingShouldKeepScreenOnProvider),
                   onChanged: (bool value) => ref
                       .read(settingShouldKeepScreenOnProvider.notifier)
@@ -30,7 +30,7 @@ class SettingsPage extends StatelessWidget {
               builder: (context, ref, child) {
                 return SwitchListTile(
                   activeColor: Colors.orangeAccent,
-                  title: buildRichText("Reset Staging Threat", 20),
+                  title: buildRichText('Reset Staging Threat', 20),
                   subtitle: const Text(
                     'Forced: During the refresh phase, set staging threat to 0',
                     style: TextStyle(fontFamily: FontFamily.timesNewRoman),

@@ -1,26 +1,26 @@
 import 'package:awesome_extensions/awesome_extensions.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:quest_phase/gen/assets.gen.dart';
 import 'package:quest_phase/gen/colors.gen.dart';
 import 'package:quest_phase/gen/fonts.gen.dart';
 import 'package:quest_phase/providers/progress_total_provider.dart';
 import 'package:quest_phase/utils/font_utils.dart';
 import 'package:quest_phase/widgets/cell.dart';
-import 'package:quest_phase/gen/assets.gen.dart';
 
 class TotalProgressCell extends HookConsumerWidget {
-  const TotalProgressCell({Key? key}) : super(key: key);
+  const TotalProgressCell({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final String text = ref.watch(progressTotalProvider).toString();
+    final text = ref.watch(progressTotalProvider).toString();
     return Material(
       elevation: 4,
       borderRadius: BorderRadius.circular(4),
       child: Cell(
         color: ColorName.progressBackground,
         child: Padding(
-          padding: const EdgeInsets.all(4.0),
+          padding: const EdgeInsets.all(4),
           child: Column(
             children: [
               Row(
@@ -32,12 +32,12 @@ class TotalProgressCell extends HookConsumerWidget {
                     fit: BoxFit.scaleDown,
                   ),
                   4.widthBox,
-                  buildRichText("Total", 20),
+                  buildRichText('Total', 20),
                 ],
               ),
               4.heightBox,
               Padding(
-                padding: const EdgeInsets.only(top: 6.0, bottom: 4),
+                padding: const EdgeInsets.only(top: 6, bottom: 4),
                 child: Text(
                   text,
                   style: const TextStyle(

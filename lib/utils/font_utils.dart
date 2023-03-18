@@ -5,8 +5,9 @@ Widget buildRichText(String text, double size) {
   final values = text.toUpperCase().split(' ');
   final firstLetters = values.map((element) {
     return TextSpan(
-        text: element.substring(0, 1),
-        style: TextStyle(fontSize: size, fontFamily: FontFamily.vafthrudnir));
+      text: element.substring(0, 1),
+      style: TextStyle(fontSize: size, fontFamily: FontFamily.vafthrudnir),
+    );
   }).toList();
   final restOfWords = values.map((element) {
     var otherHalf = '';
@@ -15,12 +16,16 @@ Widget buildRichText(String text, double size) {
     }
     final firstChar = element.substring(0, 1);
     return TextSpan(
-        text: otherHalf,
-        style: TextStyle(
-            fontSize: firstChar.contains(RegExp(r'[A-Z]')) ? size * 0.66 : size, fontFamily: FontFamily.vafthrudnir));
+      text: otherHalf,
+      style: TextStyle(
+        // ignore: unnecessary_raw_strings
+        fontSize: firstChar.contains(RegExp(r'[A-Z]')) ? size * 0.66 : size,
+        fontFamily: FontFamily.vafthrudnir,
+      ),
+    );
   }).toList();
 
-  var spans = <TextSpan>[];
+  final spans = <TextSpan>[];
   for (var i = 0; i < firstLetters.length; i++) {
     if (i == 0) {
       spans.add(firstLetters[i]);

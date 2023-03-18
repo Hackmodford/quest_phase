@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:quest_phase/gen/fonts.gen.dart';
+import 'package:quest_phase/providers/saved_state_provider.dart';
 import 'package:quest_phase/providers/settings_providers.dart';
 import 'package:quest_phase/routes/app_router.dart';
 import 'package:quest_phase/services/wakelock_service.dart';
@@ -9,7 +10,7 @@ import 'package:quest_phase/widgets/game_grid.dart';
 import 'package:visibility_detector/visibility_detector.dart';
 
 class GamePage extends ConsumerWidget {
-  const GamePage({Key? key}) : super(key: key);
+  const GamePage({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -18,12 +19,13 @@ class GamePage extends ConsumerWidget {
     return VisibilityDetector(
       key: const Key('homepage-visibility-key'),
       onVisibilityChanged: (visibilityInfo) {
-        final isEnabled = visibilityInfo.visibleFraction == 1 && shouldKeepScreenOn;
+        final isEnabled =
+            visibilityInfo.visibleFraction == 1 && shouldKeepScreenOn;
         wakelock.toggle(enable: isEnabled);
       },
       child: Scaffold(
         appBar: AppBar(
-          title: buildRichText("Quest Phase", 24),
+          title: buildRichText('Quest Phase', 24),
           leading: IconButton(
             onPressed: () => ref.read(routerProvider).goToSettings(),
             icon: const Icon(Icons.settings),
@@ -37,7 +39,7 @@ class GamePage extends ConsumerWidget {
         ),
         body: const SafeArea(
           child: Padding(
-            padding: EdgeInsets.all(8.0),
+            padding: EdgeInsets.all(8),
             child: GameGrid(),
           ),
         ), // This trailing comma makes auto-formatting nicer for build methods.
@@ -50,11 +52,14 @@ class GamePage extends ConsumerWidget {
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: buildRichText("Are you sure", 24),
+          title: buildRichText('Are you sure', 24),
           content: SingleChildScrollView(
             child: ListBody(
               children: const <Widget>[
-                Text('Clear the board state and start over.', style: TextStyle(fontFamily: FontFamily.timesNewRoman),),
+                Text(
+                  'Clear the board state and start over.',
+                  style: TextStyle(fontFamily: FontFamily.timesNewRoman),
+                ),
               ],
             ),
           ),
@@ -62,12 +67,15 @@ class GamePage extends ConsumerWidget {
             TextButton(
               style: TextButton.styleFrom(foregroundColor: Colors.orangeAccent),
               onPressed: () => Navigator.pop(context, 'Cancel'),
-              child: buildRichText("Cancel", 20),
+              child: buildRichText('Cancel', 20),
             ),
             TextButton(
               style: TextButton.styleFrom(foregroundColor: Colors.orangeAccent),
-              onPressed: () => ref.read(routerProvider).goToNewGame(),
-              child: buildRichText("Yes", 20),
+              onPressed: () {
+                ref.read(savedStateNotifierProvider.notifier).reset();
+                ref.read(routerProvider).goToNewGame();
+              },
+              child: buildRichText('Yes', 20),
             ),
           ],
         );

@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:quest_phase/gen/fonts.gen.dart';
 
 class QuoteBlock extends StatelessWidget {
-  const QuoteBlock({Key? key}) : super(key: key);
+  const QuoteBlock({super.key});
 
   @override
   Widget build(BuildContext context) {

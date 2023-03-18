@@ -12,7 +12,7 @@ enum Mode { none, playerThreat, willAndThreat, round }
 class Toolbar extends HookConsumerWidget {
   const Toolbar({super.key});
 
-  final color = Colors.white10;
+  Color get color => Colors.white10;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -32,13 +32,14 @@ class Toolbar extends HookConsumerWidget {
         return _buildWillToolbar(context, ref, padding);
       case Mode.round:
         return _buildRoundToolbar(context, ref, padding);
-      default:
-        return Container();
     }
   }
 
   Widget _buildThreatToolbar(
-      BuildContext context, WidgetRef ref, EdgeInsetsGeometry padding) {
+    BuildContext context,
+    WidgetRef ref,
+    EdgeInsetsGeometry padding,
+  ) {
     return Padding(
       padding: padding,
       child: Row(
@@ -72,8 +73,8 @@ class Toolbar extends HookConsumerWidget {
                     .onAddOneThreatToAllPlayers(),
                 child: Cell(
                   color: color,
-                  child:
-                      buildRichText('+1 All Players', 20).paddingOnly(top: 3.0, bottom: 4),
+                  child: buildRichText('+1 All Players', 20)
+                      .paddingOnly(top: 3, bottom: 4),
                 ),
               ),
             ),
@@ -84,7 +85,10 @@ class Toolbar extends HookConsumerWidget {
   }
 
   Widget _buildWillToolbar(
-      BuildContext context, WidgetRef ref, EdgeInsetsGeometry padding) {
+    BuildContext context,
+    WidgetRef ref,
+    EdgeInsetsGeometry padding,
+  ) {
     return Padding(
       padding: padding,
       child: Row(
@@ -134,7 +138,7 @@ class Toolbar extends HookConsumerWidget {
                   child: const Text(
                     '+1',
                     style: TextStyle(fontSize: 24),
-                  ).paddingOnly(top: 4.0),
+                  ).paddingOnly(top: 4),
                 ),
               ),
             ),
@@ -152,7 +156,7 @@ class Toolbar extends HookConsumerWidget {
                   child: const Text(
                     '+2',
                     style: TextStyle(fontSize: 24),
-                  ).paddingOnly(top: 4.0),
+                  ).paddingOnly(top: 4),
                 ),
               ),
             ),
@@ -170,7 +174,7 @@ class Toolbar extends HookConsumerWidget {
                   child: const Text(
                     '+5',
                     style: TextStyle(fontSize: 24),
-                  ).paddingOnly(top: 4.0),
+                  ).paddingOnly(top: 4),
                 ),
               ),
             ),
@@ -181,7 +185,10 @@ class Toolbar extends HookConsumerWidget {
   }
 
   Widget _buildRoundToolbar(
-      BuildContext context, WidgetRef ref, EdgeInsetsGeometry padding) {
+    BuildContext context,
+    WidgetRef ref,
+    EdgeInsetsGeometry padding,
+  ) {
     return Padding(
       padding: padding,
       child: Row(

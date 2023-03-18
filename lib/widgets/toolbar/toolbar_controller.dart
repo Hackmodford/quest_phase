@@ -1,127 +1,176 @@
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:quest_phase/providers/round_provider.dart';
+import 'package:quest_phase/providers/saved_state_provider.dart';
 import 'package:quest_phase/providers/selected_cell_provider.dart';
 import 'package:quest_phase/providers/settings_providers.dart';
-import 'package:quest_phase/providers/staging_threat_provider.dart';
-import 'package:quest_phase/providers/threat_player_providers.dart';
-import 'package:quest_phase/providers/willpower_player_providers.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'toolbar_controller.g.dart';
 
 @riverpod
-ToolbarController toolbarController(ToolbarControllerRef ref) => ToolbarController(ref);
+ToolbarController toolbarController(ToolbarControllerRef ref) =>
+    ToolbarController(ref);
 
 class ToolbarController {
-  final Ref ref;
-
   ToolbarController(this.ref);
 
-  void onRemoveOneThreatFromAllPlayers()
-  {
-    ref.read(p1ThreatProvider.notifier).remove(1);
-    ref.read(p2ThreatProvider.notifier).remove(1);
-    ref.read(p3ThreatProvider.notifier).remove(1);
-    ref.read(p4ThreatProvider.notifier).remove(1);
+  final Ref ref;
+
+  void onRemoveOneThreatFromAllPlayers() {
+    ref
+        .read(savedStateNotifierProvider.notifier)
+        .removePlayerThreat(PlayerOption.p1, 1);
+    ref
+        .read(savedStateNotifierProvider.notifier)
+        .removePlayerThreat(PlayerOption.p2, 1);
+    ref
+        .read(savedStateNotifierProvider.notifier)
+        .removePlayerThreat(PlayerOption.p3, 1);
+    ref
+        .read(savedStateNotifierProvider.notifier)
+        .removePlayerThreat(PlayerOption.p4, 1);
   }
 
-  void onAddOneThreatToAllPlayers()
-  {
-    ref.read(p1ThreatProvider.notifier).add(1);
-    ref.read(p2ThreatProvider.notifier).add(1);
-    ref.read(p3ThreatProvider.notifier).add(1);
-    ref.read(p4ThreatProvider.notifier).add(1);
+  void onAddOneThreatToAllPlayers() {
+    ref
+        .read(savedStateNotifierProvider.notifier)
+        .addPlayerThreat(PlayerOption.p1, 1);
+    ref
+        .read(savedStateNotifierProvider.notifier)
+        .addPlayerThreat(PlayerOption.p2, 1);
+    ref
+        .read(savedStateNotifierProvider.notifier)
+        .addPlayerThreat(PlayerOption.p3, 1);
+    ref
+        .read(savedStateNotifierProvider.notifier)
+        .addPlayerThreat(PlayerOption.p4, 1);
   }
 
-  void onClearAll()
-  {
-    ref.read(stagingThreatProvider.notifier).reset();
-    ref.read(p1WillpowerProvider.notifier).reset();
-    ref.read(p2WillpowerProvider.notifier).reset();
-    ref.read(p3WillpowerProvider.notifier).reset();
-    ref.read(p4WillpowerProvider.notifier).reset();
+  void _onResetStagingThreat() {
+    ref.read(savedStateNotifierProvider.notifier).setStagingThreat(0);
   }
 
-  void onRemoveOne()
-  {
+  void _onResetAllPlayerWillpower() {
+    ref
+        .read(savedStateNotifierProvider.notifier)
+        .setPlayerWillpower(PlayerOption.p1, 0);
+    ref
+        .read(savedStateNotifierProvider.notifier)
+        .setPlayerWillpower(PlayerOption.p2, 0);
+    ref
+        .read(savedStateNotifierProvider.notifier)
+        .setPlayerWillpower(PlayerOption.p3, 0);
+    ref
+        .read(savedStateNotifierProvider.notifier)
+        .setPlayerWillpower(PlayerOption.p4, 0);
+  }
+
+  void onClearAll() {
+    _onResetStagingThreat();
+    _onResetAllPlayerWillpower();
+  }
+
+  void onRemoveOne() {
     _onRemove(1);
   }
 
-  void onAddOne()
-  {
+  void onAddOne() {
     _onAdd(1);
   }
 
-  void onAddTwo()
-  {
+  void onAddTwo() {
     _onAdd(2);
   }
 
-  void onAddFive()
-  {
+  void onAddFive() {
     _onAdd(5);
   }
 
-  void onRefreshAndNewRound()
-  {
-    ref.read(roundProvider.notifier).add(1);
-    ref.read(p1WillpowerProvider.notifier).reset();
-    ref.read(p2WillpowerProvider.notifier).reset();
-    ref.read(p3WillpowerProvider.notifier).reset();
-    ref.read(p4WillpowerProvider.notifier).reset();
-    ref.read(p1ThreatProvider.notifier).add(1);
-    ref.read(p2ThreatProvider.notifier).add(1);
-    ref.read(p3ThreatProvider.notifier).add(1);
-    ref.read(p4ThreatProvider.notifier).add(1);
+  void onRefreshAndNewRound() {
+    ref.read(savedStateNotifierProvider.notifier).addRound(1);
+    onAddOneThreatToAllPlayers();
+    _onResetAllPlayerWillpower();
+
     if (ref.read(settingShouldResetStagingThreatProvider)) {
-      ref.read(stagingThreatProvider.notifier).reset();
+      _onResetStagingThreat();
     }
   }
 
-  void _onAdd(int value)
-  {
+  void _onAdd(int value) {
     final selection = ref.read(selectedCellProvider);
     switch (selection) {
       case CellSelection.stagingThreat:
-        ref.read(stagingThreatProvider.notifier).add(value);
+        ref.read(savedStateNotifierProvider.notifier).addStagingThreat(value);
         break;
       case CellSelection.p1will:
-        ref.read(p1WillpowerProvider.notifier).add(value);
+        ref
+            .read(savedStateNotifierProvider.notifier)
+            .addPlayerWillpower(PlayerOption.p1, value);
         break;
       case CellSelection.p2will:
-        ref.read(p2WillpowerProvider.notifier).add(value);
+        ref
+            .read(savedStateNotifierProvider.notifier)
+            .addPlayerWillpower(PlayerOption.p2, value);
         break;
       case CellSelection.p3will:
-        ref.read(p3WillpowerProvider.notifier).add(value);
+        ref
+            .read(savedStateNotifierProvider.notifier)
+            .addPlayerWillpower(PlayerOption.p3, value);
         break;
       case CellSelection.p4will:
-        ref.read(p4WillpowerProvider.notifier).add(value);
+        ref
+            .read(savedStateNotifierProvider.notifier)
+            .addPlayerWillpower(PlayerOption.p4, value);
         break;
-      default:
+      case CellSelection.round:
+        break;
+      case CellSelection.p1threat:
+        break;
+      case CellSelection.p2threat:
+        break;
+      case CellSelection.p3threat:
+        break;
+      case CellSelection.p4threat:
         break;
     }
   }
 
-  void _onRemove(int value)
-  {
+  void _onRemove(int value) {
     final selection = ref.read(selectedCellProvider);
     switch (selection) {
       case CellSelection.stagingThreat:
-        ref.read(stagingThreatProvider.notifier).remove(value);
+        ref
+            .read(savedStateNotifierProvider.notifier)
+            .removeStagingThreat(value);
         break;
       case CellSelection.p1will:
-        ref.read(p1WillpowerProvider.notifier).remove(value);
+        ref
+            .read(savedStateNotifierProvider.notifier)
+            .removePlayerWillpower(PlayerOption.p1, value);
         break;
       case CellSelection.p2will:
-        ref.read(p2WillpowerProvider.notifier).remove(value);
+        ref
+            .read(savedStateNotifierProvider.notifier)
+            .removePlayerWillpower(PlayerOption.p2, value);
         break;
       case CellSelection.p3will:
-        ref.read(p3WillpowerProvider.notifier).remove(value);
+        ref
+            .read(savedStateNotifierProvider.notifier)
+            .removePlayerWillpower(PlayerOption.p3, value);
         break;
       case CellSelection.p4will:
-        ref.read(p4WillpowerProvider.notifier).remove(value);
+        ref
+            .read(savedStateNotifierProvider.notifier)
+            .removePlayerWillpower(PlayerOption.p4, value);
         break;
-      default:
+      case CellSelection.round:
+        break;
+      case CellSelection.p1threat:
+        break;
+      case CellSelection.p2threat:
+        break;
+      case CellSelection.p3threat:
+        break;
+      case CellSelection.p4threat:
         break;
     }
   }

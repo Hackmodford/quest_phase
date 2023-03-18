@@ -22,7 +22,8 @@ class SelectedCell extends _$SelectedCell {
     return CellSelection.stagingThreat;
   }
 
-  void set(CellSelection value) {
-    state = value;
+  @override
+  set state(CellSelection value) {
+    super.state = value;
   }
 }

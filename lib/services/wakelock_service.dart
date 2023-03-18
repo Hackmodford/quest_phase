@@ -1,6 +1,5 @@
-import 'package:wakelock/wakelock.dart';
-
 import 'package:riverpod_annotation/riverpod_annotation.dart';
+import 'package:wakelock/wakelock.dart';
 
 part 'wakelock_service.g.dart';
 

@@ -4,24 +4,60 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:quest_phase/gen/assets.gen.dart';
 import 'package:quest_phase/gen/colors.gen.dart';
 import 'package:quest_phase/gen/fonts.gen.dart';
-import 'package:quest_phase/providers/utils/counter_notifier.dart';
+import 'package:quest_phase/providers/saved_state_provider.dart';
 import 'package:quest_phase/providers/selected_cell_provider.dart';
 import 'package:quest_phase/widgets/cell.dart';
 
 class PlayerWillpowerCell extends HookConsumerWidget {
-  final String name;
-  final NotifierProvider<CounterNotifier, int> provider;
-  final CellSelection cellSelection;
+  const PlayerWillpowerCell({
+    required this.playerOption,
+    required this.cellSelection,
+    required this.name,
+    super.key,
+  });
 
-  const PlayerWillpowerCell(
-      {Key? key, required this.provider, required this.cellSelection, required this.name,})
-      : super(key: key);
+  final String name;
+  final PlayerOption playerOption;
+  final CellSelection cellSelection;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final String text = ref.watch(provider).toString();
-    final bool isHighlighted =
-        ref.watch(selectedCellProvider) == cellSelection;
+    final isHighlighted = ref.watch(selectedCellProvider) == cellSelection;
+    String text;
+    switch (playerOption) {
+      case PlayerOption.p1:
+        text = ref
+            .watch(
+              savedStateNotifierProvider
+                  .select((value) => value.playerState1.willpower),
+            )
+            .toString();
+        break;
+      case PlayerOption.p2:
+        text = ref
+            .watch(
+          savedStateNotifierProvider
+              .select((value) => value.playerState2.willpower),
+        )
+            .toString();
+        break;
+      case PlayerOption.p3:
+        text = ref
+            .watch(
+          savedStateNotifierProvider
+              .select((value) => value.playerState3.willpower),
+        )
+            .toString();
+        break;
+      case PlayerOption.p4:
+        text = ref
+            .watch(
+          savedStateNotifierProvider
+              .select((value) => value.playerState4.willpower),
+        )
+            .toString();
+        break;
+    }
 
     return Material(
       elevation: 4,
@@ -29,18 +65,18 @@ class PlayerWillpowerCell extends HookConsumerWidget {
       child: InkWell(
         borderRadius: BorderRadius.circular(4),
         onTap: () {
-          ref.read(selectedCellProvider.notifier).set(cellSelection);
+          ref.read(selectedCellProvider.notifier).state = cellSelection;
         },
         child: Cell(
           isHighlighted: isHighlighted,
           color: ColorName.willpowerBackground,
           child: Padding(
-            padding: const EdgeInsets.all(2.0),
+            padding: const EdgeInsets.all(2),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
                 Padding(
-                  padding: const EdgeInsets.only(left: 2.0, right: 2.0, top: 2.0),
+                  padding: const EdgeInsets.only(left: 2, right: 2, top: 2),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
@@ -51,19 +87,23 @@ class PlayerWillpowerCell extends HookConsumerWidget {
                       ),
                       4.widthBox,
                       Padding(
-                        padding: const EdgeInsets.only(top: 4.0),
-                        child: Text(name,),
+                        padding: const EdgeInsets.only(top: 4),
+                        child: Text(
+                          name,
+                        ),
                       ),
                     ],
                   ),
                 ),
                 4.heightBox,
-                Container(
-                  decoration: BoxDecoration(color: Colors.black54,
-                      borderRadius: BorderRadius.circular(4)),
+                DecoratedBox(
+                  decoration: BoxDecoration(
+                    color: Colors.black54,
+                    borderRadius: BorderRadius.circular(4),
+                  ),
                   child: Center(
                     child: Padding(
-                      padding: const EdgeInsets.only(top: 12.0),
+                      padding: const EdgeInsets.only(top: 12),
                       child: Text(
                         text,
                         style: const TextStyle(

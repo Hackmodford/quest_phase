@@ -1,11 +1,16 @@
 import 'package:flutter/material.dart';
 
 class Cell extends StatelessWidget {
+  const Cell({
+    super.key,
+    this.color,
+    this.child,
+    this.isHighlighted = false,
+  });
+
   final Color? color;
   final Widget? child;
   final bool isHighlighted;
-
-  const Cell({Key? key, this.color, this.child, this.isHighlighted = false}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -31,7 +36,8 @@ class Cell extends StatelessWidget {
                     borderRadius: BorderRadius.circular(4),
                     border: Border.all(
                       width: 2,
-                        color: Colors.yellow, strokeAlign: BorderSide.strokeAlignInside),
+                      color: Colors.yellow,
+                    ),
                   ),
                 ),
               ),

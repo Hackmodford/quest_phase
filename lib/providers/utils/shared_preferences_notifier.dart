@@ -1,5 +1,4 @@
 // source: https://github.com/gamako/shared_preferences_riverpod/blob/master/lib/shared_preferences_riverpod.dart
-library shared_preferences_flutter_riverpod;
 
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -32,8 +31,10 @@ class PrefNotifier<T> extends StateNotifier<T> {
   /// Instead, use `await update(value).`
   @override
   set state(T value) {
-    assert(false,
-    "Don't use the setter for state. Instead use `await update(value)`.");
+    assert(
+      false,
+      "Don't use the setter for state. Instead use `await update(value)`.",
+    );
     Future(() async {
       await update(value);
     });
@@ -46,5 +47,6 @@ StateNotifierProvider<PrefNotifier<T>, T> createPrefProvider<T>({
   required T defaultValue,
 }) {
   return StateNotifierProvider<PrefNotifier<T>, T>(
-          (ref) => PrefNotifier<T>(prefs(ref), prefKey, defaultValue));
+    (ref) => PrefNotifier<T>(prefs(ref), prefKey, defaultValue),
+  );
 }

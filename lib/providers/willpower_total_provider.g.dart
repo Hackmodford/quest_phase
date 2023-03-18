@@ -6,7 +6,7 @@ part of 'willpower_total_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$willpowerTotalHash() => r'97e740391ba5d4a7a94a682a77b02580adc731fd';
+String _$willpowerTotalHash() => r'7853111225b3d17e226869004fb8be0fdd42428b';
 
 /// See also [willpowerTotal].
 @ProviderFor(willpowerTotal)
