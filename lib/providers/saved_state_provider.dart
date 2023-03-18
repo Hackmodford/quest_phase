@@ -14,7 +14,7 @@ const int lowerLimit = 0;
 const int upperLimit = 9999;
 
 @Riverpod(keepAlive: true)
-class SavedStateNotifier extends Notifier<SavedState> {
+class SavedStateNotifier extends _$SavedStateNotifier {
   @override
   SavedState build() {
     final value = ref.read(savedStatePrefProvider);
