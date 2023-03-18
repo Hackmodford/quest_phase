@@ -6,7 +6,7 @@ part of 'selected_cell_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$selectedCellHash() => r'6fa47ce497dd811bd0cec4db5659efc2f536da22';
+String _$selectedCellHash() => r'807973fbe7e9ace5a4569cc2e803264daaec84d9';
 
 /// See also [SelectedCell].
 @ProviderFor(SelectedCell)

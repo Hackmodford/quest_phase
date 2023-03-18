@@ -80,7 +80,7 @@ flutter:
   fonts:
     - family: TimesNewRoman
       fonts:
-        - asset: assets/fonts/times_new_roman.TTF
+        - asset: assets/fonts/times_new_roman.ttf
     - family: Vafthrudnir
       fonts:
         - asset: assets/fonts/VAFTHRUD.TTF
