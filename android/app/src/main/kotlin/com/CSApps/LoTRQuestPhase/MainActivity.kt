@@ -1,4 +1,4 @@
-package com.example.quest_phase
+package com.CSApps.LoTRQuestPhase
 
 import io.flutter.embedding.android.FlutterActivity
 
