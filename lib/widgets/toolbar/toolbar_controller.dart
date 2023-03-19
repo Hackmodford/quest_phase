@@ -90,7 +90,7 @@ class ToolbarController {
     onAddOneThreatToAllPlayers();
     _onResetAllPlayerWillpower();
 
-    if (ref.read(settingShouldResetStagingThreatProvider)) {
+    if (ref.read(shouldResetStagingThreatProvider)) {
       _onResetStagingThreat();
     }
   }

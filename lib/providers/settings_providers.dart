@@ -1,18 +1,44 @@
-import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:quest_phase/providers/utils/shared_preferences_notifier.dart';
+import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-final sharedPreferencesProvider =
-    Provider<SharedPreferences>((ref) => throw UnimplementedError());
+part 'settings_providers.g.dart';
 
-final settingShouldResetStagingThreatProvider = createPrefProvider(
-  prefs: (ref) => ref.read(sharedPreferencesProvider),
-  prefKey: 'shouldResetStagingThreat',
-  defaultValue: true,
-);
+@Riverpod(keepAlive: true)
+SharedPreferences sharedPreferences(SharedPreferencesRef ref) =>
+    throw UnimplementedError();
 
-final settingShouldKeepScreenOnProvider = createPrefProvider(
-  prefs: (ref) => ref.read(sharedPreferencesProvider),
-  prefKey: 'shouldKeepScreenOn',
-  defaultValue: false,
-);
+const String shouldResetStagingThreatKey = 'shouldResetStagingThreat';
+
+@riverpod
+class ShouldResetStagingThreat extends _$ShouldResetStagingThreat {
+  @override
+  bool build() {
+    final prefs = ref.watch(sharedPreferencesProvider);
+    final value = prefs.getBool(shouldResetStagingThreatKey);
+    return value ?? true;
+  }
+
+  Future<void> update({required bool value}) async {
+    state = value;
+    final prefs = ref.read(sharedPreferencesProvider);
+    await prefs.setBool(shouldResetStagingThreatKey, value);
+  }
+}
+
+const String shouldKeepScreenOnKey = 'shouldKeepScreenOn';
+
+@riverpod
+class ShouldKeepScreenOn extends _$ShouldKeepScreenOn {
+  @override
+  bool build() {
+    final prefs = ref.watch(sharedPreferencesProvider);
+    final value = prefs.getBool(shouldKeepScreenOnKey);
+    return value ?? false;
+  }
+
+  Future<void> update({required bool value}) async {
+    state = value;
+    final prefs = ref.read(sharedPreferencesProvider);
+    await prefs.setBool(shouldKeepScreenOnKey, value);
+  }
+}

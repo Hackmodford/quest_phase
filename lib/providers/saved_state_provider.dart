@@ -1,9 +1,9 @@
 import 'dart:convert';
 import 'dart:math';
 
+import 'package:easy_debounce/easy_debounce.dart';
 import 'package:quest_phase/models/saved_state.dart';
 import 'package:quest_phase/providers/settings_providers.dart';
-import 'package:quest_phase/providers/utils/shared_preferences_notifier.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'saved_state_provider.g.dart';
@@ -12,39 +12,36 @@ enum PlayerOption { p1, p2, p3, p4 }
 
 const int lowerLimit = 0;
 const int upperLimit = 9999;
+const String savedStateKey = 'savedState';
+const String debounceKey = 'savedStateDebounceKey';
 
 @Riverpod(keepAlive: true)
 class SavedStateNotifier extends _$SavedStateNotifier {
   @override
   SavedState build() {
-    final value = ref.read(savedStatePrefProvider);
+    final prefs = ref.watch(sharedPreferencesProvider);
+    final jsonString = prefs.getString(savedStateKey);
     SavedState savedState;
-    if (value.isEmpty) {
-      savedState = const SavedState(
-        numberOfPlayers: 0,
-        round: 1,
-        stagingThreat: 0,
-        playerState1: PlayerState(
-          threat: 0,
-          willpower: 0,
-        ),
-        playerState2: PlayerState(
-          threat: 0,
-          willpower: 0,
-        ),
-        playerState3: PlayerState(
-          threat: 0,
-          willpower: 0,
-        ),
-        playerState4: PlayerState(
-          threat: 0,
-          willpower: 0,
-        ),
-      );
+    if (jsonString == null || jsonString.isEmpty) {
+      savedState = SavedState.empty();
     } else {
-      final json = jsonDecode(value) as Map<String, dynamic>;
+      final json = jsonDecode(jsonString) as Map<String, dynamic>;
       savedState = SavedState.fromJson(json);
     }
+
+    ref.listenSelf((previous, next) {
+      // save game state when changes stop after .333 seconds
+      EasyDebounce.debounce(
+        debounceKey,
+        const Duration(milliseconds: 333),
+        () {
+          final map = next.toJson();
+          final jsonString = jsonEncode(map);
+          prefs.setString(savedStateKey, jsonString);
+        },
+      );
+    });
+
     return savedState;
   }
 
@@ -260,9 +257,3 @@ class SavedStateNotifier extends _$SavedStateNotifier {
     }
   }
 }
-
-final savedStatePrefProvider = createPrefProvider(
-  prefs: (ref) => ref.read(sharedPreferencesProvider),
-  prefKey: 'savedState',
-  defaultValue: '',
-);

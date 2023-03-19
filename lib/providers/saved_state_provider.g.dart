@@ -7,7 +7,7 @@ part of 'saved_state_provider.dart';
 // **************************************************************************
 
 String _$savedStateNotifierHash() =>
-    r'2df027a5497d8cfc62767132c27866cecdfc7a7e';
+    r'8e31bb1521c1aac2270fd54bd25376a9e38f9195';
 
 /// See also [SavedStateNotifier].
 @ProviderFor(SavedStateNotifier)

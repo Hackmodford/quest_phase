@@ -1,12 +1,9 @@
 import 'dart:async';
-import 'dart:convert';
 
-import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:quest_phase/gen/fonts.gen.dart';
-import 'package:quest_phase/providers/saved_state_provider.dart';
 import 'package:quest_phase/providers/settings_providers.dart';
 import 'package:quest_phase/routes/app_router.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -39,20 +36,6 @@ class QuestPhase extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final router = ref.watch(routerProvider);
-
-    // save game state when changes stop after .333 seconds
-    ref.listen(savedStateNotifierProvider, (previous, next) {
-      EasyDebounce.debounce(
-        'persistance-debouncer',
-        const Duration(milliseconds: 333),
-        () {
-          final map = next.toJson();
-          final jsonString = jsonEncode(map);
-          ref.read(savedStatePrefProvider.notifier).update(jsonString);
-        },
-      );
-    });
-
     return MaterialApp.router(
       title: 'Quest Phase',
       debugShowCheckedModeBanner: false,

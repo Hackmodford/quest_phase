@@ -19,10 +19,10 @@ class SettingsPage extends StatelessWidget {
                 return SwitchListTile(
                   activeColor: Colors.orangeAccent,
                   title: buildRichText('Keep On Screen', 20),
-                  value: ref.watch(settingShouldKeepScreenOnProvider),
-                  onChanged: (bool value) => ref
-                      .read(settingShouldKeepScreenOnProvider.notifier)
-                      .update(value),
+                  value: ref.watch(shouldKeepScreenOnProvider),
+                  onChanged: (bool value) async => ref
+                      .read(shouldKeepScreenOnProvider.notifier)
+                      .update(value: value),
                 );
               },
             ),
@@ -35,10 +35,10 @@ class SettingsPage extends StatelessWidget {
                     'Forced: During the refresh phase, set staging threat to 0',
                     style: TextStyle(fontFamily: FontFamily.timesNewRoman),
                   ),
-                  value: ref.watch(settingShouldResetStagingThreatProvider),
-                  onChanged: (bool value) => ref
-                      .read(settingShouldResetStagingThreatProvider.notifier)
-                      .update(value),
+                  value: ref.watch(shouldResetStagingThreatProvider),
+                  onChanged: (bool value) async => ref
+                      .read(shouldResetStagingThreatProvider.notifier)
+                      .update(value: value),
                 );
               },
             ),

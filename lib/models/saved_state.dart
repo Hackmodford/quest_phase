@@ -18,6 +18,28 @@ class SavedState with _$SavedState {
 
   factory SavedState.fromJson(Map<String, dynamic> json) =>
       _$SavedStateFromJson(json);
+
+  factory SavedState.empty() => const SavedState(
+        numberOfPlayers: 0,
+        round: 1,
+        stagingThreat: 0,
+        playerState1: PlayerState(
+          threat: 0,
+          willpower: 0,
+        ),
+        playerState2: PlayerState(
+          threat: 0,
+          willpower: 0,
+        ),
+        playerState3: PlayerState(
+          threat: 0,
+          willpower: 0,
+        ),
+        playerState4: PlayerState(
+          threat: 0,
+          willpower: 0,
+        ),
+      );
 }
 
 @freezed
