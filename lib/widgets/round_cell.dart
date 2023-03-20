@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:quest_phase/gen/assets.gen.dart';
 import 'package:quest_phase/gen/colors.gen.dart';
@@ -22,7 +23,8 @@ class RoundCell extends HookConsumerWidget {
       borderRadius: BorderRadius.circular(4),
       child: InkWell(
         borderRadius: BorderRadius.circular(4),
-        onTap: () {
+        onTap: () async {
+          await HapticFeedback.selectionClick();
           ref.read(selectedCellProvider.notifier).state = CellSelection.round;
         },
         child: AdjustableCell(

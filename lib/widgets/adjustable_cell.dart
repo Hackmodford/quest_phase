@@ -1,5 +1,6 @@
 import 'package:awesome_extensions/awesome_extensions.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:quest_phase/gen/fonts.gen.dart';
 import 'package:quest_phase/widgets/cell.dart';
 
@@ -57,12 +58,18 @@ class AdjustableCell extends StatelessWidget {
               child: Row(
                 children: [
                   GestureDetector(
-                    onTap: onTapDecrease,
+                    onTap: () async {
+                      await HapticFeedback.mediumImpact();
+                      onTapDecrease?.call();
+                    },
                     child: const Icon(Icons.remove),
                   ),
                   Expanded(child: image),
                   GestureDetector(
-                    onTap: onTapIncrease,
+                    onTap: () async {
+                      await HapticFeedback.mediumImpact();
+                      onTapIncrease?.call();
+                    },
                     child: const Icon(Icons.add),
                   ),
                 ],
