@@ -1,10 +1,12 @@
 import 'package:awesome_extensions/awesome_extensions.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:quest_phase/gen/fonts.gen.dart';
+import 'package:quest_phase/services/sound_effect_service.dart';
 import 'package:quest_phase/widgets/cell.dart';
 
-class AdjustableCell extends StatelessWidget {
+class AdjustableCell extends ConsumerWidget {
   const AdjustableCell({
     required this.color,
     required this.image,
@@ -23,7 +25,7 @@ class AdjustableCell extends StatelessWidget {
   final bool isHighlighted;
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return Cell(
       isHighlighted: isHighlighted,
       color: color,
@@ -59,16 +61,18 @@ class AdjustableCell extends StatelessWidget {
                 children: [
                   GestureDetector(
                     onTap: () async {
-                      await HapticFeedback.mediumImpact();
                       onTapDecrease?.call();
+                      await HapticFeedback.mediumImpact();
+                      await ref.read(soundEffectServiceProvider).play();
                     },
                     child: const Icon(Icons.remove),
                   ),
                   Expanded(child: image),
                   GestureDetector(
                     onTap: () async {
-                      await HapticFeedback.mediumImpact();
                       onTapIncrease?.call();
+                      await HapticFeedback.mediumImpact();
+                      await ref.read(soundEffectServiceProvider).play();
                     },
                     child: const Icon(Icons.add),
                   ),

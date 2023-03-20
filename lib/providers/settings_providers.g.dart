@@ -22,7 +22,7 @@ final sharedPreferencesProvider = Provider<SharedPreferences>.internal(
 
 typedef SharedPreferencesRef = ProviderRef<SharedPreferences>;
 String _$shouldResetStagingThreatHash() =>
-    r'72f78d5809430a657a8d076a90239a0cb3cd2283';
+    r'47956392a9a8c3e02210173ace72ba39aaf479c5';
 
 /// See also [ShouldResetStagingThreat].
 @ProviderFor(ShouldResetStagingThreat)

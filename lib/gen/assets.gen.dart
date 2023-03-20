@@ -35,10 +35,22 @@ class $AssetsImagesGen {
       [clock, progress, threat, threaticon, willpower];
 }
 
+class $AssetsSoundsGen {
+  const $AssetsSoundsGen();
+
+  /// File path: assets/sounds/mixkit-cool-interface-click-tone-2568.wav
+  String get mixkitCoolInterfaceClickTone2568 =>
+      'assets/sounds/mixkit-cool-interface-click-tone-2568.wav';
+
+  /// List of all assets
+  List<String> get values => [mixkitCoolInterfaceClickTone2568];
+}
+
 class Assets {
   Assets._();
 
   static const $AssetsImagesGen images = $AssetsImagesGen();
+  static const $AssetsSoundsGen sounds = $AssetsSoundsGen();
 }
 
 class AssetGenImage {

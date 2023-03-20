@@ -66,7 +66,9 @@ class PlayerWillpowerCell extends HookConsumerWidget {
       child: InkWell(
         borderRadius: BorderRadius.circular(4),
         onTap: () async {
-          await HapticFeedback.selectionClick();
+          if (ref.read(selectedCellProvider) != cellSelection) {
+            await HapticFeedback.selectionClick();
+          }
           ref.read(selectedCellProvider.notifier).state = cellSelection;
         },
         child: Cell(

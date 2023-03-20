@@ -6,6 +6,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:quest_phase/gen/fonts.gen.dart';
 import 'package:quest_phase/providers/settings_providers.dart';
 import 'package:quest_phase/routes/app_router.dart';
+import 'package:quest_phase/services/sound_effect_service.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 void main() async {
@@ -19,10 +20,12 @@ void main() async {
     ),
   );
   final sharedPreferences = await SharedPreferences.getInstance();
+  final soundEffectService = await SoundEffectService.getInstance();
   runApp(
     ProviderScope(
       overrides: [
-        sharedPreferencesProvider.overrideWithValue(sharedPreferences)
+        sharedPreferencesProvider.overrideWithValue(sharedPreferences),
+        soundEffectServiceProvider.overrideWithValue(soundEffectService),
       ],
       child: const QuestPhase(),
     ),

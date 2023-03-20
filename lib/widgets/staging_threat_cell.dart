@@ -27,7 +27,9 @@ class StagingThreatCell extends HookConsumerWidget {
       child: InkWell(
         borderRadius: BorderRadius.circular(4),
         onTap: () async {
-          await HapticFeedback.selectionClick();
+          if (ref.read(selectedCellProvider) != CellSelection.stagingThreat) {
+            await HapticFeedback.selectionClick();
+          }
           ref
               .read(selectedCellProvider.notifier)
               .state = CellSelection.stagingThreat;
