@@ -1,8 +1,10 @@
 import 'package:awesome_extensions/awesome_extensions.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:quest_phase/providers/selected_cell_provider.dart';
+import 'package:quest_phase/services/sound_effect_service.dart';
 import 'package:quest_phase/utils/font_utils.dart';
 import 'package:quest_phase/widgets/cell.dart';
 import 'package:quest_phase/widgets/toolbar/toolbar_controller.dart';
@@ -50,9 +52,13 @@ class Toolbar extends HookConsumerWidget {
               borderRadius: BorderRadius.circular(4),
               child: InkWell(
                 borderRadius: BorderRadius.circular(4),
-                onTap: () => ref
+                onTap: () async {
+                  await HapticFeedback.mediumImpact();
+                  await ref.read(soundEffectServiceProvider).playDecrease();
+                  ref
                     .read(toolbarControllerProvider)
-                    .onRemoveOneThreatFromAllPlayers(),
+                    .onRemoveOneThreatFromAllPlayers();
+                },
                 child: Cell(
                   color: color,
                   child: buildRichText('-1 All Players', 20)
@@ -68,9 +74,13 @@ class Toolbar extends HookConsumerWidget {
               borderRadius: BorderRadius.circular(4),
               child: InkWell(
                 borderRadius: BorderRadius.circular(4),
-                onTap: () => ref
+                onTap: () async {
+                  await HapticFeedback.mediumImpact();
+                  await ref.read(soundEffectServiceProvider).playIncrease();
+                  ref
                     .read(toolbarControllerProvider)
-                    .onAddOneThreatToAllPlayers(),
+                    .onAddOneThreatToAllPlayers();
+                },
                 child: Cell(
                   color: color,
                   child: buildRichText('+1 All Players', 20)
@@ -99,7 +109,11 @@ class Toolbar extends HookConsumerWidget {
               elevation: 4,
               child: InkWell(
                 borderRadius: BorderRadius.circular(4),
-                onTap: () => ref.read(toolbarControllerProvider).onClearAll(),
+                onTap: () async {
+                  await HapticFeedback.mediumImpact();
+                  await ref.read(soundEffectServiceProvider).playDecrease();
+                  ref.read(toolbarControllerProvider).onClearAll();
+                },
                 child: Cell(
                   color: color,
                   child: buildRichText('Clear\n All', 14),
@@ -114,7 +128,11 @@ class Toolbar extends HookConsumerWidget {
               elevation: 4,
               child: InkWell(
                 borderRadius: BorderRadius.circular(4),
-                onTap: () => ref.read(toolbarControllerProvider).onRemoveOne(),
+                onTap: () async {
+                  await HapticFeedback.mediumImpact();
+                  await ref.read(soundEffectServiceProvider).playDecrease();
+                  ref.read(toolbarControllerProvider).onRemoveOne();
+                },
                 child: Cell(
                   color: color,
                   child: const Text(
@@ -132,7 +150,11 @@ class Toolbar extends HookConsumerWidget {
               elevation: 4,
               child: InkWell(
                 borderRadius: BorderRadius.circular(4),
-                onTap: () => ref.read(toolbarControllerProvider).onAddOne(),
+                onTap: () async {
+                  await HapticFeedback.mediumImpact();
+                  await ref.read(soundEffectServiceProvider).playIncrease();
+                  ref.read(toolbarControllerProvider).onAddOne();
+                },
                 child: Cell(
                   color: color,
                   child: const Text(
@@ -150,7 +172,11 @@ class Toolbar extends HookConsumerWidget {
               elevation: 4,
               child: InkWell(
                 borderRadius: BorderRadius.circular(4),
-                onTap: () => ref.read(toolbarControllerProvider).onAddTwo(),
+                onTap: () async {
+                  await HapticFeedback.mediumImpact();
+                  await ref.read(soundEffectServiceProvider).playIncrease();
+                  ref.read(toolbarControllerProvider).onAddTwo();
+                },
                 child: Cell(
                   color: color,
                   child: const Text(
@@ -168,7 +194,11 @@ class Toolbar extends HookConsumerWidget {
               elevation: 4,
               child: InkWell(
                 borderRadius: BorderRadius.circular(4),
-                onTap: () => ref.read(toolbarControllerProvider).onAddFive(),
+                onTap: () async {
+                  await HapticFeedback.mediumImpact();
+                  await ref.read(soundEffectServiceProvider).playIncrease();
+                  ref.read(toolbarControllerProvider).onAddFive();
+                },
                 child: Cell(
                   color: color,
                   child: const Text(
@@ -199,8 +229,11 @@ class Toolbar extends HookConsumerWidget {
               borderRadius: BorderRadius.circular(4),
               child: InkWell(
                 borderRadius: BorderRadius.circular(4),
-                onTap: () =>
-                    ref.read(toolbarControllerProvider).onRefreshAndNewRound(),
+                onTap: () async {
+                  await HapticFeedback.mediumImpact();
+                  await ref.read(soundEffectServiceProvider).playIncrease();
+                  ref.read(toolbarControllerProvider).onRefreshAndNewRound();
+                },
                 child: Cell(
                   color: color,
                   child: buildRichText('Refresh + New Round', 20),

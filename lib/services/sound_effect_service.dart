@@ -44,15 +44,23 @@ class SoundEffectService {
     ),
   );
 
-  late final int soundId;
+  late final int increaseSoundId;
+  late final int decreaseSoundId;
 
   Future<void> init() async {
-    final rawSound =
+    final increaseRaw =
         await rootBundle.load(Assets.sounds.mixkitCoolInterfaceClickTone2568);
-    soundId = await pool.load(rawSound);
+    increaseSoundId = await pool.load(increaseRaw);
+    final decreaseRaw =
+    await rootBundle.load(Assets.sounds.mixkitCoolInterfaceClickTone25682);
+    decreaseSoundId = await pool.load(decreaseRaw);
   }
 
-  Future<void> play() async {
-    await pool.play(soundId);
+  Future<void> playIncrease() async {
+    await pool.play(increaseSoundId);
+  }
+
+  Future<void> playDecrease() async {
+    await pool.play(decreaseSoundId);
   }
 }

@@ -1,9 +1,11 @@
 // ignore_for_file: avoid_redundant_argument_values
 
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_layout_grid/flutter_layout_grid.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:quest_phase/gen/fonts.gen.dart';
+import 'package:quest_phase/services/sound_effect_service.dart';
 import 'package:quest_phase/widgets/cell.dart';
 import 'package:quest_phase/widgets/number_pad/number_pad_controller.dart';
 
@@ -126,7 +128,11 @@ class NumberPad extends ConsumerWidget {
       borderRadius: BorderRadius.circular(4),
       child: InkWell(
         borderRadius: BorderRadius.circular(4),
-        onTap: () => ref.read(numberPadControllerProvider).onNumber(value),
+        onTap: () async {
+          await HapticFeedback.mediumImpact();
+          await ref.read(soundEffectServiceProvider).playIncrease();
+          ref.read(numberPadControllerProvider).onNumber(value);
+        },
         child: Cell(
           color: color,
           child: Padding(
@@ -166,7 +172,11 @@ class NumberPad extends ConsumerWidget {
       borderRadius: BorderRadius.circular(4),
       child: InkWell(
         borderRadius: BorderRadius.circular(4),
-        onTap: () => ref.read(numberPadControllerProvider).onBackspace(),
+        onTap: () async {
+          await HapticFeedback.mediumImpact();
+          await ref.read(soundEffectServiceProvider).playDecrease();
+          ref.read(numberPadControllerProvider).onBackspace();
+        },
         child: Cell(
           color: color,
           child: const Padding(
@@ -199,7 +209,11 @@ class NumberPad extends ConsumerWidget {
       borderRadius: BorderRadius.circular(4),
       child: InkWell(
         borderRadius: BorderRadius.circular(4),
-        onTap: () => ref.read(numberPadControllerProvider).onClear(),
+        onTap: () async {
+          await HapticFeedback.mediumImpact();
+          await ref.read(soundEffectServiceProvider).playDecrease();
+          ref.read(numberPadControllerProvider).onClear();
+        },
         child: Cell(
           color: color,
           child: Padding(

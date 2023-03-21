@@ -38,12 +38,17 @@ class $AssetsImagesGen {
 class $AssetsSoundsGen {
   const $AssetsSoundsGen();
 
+  /// File path: assets/sounds/mixkit-cool-interface-click-tone-2568-2.wav
+  String get mixkitCoolInterfaceClickTone25682 =>
+      'assets/sounds/mixkit-cool-interface-click-tone-2568-2.wav';
+
   /// File path: assets/sounds/mixkit-cool-interface-click-tone-2568.wav
   String get mixkitCoolInterfaceClickTone2568 =>
       'assets/sounds/mixkit-cool-interface-click-tone-2568.wav';
 
   /// List of all assets
-  List<String> get values => [mixkitCoolInterfaceClickTone2568];
+  List<String> get values =>
+      [mixkitCoolInterfaceClickTone25682, mixkitCoolInterfaceClickTone2568];
 }
 
 class Assets {

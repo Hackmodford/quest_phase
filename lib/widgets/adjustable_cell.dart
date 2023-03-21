@@ -63,7 +63,7 @@ class AdjustableCell extends ConsumerWidget {
                     onTap: () async {
                       onTapDecrease?.call();
                       await HapticFeedback.mediumImpact();
-                      await ref.read(soundEffectServiceProvider).play();
+                      await ref.read(soundEffectServiceProvider).playDecrease();
                     },
                     child: const Icon(Icons.remove),
                   ),
@@ -72,7 +72,7 @@ class AdjustableCell extends ConsumerWidget {
                     onTap: () async {
                       onTapIncrease?.call();
                       await HapticFeedback.mediumImpact();
-                      await ref.read(soundEffectServiceProvider).play();
+                      await ref.read(soundEffectServiceProvider).playIncrease();
                     },
                     child: const Icon(Icons.add),
                   ),
