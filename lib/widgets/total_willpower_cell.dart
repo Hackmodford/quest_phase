@@ -1,6 +1,8 @@
 import 'package:awesome_extensions/awesome_extensions.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:quest_phase/animated_int_hook.dart';
 import 'package:quest_phase/gen/assets.gen.dart';
 import 'package:quest_phase/gen/colors.gen.dart';
 import 'package:quest_phase/gen/fonts.gen.dart';
@@ -13,7 +15,11 @@ class TotalWillpowerCell extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final text = ref.watch(willpowerTotalProvider).toString();
+    final animatedInt = useAnimatedInt(
+      ref.watch(willpowerTotalProvider),
+      const Duration(milliseconds: 333),
+    );
+    useAnimation(animatedInt);
     return Material(
       elevation: 4,
       borderRadius: BorderRadius.circular(4),
@@ -39,7 +45,7 @@ class TotalWillpowerCell extends HookConsumerWidget {
               Padding(
                 padding: const EdgeInsets.only(top: 6, bottom: 4),
                 child: Text(
-                  text,
+                  animatedInt.value.toString(),
                   style: const TextStyle(
                     height: 0.75,
                     fontFamily: FontFamily.vafthrudnir,
