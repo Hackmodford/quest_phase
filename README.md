@@ -18,3 +18,7 @@ Then prepend `fvm` to all flutter commands. For example: `fvm flutter run` inste
 ## How to Build iOS
 
 `fvm flutter build ipa --export-options-plist $PWD/ios/ExportOptions.plist`
+
+## How to Build Android
+
+`fvm flutter build appbundle`
