@@ -14,3 +14,7 @@ Quest Phase uses [FVM](https://fvm.app/) to manage flutter versions.
 
 Install FVM and use `fvm install` to download the correct Flutter sdk for the project. 
 Then prepend `fvm` to all flutter commands. For example: `fvm flutter run` instead of `flutter run`.
+
+## How to Build iOS
+
+`fvm flutter build ipa --export-options-plist $PWD/ios/ExportOptions.plist`

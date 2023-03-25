@@ -1,0 +1,6 @@
+storage_mode("git")
+type("development")
+app_identifier(["com.hackmodford.questphase"])
+team_id('7M68YQDBSE')
+api_key_path('fastlane/4697FZN9JG.json')
+
