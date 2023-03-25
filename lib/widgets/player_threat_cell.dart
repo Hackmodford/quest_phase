@@ -61,10 +61,12 @@ class PlayerThreatCell extends HookConsumerWidget {
       borderRadius: BorderRadius.circular(4),
       child: InkWell(
         borderRadius: BorderRadius.circular(4),
-        onTap: () async {
+        onTapDown: (_) {
           if (ref.read(selectedCellProvider) != cellSelection) {
-            await HapticFeedback.selectionClick();
+            HapticFeedback.selectionClick();
           }
+        },
+        onTap: () {
           ref.read(selectedCellProvider.notifier).state = cellSelection;
         },
         child: AdjustableCell(

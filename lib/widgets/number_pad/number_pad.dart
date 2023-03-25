@@ -128,9 +128,11 @@ class NumberPad extends ConsumerWidget {
       borderRadius: BorderRadius.circular(4),
       child: InkWell(
         borderRadius: BorderRadius.circular(4),
-        onTap: () async {
-          await HapticFeedback.mediumImpact();
-          await ref.read(soundEffectServiceProvider).playIncrease();
+        onTapDown: (_) {
+          ref.read(soundEffectServiceProvider).playIncrease();
+          HapticFeedback.mediumImpact();
+        },
+        onTap: () {
           ref.read(numberPadControllerProvider).onNumber(value);
         },
         child: Cell(
@@ -172,9 +174,11 @@ class NumberPad extends ConsumerWidget {
       borderRadius: BorderRadius.circular(4),
       child: InkWell(
         borderRadius: BorderRadius.circular(4),
-        onTap: () async {
-          await HapticFeedback.mediumImpact();
-          await ref.read(soundEffectServiceProvider).playDecrease();
+        onTapDown: (_) {
+          ref.read(soundEffectServiceProvider).playDecrease();
+          HapticFeedback.mediumImpact();
+        },
+        onTap: () {
           ref.read(numberPadControllerProvider).onBackspace();
         },
         child: Cell(
@@ -209,9 +213,11 @@ class NumberPad extends ConsumerWidget {
       borderRadius: BorderRadius.circular(4),
       child: InkWell(
         borderRadius: BorderRadius.circular(4),
-        onTap: () async {
-          await HapticFeedback.mediumImpact();
-          await ref.read(soundEffectServiceProvider).playDecrease();
+        onTapDown: (_) {
+          ref.read(soundEffectServiceProvider).playDecrease();
+          HapticFeedback.mediumImpact();
+        },
+        onTap: () {
           ref.read(numberPadControllerProvider).onClear();
         },
         child: Cell(

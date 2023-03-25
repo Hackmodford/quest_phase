@@ -52,12 +52,14 @@ class Toolbar extends HookConsumerWidget {
               borderRadius: BorderRadius.circular(4),
               child: InkWell(
                 borderRadius: BorderRadius.circular(4),
-                onTap: () async {
-                  await HapticFeedback.mediumImpact();
-                  await ref.read(soundEffectServiceProvider).playDecrease();
+                onTapDown: (_) {
+                  HapticFeedback.mediumImpact();
+                  ref.read(soundEffectServiceProvider).playDecrease();
+                },
+                onTap: () {
                   ref
-                    .read(toolbarControllerProvider)
-                    .onRemoveOneThreatFromAllPlayers();
+                      .read(toolbarControllerProvider)
+                      .onRemoveOneThreatFromAllPlayers();
                 },
                 child: Cell(
                   color: color,
@@ -74,12 +76,14 @@ class Toolbar extends HookConsumerWidget {
               borderRadius: BorderRadius.circular(4),
               child: InkWell(
                 borderRadius: BorderRadius.circular(4),
-                onTap: () async {
-                  await HapticFeedback.mediumImpact();
-                  await ref.read(soundEffectServiceProvider).playIncrease();
+                onTapDown: (_) {
+                  HapticFeedback.mediumImpact();
+                  ref.read(soundEffectServiceProvider).playIncrease();
+                },
+                onTap: () {
                   ref
-                    .read(toolbarControllerProvider)
-                    .onAddOneThreatToAllPlayers();
+                      .read(toolbarControllerProvider)
+                      .onAddOneThreatToAllPlayers();
                 },
                 child: Cell(
                   color: color,
@@ -109,9 +113,11 @@ class Toolbar extends HookConsumerWidget {
               elevation: 4,
               child: InkWell(
                 borderRadius: BorderRadius.circular(4),
-                onTap: () async {
-                  await HapticFeedback.mediumImpact();
-                  await ref.read(soundEffectServiceProvider).playDecrease();
+                onTapDown: (_) {
+                  HapticFeedback.mediumImpact();
+                  ref.read(soundEffectServiceProvider).playDecrease();
+                },
+                onTap: () {
                   ref.read(toolbarControllerProvider).onClearAll();
                 },
                 child: Cell(
@@ -128,9 +134,11 @@ class Toolbar extends HookConsumerWidget {
               elevation: 4,
               child: InkWell(
                 borderRadius: BorderRadius.circular(4),
-                onTap: () async {
-                  await HapticFeedback.mediumImpact();
-                  await ref.read(soundEffectServiceProvider).playDecrease();
+                onTapDown: (_) {
+                  HapticFeedback.mediumImpact();
+                  ref.read(soundEffectServiceProvider).playDecrease();
+                },
+                onTap: () {
                   ref.read(toolbarControllerProvider).onRemoveOne();
                 },
                 child: Cell(
@@ -150,9 +158,11 @@ class Toolbar extends HookConsumerWidget {
               elevation: 4,
               child: InkWell(
                 borderRadius: BorderRadius.circular(4),
-                onTap: () async {
-                  await HapticFeedback.mediumImpact();
-                  await ref.read(soundEffectServiceProvider).playIncrease();
+                onTapDown: (_) {
+                  HapticFeedback.mediumImpact();
+                  ref.read(soundEffectServiceProvider).playIncrease();
+                },
+                onTap: () {
                   ref.read(toolbarControllerProvider).onAddOne();
                 },
                 child: Cell(
@@ -172,9 +182,11 @@ class Toolbar extends HookConsumerWidget {
               elevation: 4,
               child: InkWell(
                 borderRadius: BorderRadius.circular(4),
-                onTap: () async {
-                  await HapticFeedback.mediumImpact();
-                  await ref.read(soundEffectServiceProvider).playIncrease();
+                onTapDown: (_) {
+                  HapticFeedback.mediumImpact();
+                  ref.read(soundEffectServiceProvider).playIncrease();
+                },
+                onTap: () {
                   ref.read(toolbarControllerProvider).onAddTwo();
                 },
                 child: Cell(
@@ -194,9 +206,11 @@ class Toolbar extends HookConsumerWidget {
               elevation: 4,
               child: InkWell(
                 borderRadius: BorderRadius.circular(4),
-                onTap: () async {
-                  await HapticFeedback.mediumImpact();
-                  await ref.read(soundEffectServiceProvider).playIncrease();
+                onTapDown: (_) {
+                  HapticFeedback.mediumImpact();
+                  ref.read(soundEffectServiceProvider).playIncrease();
+                },
+                onTap: () {
                   ref.read(toolbarControllerProvider).onAddFive();
                 },
                 child: Cell(
@@ -229,9 +243,11 @@ class Toolbar extends HookConsumerWidget {
               borderRadius: BorderRadius.circular(4),
               child: InkWell(
                 borderRadius: BorderRadius.circular(4),
-                onTap: () async {
-                  await HapticFeedback.mediumImpact();
-                  await ref.read(soundEffectServiceProvider).playIncrease();
+                onTapDown: (_) {
+                  HapticFeedback.mediumImpact();
+                  ref.read(soundEffectServiceProvider).playIncrease();
+                },
+                onTap: () {
                   ref.read(toolbarControllerProvider).onRefreshAndNewRound();
                 },
                 child: Cell(
