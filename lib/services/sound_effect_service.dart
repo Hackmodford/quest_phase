@@ -12,7 +12,6 @@ SoundEffectService soundEffectService(SoundEffectServiceRef ref) =>
     throw UnimplementedError();
 
 class SoundEffectService {
-
   SoundEffectService._();
 
   static Completer<SoundEffectService>? _completer;
@@ -39,6 +38,9 @@ class SoundEffectService {
 
   final pool = Soundpool.fromOptions(
     options: const SoundpoolOptions(
+      iosOptions: SoundpoolOptionsIos(
+        audioSessionCategory: AudioSessionCategory.ambient,
+      ),
       streamType: StreamType.notification,
       maxStreams: 4,
     ),
@@ -52,7 +54,7 @@ class SoundEffectService {
         await rootBundle.load(Assets.sounds.mixkitCoolInterfaceClickTone2568);
     increaseSoundId = await pool.load(increaseRaw);
     final decreaseRaw =
-    await rootBundle.load(Assets.sounds.mixkitCoolInterfaceClickTone25682);
+        await rootBundle.load(Assets.sounds.mixkitCoolInterfaceClickTone25682);
     decreaseSoundId = await pool.load(decreaseRaw);
   }
 
