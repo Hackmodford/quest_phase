@@ -7,7 +7,7 @@ part of 'saved_state_provider.dart';
 // **************************************************************************
 
 String _$savedStateNotifierHash() =>
-    r'8e31bb1521c1aac2270fd54bd25376a9e38f9195';
+    r'93f63ad2a4b5a7c81d61a0144457cbc6fc9852a6';
 
 /// See also [SavedStateNotifier].
 @ProviderFor(SavedStateNotifier)
@@ -23,4 +23,5 @@ final savedStateNotifierProvider =
 );
 
 typedef _$SavedStateNotifier = Notifier<SavedState>;
-// ignore_for_file: unnecessary_raw_strings, subtype_of_sealed_class, invalid_use_of_internal_member, do_not_use_environment, prefer_const_constructors, public_member_api_docs, avoid_private_typedef_functions
+// ignore_for_file: type=lint
+// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member

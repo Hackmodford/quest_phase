@@ -6,8 +6,8 @@ part of 'saved_state.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_SavedState _$$_SavedStateFromJson(Map<String, dynamic> json) =>
-    _$_SavedState(
+_$SavedStateImpl _$$SavedStateImplFromJson(Map<String, dynamic> json) =>
+    _$SavedStateImpl(
       numberOfPlayers: json['numberOfPlayers'] as int,
       round: json['round'] as int,
       stagingThreat: json['stagingThreat'] as int,
@@ -21,7 +21,7 @@ _$_SavedState _$$_SavedStateFromJson(Map<String, dynamic> json) =>
           PlayerState.fromJson(json['playerState4'] as Map<String, dynamic>),
     );
 
-Map<String, dynamic> _$$_SavedStateToJson(_$_SavedState instance) =>
+Map<String, dynamic> _$$SavedStateImplToJson(_$SavedStateImpl instance) =>
     <String, dynamic>{
       'numberOfPlayers': instance.numberOfPlayers,
       'round': instance.round,
@@ -32,13 +32,13 @@ Map<String, dynamic> _$$_SavedStateToJson(_$_SavedState instance) =>
       'playerState4': instance.playerState4,
     };
 
-_$_PlayerState _$$_PlayerStateFromJson(Map<String, dynamic> json) =>
-    _$_PlayerState(
+_$PlayerStateImpl _$$PlayerStateImplFromJson(Map<String, dynamic> json) =>
+    _$PlayerStateImpl(
       threat: json['threat'] as int,
       willpower: json['willpower'] as int,
     );
 
-Map<String, dynamic> _$$_PlayerStateToJson(_$_PlayerState instance) =>
+Map<String, dynamic> _$$PlayerStateImplToJson(_$PlayerStateImpl instance) =>
     <String, dynamic>{
       'threat': instance.threat,
       'willpower': instance.willpower,

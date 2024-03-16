@@ -1,3 +1,4 @@
+git_url("git@github.com:Hackmodford/match.git")
 storage_mode("git")
 type("development")
 app_identifier(["com.hackmodford.questphase"])

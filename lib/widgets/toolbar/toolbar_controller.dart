@@ -100,27 +100,22 @@ class ToolbarController {
     switch (selection) {
       case CellSelection.stagingThreat:
         ref.read(savedStateNotifierProvider.notifier).addStagingThreat(value);
-        break;
       case CellSelection.p1will:
         ref
             .read(savedStateNotifierProvider.notifier)
             .addPlayerWillpower(PlayerOption.p1, value);
-        break;
       case CellSelection.p2will:
         ref
             .read(savedStateNotifierProvider.notifier)
             .addPlayerWillpower(PlayerOption.p2, value);
-        break;
       case CellSelection.p3will:
         ref
             .read(savedStateNotifierProvider.notifier)
             .addPlayerWillpower(PlayerOption.p3, value);
-        break;
       case CellSelection.p4will:
         ref
             .read(savedStateNotifierProvider.notifier)
             .addPlayerWillpower(PlayerOption.p4, value);
-        break;
       case CellSelection.round:
         break;
       case CellSelection.p1threat:
@@ -141,27 +136,22 @@ class ToolbarController {
         ref
             .read(savedStateNotifierProvider.notifier)
             .removeStagingThreat(value);
-        break;
       case CellSelection.p1will:
         ref
             .read(savedStateNotifierProvider.notifier)
             .removePlayerWillpower(PlayerOption.p1, value);
-        break;
       case CellSelection.p2will:
         ref
             .read(savedStateNotifierProvider.notifier)
             .removePlayerWillpower(PlayerOption.p2, value);
-        break;
       case CellSelection.p3will:
         ref
             .read(savedStateNotifierProvider.notifier)
             .removePlayerWillpower(PlayerOption.p3, value);
-        break;
       case CellSelection.p4will:
         ref
             .read(savedStateNotifierProvider.notifier)
             .removePlayerWillpower(PlayerOption.p4, value);
-        break;
       case CellSelection.round:
         break;
       case CellSelection.p1threat:

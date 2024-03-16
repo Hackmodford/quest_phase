@@ -92,52 +92,42 @@ class NumberPadController {
     switch (_ref.read(selectedCellProvider)) {
       case CellSelection.stagingThreat:
         _ref.read(savedStateNotifierProvider.notifier).setStagingThreat(value);
-        break;
       case CellSelection.p1will:
         _ref
             .read(savedStateNotifierProvider.notifier)
             .setPlayerWillpower(PlayerOption.p1, value);
-        break;
       case CellSelection.p2will:
         _ref
             .read(savedStateNotifierProvider.notifier)
             .setPlayerWillpower(PlayerOption.p2, value);
-        break;
       case CellSelection.p3will:
         _ref
             .read(savedStateNotifierProvider.notifier)
             .setPlayerWillpower(PlayerOption.p3, value);
-        break;
       case CellSelection.p4will:
         _ref
             .read(savedStateNotifierProvider.notifier)
             .setPlayerWillpower(PlayerOption.p4, value);
-        break;
       case CellSelection.round:
         _ref
             .read(savedStateNotifierProvider.notifier)
             .setRound(value);
-        break;
       case CellSelection.p1threat:
         _ref
             .read(savedStateNotifierProvider.notifier)
             .setPlayerThreat(PlayerOption.p1, value);
-        break;
       case CellSelection.p2threat:
         _ref
             .read(savedStateNotifierProvider.notifier)
             .setPlayerThreat(PlayerOption.p2, value);
-        break;
       case CellSelection.p3threat:
         _ref
             .read(savedStateNotifierProvider.notifier)
             .setPlayerThreat(PlayerOption.p3, value);
-        break;
       case CellSelection.p4threat:
         _ref
             .read(savedStateNotifierProvider.notifier)
             .setPlayerThreat(PlayerOption.p4, value);
-        break;
     }
   }
 }

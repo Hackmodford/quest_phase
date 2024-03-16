@@ -29,7 +29,6 @@ class PlayerThreatCell extends HookConsumerWidget {
                   .select((value) => value.playerState1.threat),
             )
             .toString();
-        break;
       case PlayerOption.p2:
         text = ref
             .watch(
@@ -37,7 +36,6 @@ class PlayerThreatCell extends HookConsumerWidget {
                   .select((value) => value.playerState2.threat),
             )
             .toString();
-        break;
       case PlayerOption.p3:
         text = ref
             .watch(
@@ -45,7 +43,6 @@ class PlayerThreatCell extends HookConsumerWidget {
                   .select((value) => value.playerState3.threat),
             )
             .toString();
-        break;
       case PlayerOption.p4:
         text = ref
             .watch(
@@ -53,7 +50,6 @@ class PlayerThreatCell extends HookConsumerWidget {
                   .select((value) => value.playerState4.threat),
             )
             .toString();
-        break;
     }
 
     return Material(

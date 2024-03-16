@@ -1,5 +1,5 @@
 import 'package:riverpod_annotation/riverpod_annotation.dart';
-import 'package:wakelock/wakelock.dart';
+import 'package:wakelock_plus/wakelock_plus.dart';
 
 part 'wakelock_service.g.dart';
 
@@ -8,12 +8,12 @@ WakelockService wakelockService(WakelockServiceRef ref) => WakelockService();
 
 class WakelockService {
   void enable(){
-    Wakelock.enable();
+    WakelockPlus.enable();
   }
   void disable(){
-    Wakelock.disable();
+    WakelockPlus.disable();
   }
   void toggle({required bool enable}) {
-    Wakelock.toggle(enable: enable);
+    WakelockPlus.toggle(enable: enable);
   }
 }

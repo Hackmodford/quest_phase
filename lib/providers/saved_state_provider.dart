@@ -120,22 +120,18 @@ class SavedStateNotifier extends _$SavedStateNotifier {
         state = state.copyWith.playerState1(
           willpower: clampedValue,
         );
-        break;
       case PlayerOption.p2:
         state = state.copyWith.playerState2(
           willpower: clampedValue,
         );
-        break;
       case PlayerOption.p3:
         state = state.copyWith.playerState3(
           willpower: clampedValue,
         );
-        break;
       case PlayerOption.p4:
         state = state.copyWith.playerState4(
           willpower: clampedValue,
         );
-        break;
     }
   }
 
@@ -145,22 +141,18 @@ class SavedStateNotifier extends _$SavedStateNotifier {
         state = state.copyWith.playerState1(
           willpower: min(state.playerState1.willpower + value, upperLimit),
         );
-        break;
       case PlayerOption.p2:
         state = state.copyWith.playerState2(
           willpower: min(state.playerState2.willpower + value, upperLimit),
         );
-        break;
       case PlayerOption.p3:
         state = state.copyWith.playerState3(
           willpower: min(state.playerState3.willpower + value, upperLimit),
         );
-        break;
       case PlayerOption.p4:
         state = state.copyWith.playerState4(
           willpower: min(state.playerState4.willpower + value, upperLimit),
         );
-        break;
     }
   }
 
@@ -170,22 +162,18 @@ class SavedStateNotifier extends _$SavedStateNotifier {
         state = state.copyWith.playerState1(
           willpower: max(state.playerState1.willpower - value, lowerLimit),
         );
-        break;
       case PlayerOption.p2:
         state = state.copyWith.playerState2(
           willpower: max(state.playerState2.willpower - value, lowerLimit),
         );
-        break;
       case PlayerOption.p3:
         state = state.copyWith.playerState3(
           willpower: max(state.playerState3.willpower - value, lowerLimit),
         );
-        break;
       case PlayerOption.p4:
         state = state.copyWith.playerState4(
           willpower: max(state.playerState4.willpower - value, lowerLimit),
         );
-        break;
     }
   }
 
@@ -194,16 +182,12 @@ class SavedStateNotifier extends _$SavedStateNotifier {
     switch (player) {
       case PlayerOption.p1:
         state = state.copyWith.playerState1(threat: clampedValue);
-        break;
       case PlayerOption.p2:
         state = state.copyWith.playerState2(threat: clampedValue);
-        break;
       case PlayerOption.p3:
         state = state.copyWith.playerState3(threat: clampedValue);
-        break;
       case PlayerOption.p4:
         state = state.copyWith.playerState4(threat: clampedValue);
-        break;
     }
   }
 
@@ -213,22 +197,18 @@ class SavedStateNotifier extends _$SavedStateNotifier {
         state = state.copyWith.playerState1(
           threat: min(state.playerState1.threat + value, upperLimit),
         );
-        break;
       case PlayerOption.p2:
         state = state.copyWith.playerState2(
           threat: min(state.playerState2.threat + value, upperLimit),
         );
-        break;
       case PlayerOption.p3:
         state = state.copyWith.playerState3(
           threat: min(state.playerState3.threat + value, upperLimit),
         );
-        break;
       case PlayerOption.p4:
         state = state.copyWith.playerState4(
           threat: min(state.playerState4.threat + value, upperLimit),
         );
-        break;
     }
   }
 
@@ -238,22 +218,18 @@ class SavedStateNotifier extends _$SavedStateNotifier {
         state = state.copyWith.playerState1(
           threat: max(state.playerState1.threat - value, lowerLimit),
         );
-        break;
       case PlayerOption.p2:
         state = state.copyWith.playerState2(
           threat: max(state.playerState2.threat - value, lowerLimit),
         );
-        break;
       case PlayerOption.p3:
         state = state.copyWith.playerState3(
           threat: max(state.playerState3.threat - value, lowerLimit),
         );
-        break;
       case PlayerOption.p4:
         state = state.copyWith.playerState4(
           threat: max(state.playerState4.threat - value, lowerLimit),
         );
-        break;
     }
   }
 }

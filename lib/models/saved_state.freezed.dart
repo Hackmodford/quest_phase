@@ -12,7 +12,7 @@ part of 'saved_state.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 SavedState _$SavedStateFromJson(Map<String, dynamic> json) {
   return _SavedState.fromJson(json);
@@ -142,11 +142,11 @@ class _$SavedStateCopyWithImpl<$Res, $Val extends SavedState>
 }
 
 /// @nodoc
-abstract class _$$_SavedStateCopyWith<$Res>
+abstract class _$$SavedStateImplCopyWith<$Res>
     implements $SavedStateCopyWith<$Res> {
-  factory _$$_SavedStateCopyWith(
-          _$_SavedState value, $Res Function(_$_SavedState) then) =
-      __$$_SavedStateCopyWithImpl<$Res>;
+  factory _$$SavedStateImplCopyWith(
+          _$SavedStateImpl value, $Res Function(_$SavedStateImpl) then) =
+      __$$SavedStateImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -169,11 +169,11 @@ abstract class _$$_SavedStateCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_SavedStateCopyWithImpl<$Res>
-    extends _$SavedStateCopyWithImpl<$Res, _$_SavedState>
-    implements _$$_SavedStateCopyWith<$Res> {
-  __$$_SavedStateCopyWithImpl(
-      _$_SavedState _value, $Res Function(_$_SavedState) _then)
+class __$$SavedStateImplCopyWithImpl<$Res>
+    extends _$SavedStateCopyWithImpl<$Res, _$SavedStateImpl>
+    implements _$$SavedStateImplCopyWith<$Res> {
+  __$$SavedStateImplCopyWithImpl(
+      _$SavedStateImpl _value, $Res Function(_$SavedStateImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -187,7 +187,7 @@ class __$$_SavedStateCopyWithImpl<$Res>
     Object? playerState3 = null,
     Object? playerState4 = null,
   }) {
-    return _then(_$_SavedState(
+    return _then(_$SavedStateImpl(
       numberOfPlayers: null == numberOfPlayers
           ? _value.numberOfPlayers
           : numberOfPlayers // ignore: cast_nullable_to_non_nullable
@@ -222,8 +222,8 @@ class __$$_SavedStateCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_SavedState implements _SavedState {
-  const _$_SavedState(
+class _$SavedStateImpl implements _SavedState {
+  const _$SavedStateImpl(
       {required this.numberOfPlayers,
       required this.round,
       required this.stagingThreat,
@@ -232,8 +232,8 @@ class _$_SavedState implements _SavedState {
       required this.playerState3,
       required this.playerState4});
 
-  factory _$_SavedState.fromJson(Map<String, dynamic> json) =>
-      _$$_SavedStateFromJson(json);
+  factory _$SavedStateImpl.fromJson(Map<String, dynamic> json) =>
+      _$$SavedStateImplFromJson(json);
 
   @override
   final int numberOfPlayers;
@@ -256,10 +256,10 @@ class _$_SavedState implements _SavedState {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_SavedState &&
+            other is _$SavedStateImpl &&
             (identical(other.numberOfPlayers, numberOfPlayers) ||
                 other.numberOfPlayers == numberOfPlayers) &&
             (identical(other.round, round) || other.round == round) &&
@@ -283,12 +283,12 @@ class _$_SavedState implements _SavedState {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_SavedStateCopyWith<_$_SavedState> get copyWith =>
-      __$$_SavedStateCopyWithImpl<_$_SavedState>(this, _$identity);
+  _$$SavedStateImplCopyWith<_$SavedStateImpl> get copyWith =>
+      __$$SavedStateImplCopyWithImpl<_$SavedStateImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_SavedStateToJson(
+    return _$$SavedStateImplToJson(
       this,
     );
   }
@@ -302,10 +302,10 @@ abstract class _SavedState implements SavedState {
       required final PlayerState playerState1,
       required final PlayerState playerState2,
       required final PlayerState playerState3,
-      required final PlayerState playerState4}) = _$_SavedState;
+      required final PlayerState playerState4}) = _$SavedStateImpl;
 
   factory _SavedState.fromJson(Map<String, dynamic> json) =
-      _$_SavedState.fromJson;
+      _$SavedStateImpl.fromJson;
 
   @override
   int get numberOfPlayers;
@@ -323,7 +323,7 @@ abstract class _SavedState implements SavedState {
   PlayerState get playerState4;
   @override
   @JsonKey(ignore: true)
-  _$$_SavedStateCopyWith<_$_SavedState> get copyWith =>
+  _$$SavedStateImplCopyWith<_$SavedStateImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -381,22 +381,22 @@ class _$PlayerStateCopyWithImpl<$Res, $Val extends PlayerState>
 }
 
 /// @nodoc
-abstract class _$$_PlayerStateCopyWith<$Res>
+abstract class _$$PlayerStateImplCopyWith<$Res>
     implements $PlayerStateCopyWith<$Res> {
-  factory _$$_PlayerStateCopyWith(
-          _$_PlayerState value, $Res Function(_$_PlayerState) then) =
-      __$$_PlayerStateCopyWithImpl<$Res>;
+  factory _$$PlayerStateImplCopyWith(
+          _$PlayerStateImpl value, $Res Function(_$PlayerStateImpl) then) =
+      __$$PlayerStateImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({int threat, int willpower});
 }
 
 /// @nodoc
-class __$$_PlayerStateCopyWithImpl<$Res>
-    extends _$PlayerStateCopyWithImpl<$Res, _$_PlayerState>
-    implements _$$_PlayerStateCopyWith<$Res> {
-  __$$_PlayerStateCopyWithImpl(
-      _$_PlayerState _value, $Res Function(_$_PlayerState) _then)
+class __$$PlayerStateImplCopyWithImpl<$Res>
+    extends _$PlayerStateCopyWithImpl<$Res, _$PlayerStateImpl>
+    implements _$$PlayerStateImplCopyWith<$Res> {
+  __$$PlayerStateImplCopyWithImpl(
+      _$PlayerStateImpl _value, $Res Function(_$PlayerStateImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -405,7 +405,7 @@ class __$$_PlayerStateCopyWithImpl<$Res>
     Object? threat = null,
     Object? willpower = null,
   }) {
-    return _then(_$_PlayerState(
+    return _then(_$PlayerStateImpl(
       threat: null == threat
           ? _value.threat
           : threat // ignore: cast_nullable_to_non_nullable
@@ -420,11 +420,11 @@ class __$$_PlayerStateCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_PlayerState implements _PlayerState {
-  const _$_PlayerState({required this.threat, required this.willpower});
+class _$PlayerStateImpl implements _PlayerState {
+  const _$PlayerStateImpl({required this.threat, required this.willpower});
 
-  factory _$_PlayerState.fromJson(Map<String, dynamic> json) =>
-      _$$_PlayerStateFromJson(json);
+  factory _$PlayerStateImpl.fromJson(Map<String, dynamic> json) =>
+      _$$PlayerStateImplFromJson(json);
 
   @override
   final int threat;
@@ -437,10 +437,10 @@ class _$_PlayerState implements _PlayerState {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_PlayerState &&
+            other is _$PlayerStateImpl &&
             (identical(other.threat, threat) || other.threat == threat) &&
             (identical(other.willpower, willpower) ||
                 other.willpower == willpower));
@@ -453,12 +453,12 @@ class _$_PlayerState implements _PlayerState {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_PlayerStateCopyWith<_$_PlayerState> get copyWith =>
-      __$$_PlayerStateCopyWithImpl<_$_PlayerState>(this, _$identity);
+  _$$PlayerStateImplCopyWith<_$PlayerStateImpl> get copyWith =>
+      __$$PlayerStateImplCopyWithImpl<_$PlayerStateImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_PlayerStateToJson(
+    return _$$PlayerStateImplToJson(
       this,
     );
   }
@@ -467,10 +467,10 @@ class _$_PlayerState implements _PlayerState {
 abstract class _PlayerState implements PlayerState {
   const factory _PlayerState(
       {required final int threat,
-      required final int willpower}) = _$_PlayerState;
+      required final int willpower}) = _$PlayerStateImpl;
 
   factory _PlayerState.fromJson(Map<String, dynamic> json) =
-      _$_PlayerState.fromJson;
+      _$PlayerStateImpl.fromJson;
 
   @override
   int get threat;
@@ -478,6 +478,6 @@ abstract class _PlayerState implements PlayerState {
   int get willpower;
   @override
   @JsonKey(ignore: true)
-  _$$_PlayerStateCopyWith<_$_PlayerState> get copyWith =>
+  _$$PlayerStateImplCopyWith<_$PlayerStateImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

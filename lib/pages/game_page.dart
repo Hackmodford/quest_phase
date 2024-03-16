@@ -53,9 +53,9 @@ class GamePage extends ConsumerWidget {
       builder: (BuildContext context) {
         return AlertDialog(
           title: buildRichText('Are you sure', 24),
-          content: SingleChildScrollView(
+          content: const SingleChildScrollView(
             child: ListBody(
-              children: const <Widget>[
+              children: <Widget>[
                 Text(
                   'Clear the board state and start over.',
                   style: TextStyle(fontFamily: FontFamily.timesNewRoman),
