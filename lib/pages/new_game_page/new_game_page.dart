@@ -34,40 +34,28 @@ class NewGamePage extends ConsumerWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.orangeAccent,
-                  ),
+                PlayerButton(
                   onPressed: () =>
                       ref.read(newGamePageControllerProvider).onStartNewGame(1),
-                  child: buildRichText('1', 24),
+                  player: '1',
                 ),
                 const Spacer(),
-                ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.orangeAccent,
-                  ),
+                PlayerButton(
                   onPressed: () =>
                       ref.read(newGamePageControllerProvider).onStartNewGame(2),
-                  child: buildRichText('2', 24),
+                  player: '2',
                 ),
                 const Spacer(),
-                ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.orangeAccent,
-                  ),
+                PlayerButton(
                   onPressed: () =>
                       ref.read(newGamePageControllerProvider).onStartNewGame(3),
-                  child: buildRichText('3', 24),
+                  player: '3',
                 ),
                 const Spacer(),
-                ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.orangeAccent,
-                  ),
+                PlayerButton(
                   onPressed: () =>
                       ref.read(newGamePageControllerProvider).onStartNewGame(4),
-                  child: buildRichText('4', 24),
+                  player: '4',
                 ),
               ],
             ),
@@ -79,4 +67,16 @@ class NewGamePage extends ConsumerWidget {
       ),
     );
   }
+}
+
+class PlayerButton extends ElevatedButton {
+  PlayerButton({required super.onPressed, required String player, super.key})
+      : super(style: _buttonStyle, child: buildRichText(player, 24));
+
+  static final ButtonStyle _buttonStyle = ElevatedButton.styleFrom(
+    backgroundColor: Colors.orangeAccent,
+    shape: const RoundedRectangleBorder(
+      borderRadius: BorderRadius.all(Radius.circular(4)),
+    ),
+  );
 }
