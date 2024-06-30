@@ -7,6 +7,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:quest_phase/gen/fonts.gen.dart';
 import 'package:quest_phase/services/sound_effect_service.dart';
 import 'package:quest_phase/widgets/cell.dart';
+import 'package:quest_phase/widgets/ink_well_button.dart';
 import 'package:quest_phase/widgets/number_pad/number_pad_controller.dart';
 
 enum LayoutColumn {
@@ -30,214 +31,198 @@ class NumberPad extends ConsumerWidget {
       columnSizes: const [auto, auto, auto],
       rowSizes: const [auto, auto, auto, auto],
       children: [
-        _buildNumber(
-          context,
-          ref,
+        NumberButton(
           value: 1,
           columnStart: LayoutColumn.one.index,
           rowStart: 0,
         ),
-        _buildNumber(
-          context,
-          ref,
+        NumberButton(
           value: 2,
           columnStart: LayoutColumn.two.index,
           rowStart: 0,
         ),
-        _buildNumber(
-          context,
-          ref,
+        NumberButton(
           value: 3,
           columnStart: LayoutColumn.three.index,
           rowStart: 0,
         ),
-        _buildNumber(
-          context,
-          ref,
+        NumberButton(
           value: 4,
           columnStart: LayoutColumn.one.index,
           rowStart: 1,
         ),
-        _buildNumber(
-          context,
-          ref,
+        NumberButton(
           value: 5,
           columnStart: LayoutColumn.two.index,
           rowStart: 1,
         ),
-        _buildNumber(
-          context,
-          ref,
+        NumberButton(
           value: 6,
           columnStart: LayoutColumn.three.index,
           rowStart: 1,
         ),
-        _buildNumber(
-          context,
-          ref,
+        NumberButton(
           value: 7,
           columnStart: LayoutColumn.one.index,
           rowStart: 2,
         ),
-        _buildNumber(
-          context,
-          ref,
+        NumberButton(
           value: 8,
           columnStart: LayoutColumn.two.index,
           rowStart: 2,
         ),
-        _buildNumber(
-          context,
-          ref,
+        NumberButton(
           value: 9,
           columnStart: LayoutColumn.three.index,
           rowStart: 2,
         ),
-        _buildClear(
-          context,
-          ref,
+        ClearButton(
           columnStart: LayoutColumn.one.index,
           rowStart: 3,
         ),
-        _buildNumber(
-          context,
-          ref,
+        NumberButton(
           value: 0,
           columnStart: LayoutColumn.two.index,
           rowStart: 3,
         ),
-        _buildBackspace(
-          context,
-          ref,
+        BackspaceButton(
           columnStart: LayoutColumn.three.index,
           rowStart: 3,
         ),
       ],
     );
   }
+}
 
-  Widget _buildNumber(
-    BuildContext context,
-    WidgetRef ref, {
-    required int value,
-    required int columnStart,
-    required int rowStart,
-  }) {
-    return Material(
-      elevation: 4,
-      borderRadius: BorderRadius.circular(4),
-      child: InkWell(
-        borderRadius: BorderRadius.circular(4),
-        onTapDown: (_) {
-          ref.read(soundEffectServiceProvider).playIncrease();
-          HapticFeedback.mediumImpact();
-        },
-        onTap: () {
-          ref.read(numberPadControllerProvider).onNumber(value);
-        },
-        child: Cell(
-          color: color,
-          child: Padding(
-            padding: const EdgeInsets.only(
-              top: 19,
-              left: 8,
-              right: 8,
-              bottom: 8,
-            ),
-            child: Text(
-              value.toString(),
-              style: TextStyle(
-                fontSize: fontSize,
-                fontFamily: FontFamily.vafthrudnir,
-                height: 0.75,
-              ),
-            ),
-          ),
-        ),
-      ),
-    ).withGridPlacement(
+class BackspaceButton extends ConsumerWidget {
+  const BackspaceButton({
+    required this.columnStart,
+    required this.rowStart,
+    super.key,
+  });
+
+  final int columnStart;
+  final int rowStart;
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    return KeypadButton(
+      onTapDown: (_) {
+        ref.read(soundEffectServiceProvider).playDecrease();
+        HapticFeedback.mediumImpact();
+      },
+      onTap: () {
+        ref.read(numberPadControllerProvider).onBackspace();
+      },
       columnStart: columnStart,
-      columnSpan: 1,
       rowStart: rowStart,
-      rowSpan: 1,
+      child: const Icon(Icons.backspace),
     );
   }
+}
 
-  Widget _buildBackspace(
-    BuildContext context,
-    WidgetRef ref, {
-    required int columnStart,
-    required int rowStart,
-  }) {
-    return Material(
-      elevation: 4,
-      borderRadius: BorderRadius.circular(4),
-      child: InkWell(
-        borderRadius: BorderRadius.circular(4),
-        onTapDown: (_) {
-          ref.read(soundEffectServiceProvider).playDecrease();
-          HapticFeedback.mediumImpact();
-        },
-        onTap: () {
-          ref.read(numberPadControllerProvider).onBackspace();
-        },
-        child: Cell(
-          color: color,
-          child: const Padding(
-            padding: EdgeInsets.only(
-              top: 8,
-              left: 8,
-              right: 8,
-              bottom: 8,
-            ),
-            child: Icon(Icons.backspace),
-          ),
+class ClearButton extends ConsumerWidget {
+  const ClearButton({
+    required this.columnStart,
+    required this.rowStart,
+    super.key,
+  });
+
+  final int columnStart;
+  final int rowStart;
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    return KeypadButton(
+      onTapDown: (_) {
+        ref.read(soundEffectServiceProvider).playDecrease();
+        HapticFeedback.mediumImpact();
+      },
+      onTap: () {
+        ref.read(numberPadControllerProvider).onClear();
+      },
+      columnStart: columnStart,
+      rowStart: rowStart,
+      child: const Text(
+        'C',
+        style: TextStyle(
+          fontSize: 20,
+          fontFamily: FontFamily.vafthrudnir,
+          height: 0.75,
         ),
       ),
-    ).withGridPlacement(
-      columnStart: columnStart,
-      columnSpan: 1,
-      rowStart: rowStart,
-      rowSpan: 1,
     );
   }
+}
 
-  Widget _buildClear(
-    BuildContext context,
-    WidgetRef ref, {
-    required int columnStart,
-    required int rowStart,
-  }) {
-    return Material(
-      elevation: 4,
-      borderRadius: BorderRadius.circular(4),
-      child: InkWell(
-        borderRadius: BorderRadius.circular(4),
-        onTapDown: (_) {
-          ref.read(soundEffectServiceProvider).playDecrease();
-          HapticFeedback.mediumImpact();
-        },
-        onTap: () {
-          ref.read(numberPadControllerProvider).onClear();
-        },
-        child: Cell(
-          color: color,
-          child: Padding(
-            padding: const EdgeInsets.only(
-              top: 19,
-              left: 8,
-              right: 8,
-              bottom: 8,
-            ),
-            child: Text(
-              'C',
-              style: TextStyle(
-                fontSize: fontSize,
-                fontFamily: FontFamily.vafthrudnir,
-                height: 0.75,
-              ),
-            ),
+class NumberButton extends ConsumerWidget {
+  const NumberButton({
+    required this.value,
+    required this.columnStart,
+    required this.rowStart,
+    super.key,
+  });
+
+  final int value;
+  final int columnStart;
+  final int rowStart;
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    return KeypadButton(
+      onTapDown: (_) {
+        ref.read(soundEffectServiceProvider).playIncrease();
+        HapticFeedback.mediumImpact();
+      },
+      onTap: () {
+        ref.read(numberPadControllerProvider).onNumber(value);
+      },
+      columnStart: columnStart,
+      rowStart: rowStart,
+      child: Text(
+        value.toString(),
+        style: const TextStyle(
+          fontSize: 20,
+          fontFamily: FontFamily.vafthrudnir,
+          height: 0.75,
+        ),
+      ),
+    );
+  }
+}
+
+class KeypadButton extends StatelessWidget {
+  const KeypadButton({
+    required this.child,
+    required this.columnStart,
+    required this.rowStart,
+    super.key,
+    this.onTapDown,
+    this.onTap,
+  });
+
+  final Widget child;
+
+  final GestureTapDownCallback? onTapDown;
+  final GestureTapCallback? onTap;
+  final int columnStart;
+  final int rowStart;
+
+  @override
+  Widget build(BuildContext context) {
+    return InkWellButton(
+      onTapDown: onTapDown,
+      onTap: onTap,
+      child: Cell(
+        color: Colors.black54,
+        child: Padding(
+          padding: const EdgeInsets.only(
+            top: 19,
+            left: 8,
+            right: 8,
+            bottom: 8,
           ),
+          child: child,
         ),
       ),
     ).withGridPlacement(

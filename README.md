@@ -10,9 +10,9 @@ Permission was granted to me to recreate the app in Flutter to support the iOS p
 
 ## Setup
 
-Quest Phase uses [FVM](https://fvm.app/) to manage flutter versions. 
+Quest Phase uses [Puro](https://puro.dev/) to manage flutter versions. 
 
-Install FVM and use `fvm install` to download the correct Flutter sdk for the project. 
+Install Puro and use `fvm install` to download the correct Flutter sdk for the project. 
 Then prepend `fvm` to all flutter commands. For example: `fvm flutter run` instead of `flutter run`.
 
 ## How to Build iOS

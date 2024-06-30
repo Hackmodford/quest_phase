@@ -10,7 +10,7 @@ class SettingsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: buildRichText('Settings', 24),),
+      appBar: AppBar(title: const AppRichText('Settings', size: 24),),
       body: SingleChildScrollView(
         child: Column(
           children: [
@@ -18,7 +18,7 @@ class SettingsPage extends StatelessWidget {
               builder: (context, ref, child) {
                 return SwitchListTile(
                   activeColor: Colors.orangeAccent,
-                  title: buildRichText('Keep On Screen', 20),
+                  title: const AppRichText('Keep On Screen', size: 20),
                   value: ref.watch(shouldKeepScreenOnProvider),
                   onChanged: (bool value) async => ref
                       .read(shouldKeepScreenOnProvider.notifier)
@@ -30,7 +30,7 @@ class SettingsPage extends StatelessWidget {
               builder: (context, ref, child) {
                 return SwitchListTile(
                   activeColor: Colors.orangeAccent,
-                  title: buildRichText('Reset Staging Threat', 20),
+                  title: const AppRichText('Reset Staging Threat', size: 20),
                   subtitle: const Text(
                     'Forced: During the refresh phase, set staging threat to 0',
                     style: TextStyle(fontFamily: FontFamily.timesNewRoman),

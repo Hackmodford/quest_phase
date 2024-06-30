@@ -6,6 +6,7 @@ import 'package:quest_phase/gen/colors.gen.dart';
 import 'package:quest_phase/providers/saved_state_provider.dart';
 import 'package:quest_phase/providers/selected_cell_provider.dart';
 import 'package:quest_phase/widgets/adjustable_cell.dart';
+import 'package:quest_phase/widgets/ink_well_button.dart';
 
 class PlayerThreatCell extends HookConsumerWidget {
   const PlayerThreatCell({
@@ -52,42 +53,37 @@ class PlayerThreatCell extends HookConsumerWidget {
             .toString();
     }
 
-    return Material(
-      elevation: 4,
-      borderRadius: BorderRadius.circular(4),
-      child: InkWell(
-        borderRadius: BorderRadius.circular(4),
-        onTapDown: (_) {
-          if (ref.read(selectedCellProvider) != cellSelection) {
-            HapticFeedback.selectionClick();
-          }
-        },
-        onTap: () {
+    return InkWellButton(
+      onTapDown: (_) {
+        if (ref.read(selectedCellProvider) != cellSelection) {
+          HapticFeedback.selectionClick();
+        }
+      },
+      onTap: () {
+        ref.read(selectedCellProvider.notifier).state = cellSelection;
+      },
+      child: AdjustableCell(
+        isHighlighted: isHighlighted,
+        text: text,
+        onTapIncrease: () {
+          ref.read(savedStateNotifierProvider.notifier).addPlayerThreat(
+                playerOption,
+                1,
+              );
           ref.read(selectedCellProvider.notifier).state = cellSelection;
         },
-        child: AdjustableCell(
-          isHighlighted: isHighlighted,
-          text: text,
-          onTapIncrease: () {
-            ref.read(savedStateNotifierProvider.notifier).addPlayerThreat(
-                  playerOption,
-                  1,
-                );
-            ref.read(selectedCellProvider.notifier).state = cellSelection;
-          },
-          onTapDecrease: () {
-            ref.read(savedStateNotifierProvider.notifier).removePlayerThreat(
-              playerOption,
-              1,
-            );
-            ref.read(selectedCellProvider.notifier).state = cellSelection;
-          },
-          color: ColorName.threatBackground,
-          image: Assets.images.threaticon.image(
-            width: 24,
-            height: 24,
-            fit: BoxFit.scaleDown,
-          ),
+        onTapDecrease: () {
+          ref.read(savedStateNotifierProvider.notifier).removePlayerThreat(
+                playerOption,
+                1,
+              );
+          ref.read(selectedCellProvider.notifier).state = cellSelection;
+        },
+        color: ColorName.threatBackground,
+        image: Assets.images.threaticon.image(
+          width: 24,
+          height: 24,
+          fit: BoxFit.scaleDown,
         ),
       ),
     );

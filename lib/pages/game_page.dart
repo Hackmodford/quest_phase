@@ -25,7 +25,7 @@ class GamePage extends ConsumerWidget {
       },
       child: Scaffold(
         appBar: AppBar(
-          title: buildRichText('Quest Phase', 24),
+          title: const AppRichText('Quest Phase', size: 24),
           leading: IconButton(
             onPressed: () => ref.read(routerProvider).goToSettings(),
             icon: const Icon(Icons.settings),
@@ -52,7 +52,7 @@ class GamePage extends ConsumerWidget {
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: buildRichText('Are you sure', 24),
+          title: const AppRichText('Are you sure', size: 24),
           content: const SingleChildScrollView(
             child: ListBody(
               children: <Widget>[
@@ -67,7 +67,7 @@ class GamePage extends ConsumerWidget {
             TextButton(
               style: TextButton.styleFrom(foregroundColor: Colors.orangeAccent),
               onPressed: () => Navigator.pop(context, 'Cancel'),
-              child: buildRichText('Cancel', 20),
+              child: const AppRichText('Cancel', size: 20),
             ),
             TextButton(
               style: TextButton.styleFrom(foregroundColor: Colors.orangeAccent),
@@ -75,7 +75,7 @@ class GamePage extends ConsumerWidget {
                 ref.read(savedStateNotifierProvider.notifier).reset();
                 ref.read(routerProvider).goToNewGame();
               },
-              child: buildRichText('Yes', 20),
+              child: const AppRichText('Yes', size: 20),
             ),
           ],
         );

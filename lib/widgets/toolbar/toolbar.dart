@@ -7,14 +7,13 @@ import 'package:quest_phase/providers/selected_cell_provider.dart';
 import 'package:quest_phase/services/sound_effect_service.dart';
 import 'package:quest_phase/utils/font_utils.dart';
 import 'package:quest_phase/widgets/cell.dart';
+import 'package:quest_phase/widgets/ink_well_button.dart';
 import 'package:quest_phase/widgets/toolbar/toolbar_controller.dart';
 
 enum Mode { none, playerThreat, willAndThreat, round }
 
 class Toolbar extends HookConsumerWidget {
   const Toolbar({super.key});
-
-  Color get color => Colors.white10;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -24,240 +23,191 @@ class Toolbar extends HookConsumerWidget {
       mode.value = next.toMode();
     });
 
-    const padding = EdgeInsets.only(top: 8);
     switch (mode.value) {
       case Mode.none:
         return Container();
       case Mode.playerThreat:
-        return _buildThreatToolbar(context, ref, padding);
+        return const ThreatToolbar();
       case Mode.willAndThreat:
-        return _buildWillToolbar(context, ref, padding);
+        return const WillToolbar();
       case Mode.round:
-        return _buildRoundToolbar(context, ref, padding);
+        return const RoundToolbar();
     }
   }
+}
 
-  Widget _buildThreatToolbar(
-    BuildContext context,
-    WidgetRef ref,
-    EdgeInsetsGeometry padding,
-  ) {
+class RoundToolbar extends ConsumerWidget {
+  const RoundToolbar({super.key});
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
     return Padding(
-      padding: padding,
+      padding: const EdgeInsets.only(top: 8),
       child: Row(
         children: [
-          Expanded(
-            child: Material(
-              elevation: 4,
-              borderRadius: BorderRadius.circular(4),
-              child: InkWell(
-                borderRadius: BorderRadius.circular(4),
-                onTapDown: (_) {
-                  HapticFeedback.mediumImpact();
-                  ref.read(soundEffectServiceProvider).playDecrease();
-                },
-                onTap: () {
-                  ref
-                      .read(toolbarControllerProvider)
-                      .onRemoveOneThreatFromAllPlayers();
-                },
-                child: Cell(
-                  color: color,
-                  child: buildRichText('-1 All Players', 20)
-                      .paddingOnly(bottom: 4),
-                ),
-              ),
-            ),
-          ),
-          4.widthBox,
-          Expanded(
-            child: Material(
-              elevation: 4,
-              borderRadius: BorderRadius.circular(4),
-              child: InkWell(
-                borderRadius: BorderRadius.circular(4),
-                onTapDown: (_) {
-                  HapticFeedback.mediumImpact();
-                  ref.read(soundEffectServiceProvider).playIncrease();
-                },
-                onTap: () {
-                  ref
-                      .read(toolbarControllerProvider)
-                      .onAddOneThreatToAllPlayers();
-                },
-                child: Cell(
-                  color: color,
-                  child: buildRichText('+1 All Players', 20)
-                      .paddingOnly(top: 3, bottom: 4),
-                ),
-              ),
-            ),
+          ToolbarButton(
+            onTapDown: (_) {
+              HapticFeedback.mediumImpact();
+              ref.read(soundEffectServiceProvider).playIncrease();
+            },
+            onTap: () {
+              ref.read(toolbarControllerProvider).onRefreshAndNewRound();
+            },
+            child: const AppRichText('Refresh + New Round', size: 20),
           ),
         ],
       ),
     );
   }
+}
 
-  Widget _buildWillToolbar(
-    BuildContext context,
-    WidgetRef ref,
-    EdgeInsetsGeometry padding,
-  ) {
+class ThreatToolbar extends ConsumerWidget {
+  const ThreatToolbar({super.key});
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
     return Padding(
-      padding: padding,
+      padding: const EdgeInsets.only(top: 8),
       child: Row(
         children: [
-          Expanded(
-            child: Material(
-              borderRadius: BorderRadius.circular(4),
-              elevation: 4,
-              child: InkWell(
-                borderRadius: BorderRadius.circular(4),
-                onTapDown: (_) {
-                  HapticFeedback.mediumImpact();
-                  ref.read(soundEffectServiceProvider).playDecrease();
-                },
-                onTap: () {
-                  ref.read(toolbarControllerProvider).onClearAll();
-                },
-                child: Cell(
-                  color: color,
-                  child: buildRichText('Clear\n All', 14),
-                ),
-              ),
-            ),
+          ToolbarButton(
+            onTapDown: (_) {
+              HapticFeedback.mediumImpact();
+              ref.read(soundEffectServiceProvider).playDecrease();
+            },
+            onTap: () {
+              ref
+                  .read(toolbarControllerProvider)
+                  .onRemoveOneThreatFromAllPlayers();
+            },
+            child: const AppRichText('-1 All Players', size: 20)
+                .paddingOnly(bottom: 4),
           ),
           4.widthBox,
-          Expanded(
-            child: Material(
-              borderRadius: BorderRadius.circular(4),
-              elevation: 4,
-              child: InkWell(
-                borderRadius: BorderRadius.circular(4),
-                onTapDown: (_) {
-                  HapticFeedback.mediumImpact();
-                  ref.read(soundEffectServiceProvider).playDecrease();
-                },
-                onTap: () {
-                  ref.read(toolbarControllerProvider).onRemoveOne();
-                },
-                child: Cell(
-                  color: color,
-                  child: const Text(
-                    '-1',
-                    style: TextStyle(fontSize: 24),
-                  ),
-                ),
-              ),
-            ),
-          ),
-          4.widthBox,
-          Expanded(
-            child: Material(
-              borderRadius: BorderRadius.circular(4),
-              elevation: 4,
-              child: InkWell(
-                borderRadius: BorderRadius.circular(4),
-                onTapDown: (_) {
-                  HapticFeedback.mediumImpact();
-                  ref.read(soundEffectServiceProvider).playIncrease();
-                },
-                onTap: () {
-                  ref.read(toolbarControllerProvider).onAddOne();
-                },
-                child: Cell(
-                  color: color,
-                  child: const Text(
-                    '+1',
-                    style: TextStyle(fontSize: 24),
-                  ).paddingOnly(top: 4),
-                ),
-              ),
-            ),
-          ),
-          4.widthBox,
-          Expanded(
-            child: Material(
-              borderRadius: BorderRadius.circular(4),
-              elevation: 4,
-              child: InkWell(
-                borderRadius: BorderRadius.circular(4),
-                onTapDown: (_) {
-                  HapticFeedback.mediumImpact();
-                  ref.read(soundEffectServiceProvider).playIncrease();
-                },
-                onTap: () {
-                  ref.read(toolbarControllerProvider).onAddTwo();
-                },
-                child: Cell(
-                  color: color,
-                  child: const Text(
-                    '+2',
-                    style: TextStyle(fontSize: 24),
-                  ).paddingOnly(top: 4),
-                ),
-              ),
-            ),
-          ),
-          4.widthBox,
-          Expanded(
-            child: Material(
-              borderRadius: BorderRadius.circular(4),
-              elevation: 4,
-              child: InkWell(
-                borderRadius: BorderRadius.circular(4),
-                onTapDown: (_) {
-                  HapticFeedback.mediumImpact();
-                  ref.read(soundEffectServiceProvider).playIncrease();
-                },
-                onTap: () {
-                  ref.read(toolbarControllerProvider).onAddFive();
-                },
-                child: Cell(
-                  color: color,
-                  child: const Text(
-                    '+5',
-                    style: TextStyle(fontSize: 24),
-                  ).paddingOnly(top: 4),
-                ),
-              ),
-            ),
+          ToolbarButton(
+            onTapDown: (_) {
+              HapticFeedback.mediumImpact();
+              ref.read(soundEffectServiceProvider).playIncrease();
+            },
+            onTap: () {
+              ref.read(toolbarControllerProvider).onAddOneThreatToAllPlayers();
+            },
+            child: const AppRichText('+1 All Players', size: 20)
+                .paddingOnly(top: 3, bottom: 4),
           ),
         ],
       ),
     );
   }
+}
 
-  Widget _buildRoundToolbar(
-    BuildContext context,
-    WidgetRef ref,
-    EdgeInsetsGeometry padding,
-  ) {
+class WillToolbar extends ConsumerWidget {
+  const WillToolbar({super.key});
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
     return Padding(
-      padding: padding,
+      padding: const EdgeInsets.only(top: 8),
       child: Row(
         children: [
-          Expanded(
-            child: Material(
-              elevation: 4,
-              borderRadius: BorderRadius.circular(4),
-              child: InkWell(
-                borderRadius: BorderRadius.circular(4),
-                onTapDown: (_) {
-                  HapticFeedback.mediumImpact();
-                  ref.read(soundEffectServiceProvider).playIncrease();
-                },
-                onTap: () {
-                  ref.read(toolbarControllerProvider).onRefreshAndNewRound();
-                },
-                child: Cell(
-                  color: color,
-                  child: buildRichText('Refresh + New Round', 20),
-                ),
-              ),
+          ToolbarButton(
+            onTapDown: (_) {
+              HapticFeedback.mediumImpact();
+              ref.read(soundEffectServiceProvider).playDecrease();
+            },
+            onTap: () {
+              ref.read(toolbarControllerProvider).onClearAll();
+            },
+            child: const AppRichText('Clear\n All', size: 14),
+          ),
+          4.widthBox,
+          ToolbarButton(
+            onTapDown: (_) {
+              HapticFeedback.mediumImpact();
+              ref.read(soundEffectServiceProvider).playDecrease();
+            },
+            onTap: () {
+              ref.read(toolbarControllerProvider).onRemoveOne();
+            },
+            child: const Text(
+              '-1',
+              style: TextStyle(fontSize: 24),
             ),
           ),
+          4.widthBox,
+          ToolbarButton(
+            onTapDown: (_) {
+              HapticFeedback.mediumImpact();
+              ref.read(soundEffectServiceProvider).playIncrease();
+            },
+            onTap: () {
+              ref.read(toolbarControllerProvider).onAddOne();
+            },
+            child: const Text(
+              '+1',
+              style: TextStyle(fontSize: 24),
+            ).paddingOnly(top: 4),
+          ),
+          4.widthBox,
+          ToolbarButton(
+            onTapDown: (_) {
+              HapticFeedback.mediumImpact();
+              ref.read(soundEffectServiceProvider).playIncrease();
+            },
+            onTap: () {
+              ref.read(toolbarControllerProvider).onAddTwo();
+            },
+            child: const Text(
+              '+2',
+              style: TextStyle(fontSize: 24),
+            ).paddingOnly(top: 4),
+          ),
+          4.widthBox,
+          ToolbarButton(
+            onTapDown: (_) {
+              HapticFeedback.mediumImpact().ignore();
+              ref.read(soundEffectServiceProvider).playIncrease().ignore();
+            },
+            onTap: () {
+              ref.read(toolbarControllerProvider).onAddFive();
+            },
+            child: const Text(
+              '+5',
+              style: TextStyle(fontSize: 24),
+            ).paddingOnly(top: 4),
+          ),
         ],
+      ),
+    );
+  }
+}
+
+class ToolbarButton extends StatelessWidget {
+  const ToolbarButton({
+    required this.child,
+    this.onTap,
+    this.onTapDown,
+    this.onTapCancel,
+    super.key,
+  });
+
+  final GestureTapDownCallback? onTapDown;
+  final GestureTapCallback? onTap;
+  final GestureTapCallback? onTapCancel;
+  final Widget child;
+
+  @override
+  Widget build(BuildContext context) {
+    return Expanded(
+      // improves performance by moving onTapDown away from Inkwell
+      child: InkWellButton(
+        onTapDown: onTapDown,
+        onTapCancel: onTapCancel,
+        onTap: onTap,
+        child: Cell(
+          color: Colors.white10,
+          child: child,
+        ),
       ),
     );
   }

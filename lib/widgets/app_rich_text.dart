@@ -2,7 +2,7 @@ import 'package:flutter/widgets.dart';
 import 'package:quest_phase/gen/fonts.gen.dart';
 
 class AppRichText extends StatelessWidget {
-  const AppRichText(this.text, {required this.size, super.key});
+  const AppRichText({required this.text, required this.size, super.key});
 
   final String text;
   final double size;
@@ -39,7 +39,7 @@ class AppRichText extends StatelessWidget {
       } else {
         final origText = firstLetters[i].text;
         final modifiedSpan =
-            TextSpan(text: ' $origText', style: firstLetters[i].style);
+        TextSpan(text: ' $origText', style: firstLetters[i].style);
         spans.add(modifiedSpan);
       }
       spans.add(restOfWords[i]);

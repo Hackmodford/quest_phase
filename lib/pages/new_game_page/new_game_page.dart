@@ -19,7 +19,7 @@ class NewGamePage extends ConsumerWidget {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             80.heightBox,
-            Center(child: buildRichText('Welcome', 50)),
+            const Center(child: AppRichText('Welcome', size: 50)),
             const Spacer(),
             const Center(
               child: Text(
@@ -71,7 +71,7 @@ class NewGamePage extends ConsumerWidget {
 
 class PlayerButton extends ElevatedButton {
   PlayerButton({required super.onPressed, required String player, super.key})
-      : super(style: _buttonStyle, child: buildRichText(player, 24));
+      : super(style: _buttonStyle, child: AppRichText(player, size: 24));
 
   static final ButtonStyle _buttonStyle = ElevatedButton.styleFrom(
     backgroundColor: Colors.orangeAccent,

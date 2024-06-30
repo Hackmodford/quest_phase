@@ -38,7 +38,7 @@ class TotalWillpowerCell extends HookConsumerWidget {
                     fit: BoxFit.scaleDown,
                   ),
                   4.widthBox,
-                  buildRichText('Total', 20),
+                  const AppRichText('Total', size: 20),
                 ],
               ),
               4.widthBox,

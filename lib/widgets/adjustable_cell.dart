@@ -63,20 +63,22 @@ class AdjustableCell extends ConsumerWidget {
                     onTapDown: (_) {
                       HapticFeedback.mediumImpact();
                       ref.read(soundEffectServiceProvider).playDecrease();
-                    },
-                    onTap: () {
                       onTapDecrease?.call();
                     },
-                    child: const Icon(Icons.remove),
+                    onTap: () {
+
+                    },
+                    child: GestureDetector(child: const Icon(Icons.remove)),
                   ),
                   Expanded(child: image),
                   GestureDetector(
                     onTapDown: (_) {
                       HapticFeedback.mediumImpact();
                       ref.read(soundEffectServiceProvider).playIncrease();
+                      onTapIncrease?.call();
                     },
                     onTap: () {
-                      onTapIncrease?.call();
+
                     },
                     child: const Icon(Icons.add),
                   ),
