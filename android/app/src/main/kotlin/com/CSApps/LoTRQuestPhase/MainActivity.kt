@@ -1,4 +1,4 @@
-package com.CSApps.LoTRQuestPhase
+package com.hackmodford.questphase
 
 import io.flutter.embedding.android.FlutterActivity
 
