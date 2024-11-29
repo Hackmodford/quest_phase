@@ -1,4 +1,4 @@
 {
-    "dart.flutterSdkPath": "/Users/hackmodford/.puro/envs/quest_phase/flutter",
-    "dart.sdkPath": "/Users/hackmodford/.puro/envs/quest_phase/flutter/bin/cache/dart-sdk"
+  "dart.flutterSdkPath": ".fvm/versions/3.24.5",
+  "dart.sdkPath": "/Users/hackmodford/.puro/envs/quest_phase/flutter/bin/cache/dart-sdk"
 }
