@@ -173,9 +173,9 @@ class NumberButton extends ConsumerWidget {
       onTapDown: (_) {
         ref.read(soundEffectServiceProvider).playIncrease();
         HapticFeedback.mediumImpact();
+        ref.read(numberPadControllerProvider).onNumber(value);
       },
       onTap: () {
-        ref.read(numberPadControllerProvider).onNumber(value);
       },
       columnStart: columnStart,
       rowStart: rowStart,

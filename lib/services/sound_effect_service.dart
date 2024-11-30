@@ -1,9 +1,8 @@
 import 'dart:async';
 
-import 'package:flutter/services.dart';
+import 'package:flutter_soloud/flutter_soloud.dart';
 import 'package:quest_phase/gen/assets.gen.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
-import 'package:soundpool/soundpool.dart';
 
 part 'sound_effect_service.g.dart';
 
@@ -36,33 +35,23 @@ class SoundEffectService {
     return _completer!.future;
   }
 
-  final pool = Soundpool.fromOptions(
-    options: const SoundpoolOptions(
-      iosOptions: SoundpoolOptionsIos(
-        audioSessionCategory: AudioSessionCategory.ambient,
-      ),
-      streamType: StreamType.notification,
-      maxStreams: 4,
-    ),
-  );
-
-  late final int increaseSoundId;
-  late final int decreaseSoundId;
+  final soLoud = SoLoud.instance;
+  late final AudioSource increaseSound;
+  late final AudioSource decreaseSound;
 
   Future<void> init() async {
-    final increaseRaw =
-        await rootBundle.load(Assets.sounds.mixkitCoolInterfaceClickTone2568);
-    increaseSoundId = await pool.load(increaseRaw);
-    final decreaseRaw =
-        await rootBundle.load(Assets.sounds.mixkitCoolInterfaceClickTone25682);
-    decreaseSoundId = await pool.load(decreaseRaw);
+    await soLoud.init();
+    increaseSound =
+        await soLoud.loadAsset(Assets.sounds.mixkitCoolInterfaceClickTone2568);
+    decreaseSound =
+        await soLoud.loadAsset(Assets.sounds.mixkitCoolInterfaceClickTone25682);
   }
 
   Future<void> playIncrease() async {
-    await pool.play(increaseSoundId);
+    await soLoud.play(increaseSound);
   }
 
   Future<void> playDecrease() async {
-    await pool.play(decreaseSoundId);
+    await soLoud.play(decreaseSound);
   }
 }

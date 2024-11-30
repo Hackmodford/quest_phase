@@ -29,7 +29,7 @@ class SavedStateNotifier extends _$SavedStateNotifier {
       savedState = SavedState.fromJson(json);
     }
 
-    ref.listenSelf((previous, next) {
+    listenSelf((previous, next) {
       // save game state when changes stop after .333 seconds
       EasyDebounce.debounce(
         debounceKey,

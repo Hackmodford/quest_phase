@@ -21,8 +21,10 @@ class InkWellButton extends StatelessWidget {
       borderRadius: BorderRadius.circular(4),
       child: InkWell(
         borderRadius: BorderRadius.circular(4),
+        onTapDown: (details) {
+          onTapDown?.call(details);
+        },
         onTap: () {
-          onTapDown?.call(TapDownDetails());
           onTap?.call();
         },
         child: child,

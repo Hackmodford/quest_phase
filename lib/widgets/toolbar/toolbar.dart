@@ -49,9 +49,9 @@ class RoundToolbar extends ConsumerWidget {
             onTapDown: (_) {
               HapticFeedback.mediumImpact();
               ref.read(soundEffectServiceProvider).playIncrease();
+              ref.read(toolbarControllerProvider).onRefreshAndNewRound();
             },
             onTap: () {
-              ref.read(toolbarControllerProvider).onRefreshAndNewRound();
             },
             child: const AppRichText('Refresh + New Round', size: 20),
           ),
@@ -88,9 +88,9 @@ class ThreatToolbar extends ConsumerWidget {
             onTapDown: (_) {
               HapticFeedback.mediumImpact();
               ref.read(soundEffectServiceProvider).playIncrease();
+              ref.read(toolbarControllerProvider).onAddOneThreatToAllPlayers();
             },
             onTap: () {
-              ref.read(toolbarControllerProvider).onAddOneThreatToAllPlayers();
             },
             child: const AppRichText('+1 All Players', size: 20)
                 .paddingOnly(top: 3, bottom: 4),
@@ -139,9 +139,9 @@ class WillToolbar extends ConsumerWidget {
             onTapDown: (_) {
               HapticFeedback.mediumImpact();
               ref.read(soundEffectServiceProvider).playIncrease();
+              ref.read(toolbarControllerProvider).onAddOne();
             },
             onTap: () {
-              ref.read(toolbarControllerProvider).onAddOne();
             },
             child: const Text(
               '+1',
@@ -153,9 +153,9 @@ class WillToolbar extends ConsumerWidget {
             onTapDown: (_) {
               HapticFeedback.mediumImpact();
               ref.read(soundEffectServiceProvider).playIncrease();
+              ref.read(toolbarControllerProvider).onAddTwo();
             },
             onTap: () {
-              ref.read(toolbarControllerProvider).onAddTwo();
             },
             child: const Text(
               '+2',
@@ -166,10 +166,10 @@ class WillToolbar extends ConsumerWidget {
           ToolbarButton(
             onTapDown: (_) {
               HapticFeedback.mediumImpact().ignore();
-              ref.read(soundEffectServiceProvider).playIncrease().ignore();
+              ref.read(soundEffectServiceProvider).playIncrease();
+              ref.read(toolbarControllerProvider).onAddFive();
             },
             onTap: () {
-              ref.read(toolbarControllerProvider).onAddFive();
             },
             child: const Text(
               '+5',

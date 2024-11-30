@@ -77,9 +77,6 @@ class AdjustableCell extends ConsumerWidget {
                       ref.read(soundEffectServiceProvider).playIncrease();
                       onTapIncrease?.call();
                     },
-                    onTap: () {
-
-                    },
                     child: const Icon(Icons.add),
                   ),
                 ],
