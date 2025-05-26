@@ -30,7 +30,7 @@ if (keystorePropertiesFile.exists()) {
 
 android {
     namespace = "com.hackmodford.questphase"
-    compileSdkVersion flutter.compileSdkVersion
+    compileSdkVersion 35
 //    ndkVersion flutter.ndkVersion
     ndkVersion = "26.1.10909125"
 
